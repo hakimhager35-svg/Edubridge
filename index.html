@@ -47,7 +47,7 @@
       <div class="brand"><span class="brand-mark">🌉</span>
         <span class="brand-text"><strong>EduBridge</strong><small data-en="Learning Bridge">جسر التعلّم</small></span>
       </div>
-      <p data-en="Arabic and English explanations, interactive models, and an authored guided mentor for covered topics.">شروحات عربية وإنجليزية ونماذج تفاعلية ومرشد موجه يجيب من محتوى مؤلف عن المواضيع المتاحة.</p>
+      <p data-en="Arabic and English explanations, stories and quizzes, interactive models, and an authored guided mentor. Works offline after the first visit.">شروحات وقصص وكويزات بالعربية والإنجليزية ونماذج تفاعلية ومرشد موجه من محتوى مؤلف. يعمل بلا اتصال بعد أول زيارة.</p>
     </div>
     <div>
       <h4 data-en="Explore">استكشف</h4>
@@ -86,5 +86,10 @@
 <script src="assets/models.js"></script>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
+<script>
+if('serviceWorker' in navigator && location.protocol==='https:'){
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
+}
+</script>
 </body>
 </html>

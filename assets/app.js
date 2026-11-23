@@ -147,7 +147,7 @@ function viewHome(){
   <section class="hero">
     <span class="eyebrow">${lang==='ar'?'مرشد المستقبل · ٢٠٢٦':'Mentor of the future · 2026'}</span>
     <h1>${lang==='ar'?'اسأل وجرّب.<br><span class="grad">وافهم خطوة بخطوة.</span>':'Ask and explore.<br><span class="grad">Learn step by step.</span>'}</h1>
-    <p class="sub">${lang==='ar'?'شروحات عربية وإنجليزية للمواضيع المتاحة، مع نماذج تعليمية تفاعلية ومرشد موجه من محتوى مؤلف. القصص والكويزات بالعربية حالياً.':'Arabic and English explanations for covered topics, with interactive teaching models and an authored guided mentor. Stories and quizzes are currently in Arabic.'}</p>
+    <p class="sub">${lang==='ar'?'شروحات وقصص وكويزات بالعربية والإنجليزية للمواضيع المتاحة، مع نماذج تعليمية تفاعلية ومرشد موجه من محتوى مؤلف.':'Arabic and English explanations, stories and quizzes for covered topics, with interactive teaching models and an authored guided mentor.'}</p>
     <div class="askbar">
       <input id="heroQ" placeholder="${lang==='ar'?'اسأل عن موضوع من المكتبة، مثل الخلية أو الكهرباء':'Ask about a library topic, such as cells or electricity'}">
       <button class="btn-grad" id="heroGo">${lang==='ar'?'ابدأ الآن':'Start now'}</button>
@@ -211,7 +211,7 @@ function viewLibrary(){
   <section class="section">
     <p class="kicker">${lang==='ar'?'المكتبة':'Library'}</p>
     <h2>${lang==='ar'?'كل المواضيع الجاهزة':'All ready topics'}</h2>
-    <p class="lead">${lang==='ar'?LESSONS.length+' درساً بالشرح ومشهد تعليمي وكويز ونموذج تفاعلي. روابط البحث والفيديوهات الخارجية تحتاج اتصالاً بالإنترنت.':LESSONS.length+' lessons with explanations and models. Stories and quizzes are currently Arabic. External searches and videos need an internet connection.'}</p>
+    <p class="lead">${lang==='ar'?LESSONS.length+' درساً بالشرح ومشهد تعليمي وكويز بالعربية والإنجليزية ونموذج تفاعلي. روابط البحث والفيديوهات الخارجية تحتاج اتصالاً بالإنترنت.':LESSONS.length+' lessons with explanations, stories, quizzes and models in Arabic and English. External searches and videos need an internet connection.'}</p>
     <div class="mode-row" id="catRow">
       <button class="active" data-cat="">${lang==='ar'?'الكل':'All'}</button>
       ${cats.map(c=>`<button data-cat="${c}">${c}</button>`).join('')}
@@ -239,8 +239,8 @@ function viewLesson(id, startTab){
     <p><a class="src-link" target="_blank" rel="noopener" href="${esc(L.src)}">${lang==='ar'?'المصدر: ':'Source: '}${esc(new URL(L.src).hostname.replace(/^www\./,''))}</a></p>
     <div class="lesson-tabs" id="lessonTabs">
       <button class="active" data-tab="explain">${lang==='ar'?'الشرح':'Explanation'}</button>
-      <button data-tab="story">${lang==='ar'?'القصة':'Story (Arabic)'}</button>
-      <button data-tab="quiz">${lang==='ar'?'الكويز':'Quiz (Arabic)'}</button>
+      <button data-tab="story">${lang==='ar'?'القصة':'Story'}</button>
+      <button data-tab="quiz">${lang==='ar'?'الكويز':'Quiz'}</button>
       <button data-tab="video">${lang==='ar'?'فيديو':'Video'}</button>
       ${window.EB3D&&EB3D.available(id)?`<button data-tab="d3">${lang==='ar'?'نموذج 3D':'3D model'}</button>`:''}
     </div>
@@ -249,7 +249,7 @@ function viewLesson(id, startTab){
   const body = document.getElementById('lessonBody');
   const tabs = {
     explain: ()=> esc(lang==='ar'?L.ar:L.en),
-    story:   ()=> `<div dir="rtl" lang="ar">${esc(L.story)}</div>`,
+    story:   ()=> lang==='ar' ? esc(L.story) : (L.storyEn ? esc(L.storyEn) : `<div dir="rtl" lang="ar">${esc(L.story)}</div>`),
     video:   ()=>{
       const q = lang==='ar'?L.video:L.videoEn;
       return `<div class="video-links">
@@ -271,8 +271,10 @@ function viewLesson(id, startTab){
     tBtn.dataset.label=lang==='ar'?'🔊 استمع':'🔊 Listen';
     tBtn.textContent=tBtn.dataset.label;
     tBtn.onclick=()=>{
-      const text = curTab==='story' ? L.story : (lang==='ar'?L.ar:L.en);
-      ttsSpeak(text, tBtn,curTab==='story'?'ar':lang);
+      const storyText = lang==='ar' ? L.story : (L.storyEn || L.story);
+      const text = curTab==='story' ? storyText : (lang==='ar'?L.ar:L.en);
+      const speakLang = curTab==='story' ? ((lang==='ar'||!L.storyEn)?'ar':'en') : lang;
+      ttsSpeak(text, tBtn, speakLang);
     };
     document.getElementById('lessonTabs').appendChild(tBtn);
   }
@@ -297,24 +299,25 @@ function viewLesson(id, startTab){
 }
 
 function renderQuiz(L, body){
+  const QZ = (lang==='ar' || !L.quizEn) ? L.quiz : L.quizEn;
   let i=0, score=0;
   const done = store.get('quiz',{});
   function q(){
-    if(i>=L.quiz.length){
+    if(i>=QZ.length){
       const pts = score*10;
-      done[L.id]={score:score,total:L.quiz.length,points:pts};
+      done[L.id]={score:score,total:QZ.length,points:pts};
       store.set('quiz',done);
       body.innerHTML = `<div style="text-align:center">
         <div style="font-size:44px">${score===L.quiz.length?'🏆':score>0?'💪':'📖'}</div>
-        <h3>${lang==='ar'?'نتيجتك: '+score+' من '+L.quiz.length:'Your score: '+score+' of '+L.quiz.length}</h3>
+        <h3>${lang==='ar'?'نتيجتك: '+score+' من '+QZ.length:'Your score: '+score+' of '+QZ.length}</h3>
         <p style="color:var(--muted)">${lang==='ar'?'+'+pts+' نقطة في حسابك':'+'+pts+' points in your account'}</p>
         <button class="btn-primary" id="quizAgain">${lang==='ar'?'أعد المحاولة':'Try again'}</button>
       </div>`;
       document.getElementById('quizAgain').onclick=()=>{i=0;score=0;q();};
       return;
     }
-    const item=L.quiz[i];
-    body.innerHTML = `<p style="color:var(--muted);font-size:13px">${lang==='ar'?'سؤال':'Question'} ${i+1} / ${L.quiz.length}</p>
+    const item=QZ[i];
+    body.innerHTML = `<p style="color:var(--muted);font-size:13px">${lang==='ar'?'سؤال':'Question'} ${i+1} / ${QZ.length}</p>
       <h3 style="margin-bottom:10px">${esc(item.q)}</h3>
       <div id="opts">${item.o.map((o,j)=>`<button class="quiz-opt" data-j="${j}">${esc(o)}</button>`).join('')}</div>`;
     body.querySelectorAll('.quiz-opt').forEach(b=>b.onclick=()=>{
