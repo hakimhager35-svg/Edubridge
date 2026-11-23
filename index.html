@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduBridge | مرشد تعلم للمواضيع المتاحة</title>
+<meta name="description" content="شروحات عربية وإنجليزية ونماذج تعليمية تفاعلية ومرشد موجه بمحتوى مؤلف. Arabic and English explanations, interactive teaching models, and an authored guided mentor.">
+<meta property="og:title" content="EduBridge | مرشد تعلم للمواضيع المتاحة">
+<meta property="og:description" content="تعلم خطوة بخطوة من المواضيع المتاحة. Learn step by step with covered topics.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌉</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav" aria-label="main">
+    <a href="#/" class="brand">
+      <span class="brand-mark">🌉</span>
+      <span class="brand-text">
+        <strong>EduBridge</strong>
+        <small data-en="Learning Bridge">جسر التعلّم</small>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#/" data-nav="home" data-en="Home">الرئيسية</a>
+      <a href="#/library" data-nav="library" data-en="Library">المكتبة</a>
+      <a href="#/mentor" data-nav="mentor" data-en="Guided Mentor">المرشد الموجّه</a>
+      <a href="#/progress" data-nav="progress" data-en="My progress">تقدّمي</a>
+    </div>
+    <div class="nav-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button id="langAr" type="button">ع</button>
+        <button id="langEn" type="button">EN</button>
+      </div>
+      <button id="ageChip" class="chip" type="button" data-en="Teen">مراهق</button>
+    </div>
+  </nav>
+</header>
+
+<main id="app"><!-- views render here --></main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="brand"><span class="brand-mark">🌉</span>
+        <span class="brand-text"><strong>EduBridge</strong><small data-en="Learning Bridge">جسر التعلّم</small></span>
+      </div>
+      <p data-en="Arabic and English explanations, interactive models, and an authored guided mentor for covered topics.">شروحات عربية وإنجليزية ونماذج تفاعلية ومرشد موجه يجيب من محتوى مؤلف عن المواضيع المتاحة.</p>
+    </div>
+    <div>
+      <h4 data-en="Explore">استكشف</h4>
+      <a href="#/" data-en="Home">الرئيسية</a>
+      <a href="#/library" data-en="Topic library">مكتبة المواضيع</a>
+      <a href="#/mentor" data-en="Guided mentor">المرشد الموجّه</a>
+      <a href="#/progress" data-en="My progress">حسابي</a>
+    </div>
+    <div>
+      <h4 data-en="Age stages">المراحل العمرية</h4>
+      <p data-en="Children · 6-11">الأطفال · ٦-١١</p>
+      <p data-en="Teenagers · 12-17">المراهقون · ١٢-١٧</p>
+      <p data-en="University · 18+">الجامعيون · ١٨+</p>
+    </div>
+  </div>
+  <p class="copy">© 2026 EduBridge. <span data-en="Built for curious minds ,  in Arabic and English.">صُنعت للعقول الفضولية ,  بالعربية والإنجليزية.</span>
+  </p>
+</footer>
+<div id="onboarding" class="modal-backdrop hidden">
+  <div class="modal" role="dialog" aria-modal="true"><div id="obBody"></div></div>
+</div>
+
+<div id="ageModal" class="modal-backdrop hidden">
+  <div class="modal" role="dialog" aria-modal="true">
+    <h3 data-en="Your age stage">مرحلتك العمرية</h3>
+    <p data-en="Your selection is saved on this device. Current content is shared across stages.">اختيارك محفوظ على هذا الجهاز. المحتوى الحالي مشترك بين المراحل.</p>
+    <div class="choice-row" id="ageChoices">
+      <button data-age="child" data-en="Child 6-11">طفل ٦-١١</button>
+      <button data-age="teen" data-en="Teen 12-17">مراهق ١٢-١٧</button>
+      <button data-age="university" data-en="University 18+">جامعي ١٨+</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/vendor/three.min.js"></script>
+<script src="assets/models.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
