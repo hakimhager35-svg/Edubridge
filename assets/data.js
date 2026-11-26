@@ -7858,6 +7858,2374 @@ const LESSONS = [
 ],
     "video": "أطوار القمر",
     "videoEn": "Phases of the Moon"
+  },
+  {
+    "id": "algorithms",
+    "emoji": "🧩",
+    "cat": "برمجة",
+    "catEn": "Programming",
+    "title": "الخوارزميات",
+    "titleEn": "Algorithms",
+    "src": "https://en.wikipedia.org/wiki/Algorithm",
+    "video": "شرح الخوارزميات للمبتدئين",
+    "videoEn": "algorithms explained for beginners",
+    "kw": [
+      "الخوارزمية",
+      "algorithm",
+      "ترتيب الفقاعات"
+    ],
+    "ar": "الخوارزمية خطوات محددة ومرتبة لحل مشكلة، مثل وصفة طبخ دقيقة: مدخلات، ثم معالجة، ثم نتيجة. عندما ترتب أسماء أبجدياً فأنت تنفذ خوارزمية، وعندما يوصي يوتيوب بفيديو فهناك خوارزمية تعمل. أشهر مثال تعليمي هو ترتيب الفقاعات: قارن كل عنصرين متجاورين وبدّلهما إن كان ترتيبهما خاطئاً، وكرر حتى لا تعود بحاجة لأي تبديل. جودة الخوارزمية تقاس بسرعتها وذاكرتها عندما تكبر البيانات، وهنا يظهر الفرق بين حل يعمل وحل يعمل بكفاءة.",
+    "en": "An algorithm is a precise ordered set of steps that solves a problem, like an exact cooking recipe: inputs, then processing, then a result. When you sort names alphabetically you are running an algorithm, and when YouTube recommends a video an algorithm is at work. The classic teaching example is bubble sort: compare each neighboring pair and swap them if they are in the wrong order, and repeat until no swap is needed. An algorithm's quality is measured by its speed and memory as data grows, and that is where a solution that works differs from one that works efficiently.",
+    "story": "تخيّل صفاً من عشرة طلاب بأطوال عشوائية، ومطلوب ترتيبهم من الأقصر للأطول دون أن تراهم كلهم مرة واحدة. تقارن كل طالبين متجاورين فقط وتبدلهما عند الحاجة، وتعيد المرور على الصف. بعد بضع جولات يقف الصف مرتباً: هذه هي فكرة ترتيب الفقاعات كاملة.",
+    "storyEn": "Imagine a line of ten students in random heights, and you must sort them from shortest to tallest without seeing them all at once. You compare only each neighboring pair and swap when needed, then pass through the line again. After a few rounds the line stands sorted: that is the whole idea of bubble sort.",
+    "quiz": [
+      {
+        "q": "الخوارزمية هي:",
+        "o": [
+          "خطوات محددة لحل مشكلة",
+          "لغة برمجة",
+          "جهاز كمبيوتر"
+        ],
+        "a": 0
+      },
+      {
+        "q": "في ترتيب الفقاعات نقارن:",
+        "o": [
+          "كل عنصرين متجاورين",
+          "أول وآخر عنصر فقط",
+          "عناصر عشوائية"
+        ],
+        "a": 0
+      },
+      {
+        "q": "جودة الخوارزمية تقاس بـ:",
+        "o": [
+          "جمال الكود",
+          "السرعة والذاكرة مع نمو البيانات",
+          "عدد الأسطر"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "An algorithm is:",
+        "o": [
+          "Defined steps that solve a problem",
+          "A programming language",
+          "A computer"
+        ],
+        "a": 0
+      },
+      {
+        "q": "In bubble sort we compare:",
+        "o": [
+          "Each neighboring pair",
+          "Only first and last items",
+          "Random items"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Algorithm quality is measured by:",
+        "o": [
+          "Code beauty",
+          "Speed and memory as data grows",
+          "Line count"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "variables",
+    "emoji": "📦",
+    "cat": "برمجة",
+    "catEn": "Programming",
+    "title": "المتغيرات وأنواع البيانات",
+    "titleEn": "Variables and Data Types",
+    "src": "https://en.wikipedia.org/wiki/Variable_(computer_science)",
+    "video": "شرح المتغيرات في البرمجة",
+    "videoEn": "variables and data types in programming",
+    "kw": [
+      "المتغير",
+      "variable",
+      "data types",
+      "أنواع البيانات"
+    ],
+    "ar": "المتغير صندوق له اسم نخزن فيه قيمة ونغيرها أثناء عمل البرنامج: اكتب score = 0 فيولد صندوق اسمه score بداخله صفر، وبعد إجابة صحيحة نكتب score = score + 10 فيتحدث المحتوى. لكل قيمة نوع يحدد ما يناسبها من عمليات: أعداد صحيحة للعد، وأعداد عشرية للقياسات، ونصوص للأسماء، وقيم منطقية (صح/خطأ) للقرارات. اختيار النوع الصحيح يمنع أخطاء غريبة، فجمع رقم على نص قد يعطي دمجاً بدل حساب.",
+    "en": "A variable is a named box that stores a value we can change while the program runs: writing score = 0 creates a box named score holding zero, and after a correct answer we write score = score + 10 to update it. Every value has a type that decides which operations fit it: integers for counting, decimals for measurements, text for names, and booleans (true/false) for decisions. Picking the right type prevents strange bugs, since adding a number to text may concatenate instead of calculate.",
+    "story": "تخيّل مطبخاً فيه علب مكتوب على كل منها محتواها: علبة السكر، علبة الشاي. لا تضع الشاي في علبة السكر أبداً وإلا فسدت الوصفة. المتغيرات علب برنامجك: أسماؤها تقول ما بداخلها، ونوع البيانات يمنعك من خلط ما لا يجتمع.",
+    "storyEn": "Imagine a kitchen with jars labeled by content: the sugar jar, the tea jar. You never put tea in the sugar jar or the recipe fails. Variables are your program's jars: their names say what is inside, and data types stop you from mixing things that do not belong together.",
+    "quiz": [
+      {
+        "q": "المتغير هو:",
+        "o": [
+          "صندوق مسمى يخزن قيمة قابلة للتغيير",
+          "رقم ثابت",
+          "نوع كمبيوتر"
+        ],
+        "a": 0
+      },
+      {
+        "q": "نوع البيانات المناسب لاسم الطالب:",
+        "o": [
+          "عدد صحيح",
+          "نص",
+          "منطقي"
+        ],
+        "a": 1
+      },
+      {
+        "q": "القيمة المنطقية (Boolean) تأخذ:",
+        "o": [
+          "صح أو خطأ",
+          "أي رقم",
+          "حروفاً فقط"
+        ],
+        "a": 0
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "A variable is:",
+        "o": [
+          "A named box storing a changeable value",
+          "A fixed number",
+          "A computer type"
+        ],
+        "a": 0
+      },
+      {
+        "q": "The right data type for a student name:",
+        "o": [
+          "Integer",
+          "Text (string)",
+          "Boolean"
+        ],
+        "a": 1
+      },
+      {
+        "q": "A Boolean value takes:",
+        "o": [
+          "True or false",
+          "Any number",
+          "Letters only"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "controlflow",
+    "emoji": "🔀",
+    "cat": "برمجة",
+    "catEn": "Programming",
+    "title": "الشروط والحلقات",
+    "titleEn": "Conditions and Loops",
+    "src": "https://en.wikipedia.org/wiki/Control_flow",
+    "video": "شرح if والحلقات التكرارية",
+    "videoEn": "if statements and loops explained",
+    "kw": [
+      "if",
+      "حلقة",
+      "loop",
+      "شرط"
+    ],
+    "ar": "البرنامج الخطي ينفذ سطراً بعد سطر، لكن البرامج الحقيقية تتخذ قرارات وتكرر مهاماً. الجملة الشرطية if تنفذ كوداً فقط عند تحقق شرط: إن كانت الدرجة 50 فأكثر اطبع \"ناجح\" وإلا اطبع \"حاول مجدداً\". والحلقة التكرارية تنجز عملاً مئات المرات دون نسخ الكود: لكل طالب في القائمة اطبع اسمه. كل برنامج معقد، من لعبة إلى تطبيق بنك، مبني في جوهره على هاتين الفكرتين مع المتغيرات.",
+    "en": "A linear program runs line after line, but real programs make decisions and repeat tasks. The if statement runs code only when a condition holds: if the score is 50 or more print \"pass\", otherwise print \"try again\". A loop does work hundreds of times without copying code: for each student in the list, print their name. Every complex program, from a game to a banking app, is built at its core on these two ideas plus variables.",
+    "story": "تخيّل حارس بوابة مدرسة: يسأل كل داخل \"هل معك بطاقة؟\" فإن نعم يفتح، وإن لا يطلب التسجيل. هو يطبق شرطاً مئات المرات يومياً بلا ملل. الكمبيوتر مثل هذا الحارس: صارم في شرطه، لا يتعب من التكرار، ولا يفاوض.",
+    "storyEn": "Imagine a school gatekeeper: they ask every visitor \"do you have your card?\" If yes, they open; if no, they ask them to register. They apply that condition hundreds of times a day without boredom. A computer is like that gatekeeper: strict about its condition, tireless with repetition, and never negotiates.",
+    "quiz": [
+      {
+        "q": "جملة if تنفذ الكود:",
+        "o": [
+          "دائماً",
+          "فقط عند تحقق الشرط",
+          "أبداً"
+        ],
+        "a": 1
+      },
+      {
+        "q": "الحلقة التكرارية تفيد في:",
+        "o": [
+          "تكرار عمل دون نسخ الكود",
+          "حذف المتغيرات",
+          "تشغيل الجهاز"
+        ],
+        "a": 0
+      },
+      {
+        "q": "\"إن كانت الدرجة 50 فأكثر فناجح\" مثال على:",
+        "o": [
+          "حلقة",
+          "شرط",
+          "متغير"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "An if statement runs code:",
+        "o": [
+          "Always",
+          "Only when the condition holds",
+          "Never"
+        ],
+        "a": 1
+      },
+      {
+        "q": "A loop is useful for:",
+        "o": [
+          "Repeating work without copying code",
+          "Deleting variables",
+          "Starting the device"
+        ],
+        "a": 0
+      },
+      {
+        "q": "\"If the score is 50 or more then pass\" is an example of:",
+        "o": [
+          "A loop",
+          "A condition",
+          "A variable"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "binary",
+    "emoji": "💡",
+    "cat": "برمجة",
+    "catEn": "Programming",
+    "title": "النظام الثنائي والبوابات المنطقية",
+    "titleEn": "Binary and Logic Gates",
+    "src": "https://en.wikipedia.org/wiki/Binary_number",
+    "video": "شرح النظام الثنائي",
+    "videoEn": "binary numbers and logic gates explained",
+    "kw": [
+      "binary",
+      "ثنائي",
+      "بوابات",
+      "logic gates"
+    ],
+    "ar": "الكمبيوتر لا يفهم إلا حالتين: كهرباء تمر أو لا تمر، ونعبر عنهما بـ 1 و 0. النظام الثنائي يبني كل الأعداد من هاتين الخانتين فقط: كل خانة تساوي ضعف سابقتها، فيصبح 1101 ثلاثة عشر. والبوابات المنطقية دوائر صغيرة تحسب بها: بوابة AND تخرج 1 فقط إذا كان دخلاها معاً 1، وبوابة OR تكفيها 1 واحدة، وبوابة NOT تعكس الإشارة. بمليارات هذه البوابات الصغيرة المتصلة تعمل معالجات اليوم وتنفذ كل ما تراه على الشاشة.",
+    "en": "A computer understands only two states: current flowing or not, which we write as 1 and 0. Binary builds every number from these two digits alone: each place is worth double the previous one, so 1101 is thirteen. Logic gates are tiny circuits that compute with them: an AND gate outputs 1 only when both inputs are 1, an OR gate needs just one 1, and a NOT gate flips the signal. Billions of these tiny connected gates are what makes today's processors run everything you see on screen.",
+    "story": "تخيّل ثلاثة مفاتيح إضاءة على الجدار: الأول بقيمة 4 والثاني بقيمة 2 والثالث بقيمة 1. أشعل الأول والثالث فقط: مجموع القيم المضاءة 5، وهذا رقمك. النظام الثنائي لعبة مفاتيح بهذه البساطة، والكمبيوتر يلعبها مليارات المرات في الثانية.",
+    "storyEn": "Imagine three light switches on a wall: the first is worth 4, the second 2, the third 1. Turn on only the first and third: the lit values add to 5, and that is your number. Binary is a switch game this simple, and the computer plays it billions of times per second.",
+    "quiz": [
+      {
+        "q": "الرقم 11 في النظام الثنائي يساوي:",
+        "o": [
+          "3",
+          "11",
+          "2"
+        ],
+        "a": 0
+      },
+      {
+        "q": "بوابة AND تخرج 1 عندما:",
+        "o": [
+          "يكون الدخلان معاً 1",
+          "يكون أحد الدخلين 1",
+          "يكون الدخلان 0"
+        ],
+        "a": 0
+      },
+      {
+        "q": "لماذا يستخدم الكمبيوتر النظام الثنائي؟",
+        "o": [
+          "لأنه أسرع في الكتابة",
+          "لأن الدوائر تميز حالتين كهربيتين بسهولة",
+          "لأنه أقدم الأنظمة"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "The number 11 in binary equals:",
+        "o": [
+          "3",
+          "11",
+          "2"
+        ],
+        "a": 0
+      },
+      {
+        "q": "An AND gate outputs 1 when:",
+        "o": [
+          "Both inputs are 1",
+          "Either input is 1",
+          "Both inputs are 0"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Why do computers use binary?",
+        "o": [
+          "It is faster to write",
+          "Circuits easily distinguish two electric states",
+          "It is the oldest system"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "internet",
+    "emoji": "🌐",
+    "cat": "برمجة",
+    "catEn": "Programming",
+    "title": "كيف يعمل الإنترنت والويب",
+    "titleEn": "How the Internet and the Web Work",
+    "src": "https://en.wikipedia.org/wiki/Internet",
+    "video": "كيف يعمل الإنترنت",
+    "videoEn": "how the internet works",
+    "kw": [
+      "internet",
+      "انترنت",
+      "الويب",
+      "web",
+      "خادم",
+      "server"
+    ],
+    "ar": "الإنترنت شبكة شبكات تربط ملايين الأجهزة بقواعد مشتركة، والويب خدمة واحدة تعمل فوقه: صفحات ومواقع نطلبها بالمتصفح. عندما تكتب عنوان موقع يسأل متصفحك نظام DNS عن رقم الخادم (عنوانه الرقمي IP)، ثم يرسل طلبك عبر أجهزة توجيه متتالية حتى الخادم، فيرد الخادم بملفات الصفحة. الطلب والرد يتقسمان إلى حزم صغيرة تسافر في طرق مختلفة ثم تتجمع، تماماً كرسالة ممزقة ترسل في ظروف متعددة وتلتصق عند الوصول.",
+    "en": "The internet is a network of networks linking millions of devices under shared rules, and the web is one service running on top of it: pages and sites we request with a browser. When you type a site address, your browser asks the DNS system for the server's number (its IP address), then sends your request through a chain of routers to that server, which replies with the page's files. Request and reply split into small packets that travel different routes and reassemble, exactly like a torn letter sent in several envelopes and glued back on arrival.",
+    "story": "تخيّل أنك ترسل لوحة بازل لصديق في مدينة أخرى: تقطعها قطعاً صغيرة، ترقمها، وترسل كل قطعة في ظرف بطريق مختلف. صديقك يجمع الظروف ويرتب القطع بالأرقام فتكتمل اللوحة. هكذا تسافر صفحات الويب إليك: حزم مرقمة تعبر العالم ثم تتجمع على شاشتك في لحظة.",
+    "storyEn": "Imagine mailing a jigsaw puzzle to a friend in another city: you break it into small pieces, number them, and send each piece in an envelope by a different route. Your friend collects the envelopes and orders the pieces by number until the picture is whole. That is how web pages travel to you: numbered packets crossing the world, reassembled on your screen in a blink.",
+    "quiz": [
+      {
+        "q": "الفرق بين الإنترنت والويب:",
+        "o": [
+          "الويب خدمة تعمل فوق الإنترنت",
+          "لا فرق بينهما",
+          "الإنترنت موقع واحد"
+        ],
+        "a": 0
+      },
+      {
+        "q": "وظيفة نظام DNS:",
+        "o": [
+          "ترجمة اسم الموقع إلى عنوانه الرقمي",
+          "تسريع الإنترنت",
+          "حماية الجهاز"
+        ],
+        "a": 0
+      },
+      {
+        "q": "البيانات تنتقل عبر الإنترنت على شكل:",
+        "o": [
+          "ملف واحد كامل",
+          "حزم صغيرة تتجمع عند الوصول",
+          "موجات صوتية"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "The difference between the internet and the web:",
+        "o": [
+          "The web is a service running on the internet",
+          "No difference",
+          "The internet is one website"
+        ],
+        "a": 0
+      },
+      {
+        "q": "The DNS system's job:",
+        "o": [
+          "Translating a site name into its numeric address",
+          "Speeding up the internet",
+          "Protecting the device"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Data crosses the internet as:",
+        "o": [
+          "One whole file",
+          "Small packets reassembled on arrival",
+          "Sound waves"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "differentiation",
+    "emoji": "📈",
+    "cat": "ثانوية عامة",
+    "catEn": "Secondary School",
+    "title": "التفاضل والمشتقة",
+    "titleEn": "Differentiation and the Derivative",
+    "src": "https://en.wikipedia.org/wiki/Derivative",
+    "video": "شرح التفاضل والمشتقة ثانوية عامة",
+    "videoEn": "derivative explained calculus basics",
+    "kw": [
+      "المشتقة",
+      "derivative",
+      "تفاضل",
+      "الميل اللحظي"
+    ],
+    "ar": "المشتقة تقيس معدل التغير اللحظي: كم تتغير الكمية عند نقطة معينة بالضبط. إذا رسمنا مسار سيارة كمنحنى زمني، فالسرعة في لحظة ما هي ميل المماس عند تلك النقطة، وهذا الميل هو المشتقة. قاعدة أساسية تحفظها للامتحان: مشتقة xⁿ هي n·xⁿ⁻¹، فيتحول x³ إلى 3x². التفاضل ليس حفظ قواعد فقط؛ إنه لغة وصف التغير: السرعة مشتقة المسافة، والتسارع مشتقة السرعة، وبه نجد القيم العظمى والصغرى حيث يصفر الميل.",
+    "en": "The derivative measures the instantaneous rate of change: how much a quantity changes at one exact point. If we plot a car's journey as a curve over time, the speed at one moment is the slope of the tangent at that point, and that slope is the derivative. A core rule to memorize for exams: the derivative of xⁿ is n·xⁿ⁻¹, turning x³ into 3x². Differentiation is not just memorizing rules; it is the language of change: velocity is the derivative of distance, acceleration is the derivative of velocity, and with it we find maxima and minima where the slope is zero.",
+    "story": "تخيّل عداد سرعة السيارة: لا يقيس متوسط رحلتك، بل سرعتك في هذه اللحظة بالضبط. لو رسمت منحنى المسافة مع الزمن، فإبرة العداد هي ميل الخط الملامس للمنحنى عند نقطة \"الآن\". تلك الإبرة هي المشتقة تعمل أمام عينيك في كل مشوار.",
+    "storyEn": "Imagine a car's speedometer: it does not measure your trip's average, but your speed at this exact moment. If you drew the distance-versus-time curve, the needle is the slope of the line touching the curve at the point called \"now\". That needle is the derivative working before your eyes on every ride.",
+    "quiz": [
+      {
+        "q": "المشتقة تقيس:",
+        "o": [
+          "معدل التغير اللحظي",
+          "المساحة الكلية",
+          "طول المنحنى"
+        ],
+        "a": 0
+      },
+      {
+        "q": "مشتقة x³ تساوي:",
+        "o": [
+          "3x²",
+          "x²",
+          "3x"
+        ],
+        "a": 0
+      },
+      {
+        "q": "عند القيمة العظمى للدالة تكون المشتقة:",
+        "o": [
+          "موجبة",
+          "سالبة",
+          "صفراً"
+        ],
+        "a": 2
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "The derivative measures:",
+        "o": [
+          "The instantaneous rate of change",
+          "Total area",
+          "Curve length"
+        ],
+        "a": 0
+      },
+      {
+        "q": "The derivative of x³ equals:",
+        "o": [
+          "3x²",
+          "x²",
+          "3x"
+        ],
+        "a": 0
+      },
+      {
+        "q": "At a function's maximum the derivative is:",
+        "o": [
+          "Positive",
+          "Negative",
+          "Zero"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "integration",
+    "emoji": "🧮",
+    "cat": "ثانوية عامة",
+    "catEn": "Secondary School",
+    "title": "التكامل",
+    "titleEn": "Integration",
+    "src": "https://en.wikipedia.org/wiki/Integral",
+    "video": "شرح التكامل ثانوية عامة",
+    "videoEn": "integration explained calculus basics",
+    "kw": [
+      "التكامل",
+      "integral",
+      "مساحة تحت المنحنى"
+    ],
+    "ar": "التكامل عملية عكس التفاضل، ومعناه الهندسي جمع القطع الصغيرة: المساحة تحت منحنى نحسبها بتقسيمها إلى مستطيلات رفيعة جداً وجمعها، وكلما رقّت المستطيلات اقتربنا من القيمة الدقيقة. قاعدة أساسية: تكامل xⁿ هو xⁿ⁺¹/(n+1) زائد ثابت التكامل C، لأن مشتقته تعيد xⁿ. التطبيقات في كل مكان: المسافة من منحنى السرعة، والشغل من منحنى القوة، والحجوم من مساحات المقاطع. نظرية حساب التفاضل والتكامل الأساسية تربط العمليتين كعمليتين متعاكستين.",
+    "en": "Integration is the reverse of differentiation, and its geometric meaning is adding small pieces: the area under a curve is computed by slicing it into very thin rectangles and summing them, and the thinner the rectangles the closer we get to the exact value. A core rule: the integral of xⁿ is xⁿ⁺¹/(n+1) plus the constant C, because its derivative returns xⁿ. Applications are everywhere: distance from a velocity curve, work from a force curve, volumes from cross-section areas. The fundamental theorem of calculus ties the two operations as exact opposites.",
+    "story": "تخيّل قياس مساحة بحيرة غير منتظمة الشكل: غطّها بشبكة مربعات صغيرة وعدّ المربعات المغمورة. كلما صغرت المربعات دقّت المساحة أكثر. التكامل يفعل هذا بالضبط لكن بمستطيلات لا نهائية الرقة، فيعطيك المساحة الحقيقية لا تقديرها.",
+    "storyEn": "Imagine measuring the area of an irregularly shaped lake: cover it with a grid of small squares and count the submerged ones. The smaller the squares, the more accurate the area. Integration does exactly this but with infinitely thin rectangles, giving you the true area, not an estimate.",
+    "quiz": [
+      {
+        "q": "التكامل هو العملية العكسية لـ:",
+        "o": [
+          "الضرب",
+          "التفاضل",
+          "الجمع"
+        ],
+        "a": 1
+      },
+      {
+        "q": "تكامل x² يساوي:",
+        "o": [
+          "2x",
+          "x³/3 + C",
+          "x³"
+        ],
+        "a": 1
+      },
+      {
+        "q": "التكامل المحدد يحسب هندسياً:",
+        "o": [
+          "ميل المماس",
+          "المساحة تحت المنحنى",
+          "طول المنحنى"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Integration is the reverse operation of:",
+        "o": [
+          "Multiplication",
+          "Differentiation",
+          "Addition"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The integral of x² equals:",
+        "o": [
+          "2x",
+          "x³/3 + C",
+          "x³"
+        ],
+        "a": 1
+      },
+      {
+        "q": "A definite integral geometrically computes:",
+        "o": [
+          "Tangent slope",
+          "The area under the curve",
+          "Curve length"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "logarithms",
+    "emoji": "🔢",
+    "cat": "ثانوية عامة",
+    "catEn": "Secondary School",
+    "title": "اللوغاريتمات",
+    "titleEn": "Logarithms",
+    "src": "https://en.wikipedia.org/wiki/Logarithm",
+    "video": "شرح اللوغاريتمات ثانوية عامة",
+    "videoEn": "logarithms explained simply",
+    "kw": [
+      "لوغاريتم",
+      "log",
+      "اللوغاريتم العشري"
+    ],
+    "ar": "اللوغاريتم سؤال معكوس عن الأسس: بدل \"كم يساوي 10³؟\" نسأل \"10 مرفوعة لأي قوة تعطي 1000؟\" والجواب 3، أي log₁₀(1000) = 3. قوانينه الثلاثة تحل أصعب المسائل: لوغاريتم الضرب جمع، والقسمة طرح، والقوة تنزل ضرباً، فيتحول log(a·b) إلى log a + log b. قبل الحاسبات كانت جداول اللوغاريتم تحول الضرب الطويل إلى جمع بسيط، وما زالت اليوم في قلب مقاييس نستخدمها: الرقم الهيدروجيني pH وشدة الزلازل ووحدات الديسيبل للصوت.",
+    "en": "A logarithm is an inverse question about exponents: instead of \"what is 10³?\" we ask \"10 raised to what power gives 1000?\" and the answer is 3, so log₁₀(1000) = 3. Its three laws crack the hardest problems: the log of a product is a sum, of a quotient a difference, and a power comes down as multiplication, turning log(a·b) into log a + log b. Before calculators, log tables turned long multiplication into simple addition, and they still sit at the heart of scales we use: pH, earthquake magnitude, and decibels for sound.",
+    "story": "تخيّل عالماً يضرب فيه الناس بجمع! هذا ما فعلته اللوغاريتمات للفلكيين قبل 400 سنة: جداول تحول أي ضرب مرهق إلى جمع سطر واحد، فتسارعت حسابات الكواكب من شهور إلى أيام. يقال إن عالم الفلك لابلاس قال إن مخترع اللوغاريتم ضاعف عمر الفلكيين بتوفيره نصف عملهم.",
+    "storyEn": "Imagine a world where people multiply by adding! That is what logarithms did for astronomers 400 years ago: tables that turned any exhausting multiplication into a one-line addition, speeding planetary calculations from months to days. It is said the astronomer Laplace claimed the inventor of logarithms doubled astronomers' lives by halving their work.",
+    "quiz": [
+      {
+        "q": "log₁₀(1000) يساوي:",
+        "o": [
+          "3",
+          "100",
+          "10"
+        ],
+        "a": 0
+      },
+      {
+        "q": "log(a·b) يساوي:",
+        "o": [
+          "log a × log b",
+          "log a + log b",
+          "log a - log b"
+        ],
+        "a": 1
+      },
+      {
+        "q": "مقياس ريختر للزلازل مبني على:",
+        "o": [
+          "الكسور",
+          "اللوغاريتمات",
+          "الجذور"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "log₁₀(1000) equals:",
+        "o": [
+          "3",
+          "100",
+          "10"
+        ],
+        "a": 0
+      },
+      {
+        "q": "log(a·b) equals:",
+        "o": [
+          "log a × log b",
+          "log a + log b",
+          "log a - log b"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The Richter scale for earthquakes is built on:",
+        "o": [
+          "Fractions",
+          "Logarithms",
+          "Roots"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "vectors",
+    "emoji": "🧭",
+    "cat": "ثانوية عامة",
+    "catEn": "Secondary School",
+    "title": "المتجهات",
+    "titleEn": "Vectors",
+    "src": "https://en.wikipedia.org/wiki/Euclidean_vector",
+    "video": "شرح المتجهات ثانوية عامة",
+    "videoEn": "vectors explained physics and math",
+    "kw": [
+      "المتجه",
+      "vector",
+      "محصلة"
+    ],
+    "ar": "المتجه كمية لها مقدار واتجاه معاً، مثل الإزاحة والسرعة والقوة، بعكس الكمية القياسية التي لها مقدار فقط كالكتلة والحرارة. نرسمه سهماً: طوله مقداره ورأسه اتجاهه. جمع المتجهات بقاعدة المثلث أو متوازي الأضلاع: ضع بداية الثاني عند نهاية الأول فتكون المحصلة من بداية الأول لنهاية الثاني. في الامتحان نحلل المتجه عادة إلى مركبتين متعامدتين بجيب وجيب تمام الزاوية، فتسهل كل الحسابات. المحصلة الصفرية تعني اتزان القوى، وهي أساس حسابات الاستاتيكا.",
+    "en": "A vector is a quantity with both magnitude and direction, like displacement, velocity and force, unlike a scalar which has magnitude only, like mass and temperature. We draw it as an arrow: its length is the magnitude and its head the direction. Vectors add by the triangle or parallelogram rule: place the second's tail at the first's head, and the resultant runs from the first tail to the last head. In exams we usually resolve a vector into two perpendicular components with sine and cosine, making every calculation easy. A zero resultant means force equilibrium, the foundation of statics.",
+    "story": "تخيّل طائرة تطير شرقاً بسرعة 800 كم/س بينما تهب رياح شمالية بسرعة 100 كم/س. إلى أين تتجه فعلاً؟ لا تجمع الرقمين ولا تطرحهما؛ ارسم سهمين متعامدين وأكمل المستطيل، فالقطر هو المسار الحقيقي. الطيارون يحسبون بهذه الطريقة في كل رحلة ليصلوا إلى المطار الصحيح لا إلى مدينة مجاورة.",
+    "storyEn": "Imagine a plane flying east at 800 km/h while a wind blows north at 100 km/h. Where is it really heading? You neither add nor subtract the two numbers; draw two perpendicular arrows, complete the rectangle, and the diagonal is the true path. Pilots compute exactly this way on every flight to land at the right airport, not a neighboring city.",
+    "quiz": [
+      {
+        "q": "المتجه يتميز عن الكمية القياسية بأن له:",
+        "o": [
+          "مقداراً واتجاهاً",
+          "مقداراً فقط",
+          "وحدة قياس"
+        ],
+        "a": 0
+      },
+      {
+        "q": "محصلة متجهين متعامدين 3 و4 تساوي:",
+        "o": [
+          "7",
+          "5",
+          "12"
+        ],
+        "a": 1
+      },
+      {
+        "q": "عندما تكون محصلة القوى صفراً يكون الجسم:",
+        "o": [
+          "متسارعاً",
+          "متزناً",
+          "ساقطاً"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "A vector differs from a scalar in having:",
+        "o": [
+          "Magnitude and direction",
+          "Magnitude only",
+          "A unit"
+        ],
+        "a": 0
+      },
+      {
+        "q": "The resultant of two perpendicular vectors 3 and 4 equals:",
+        "o": [
+          "7",
+          "5",
+          "12"
+        ],
+        "a": 1
+      },
+      {
+        "q": "When the net force is zero the body is:",
+        "o": [
+          "Accelerating",
+          "In equilibrium",
+          "Falling"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "workenergy",
+    "emoji": "⚡",
+    "cat": "ثانوية عامة",
+    "catEn": "Secondary School",
+    "title": "الشغل والطاقة والقدرة",
+    "titleEn": "Work, Energy and Power",
+    "src": "https://en.wikipedia.org/wiki/Work_(physics)",
+    "video": "شرح الشغل والطاقة والقدرة",
+    "videoEn": "work energy and power physics explained",
+    "kw": [
+      "الشغل",
+      "work",
+      "القدرة",
+      "power",
+      "طاقة الحركة"
+    ],
+    "ar": "الشغل في الفيزياء له معنى دقيق: قوة تحرك جسمًا في اتجاهها، ويحسب من حاصل ضرب القوة في الإزاحة في اتجاهها، فحمل الحقيبة وأنت واقف ليس شغلاً فيزيائياً مهما تعبت! الطاقة هي القدرة على بذل الشغل، وتتخذ صوراً: حركية للأجسام المتحركة تساوي نصف الكتلة في مربع السرعة، وكامنة للمرتفعة أو المضغوطة. القدرة هي معدل بذل الشغل: نفس صعود السلم مشياً أو جرياً شغل واحد، لكن قدرة الجري أكبر لأنه في زمن أقل. قانون بقاء الطاقة يربط المثلث كله: الطاقة تتحول ولا تفنى.",
+    "en": "Work in physics has a precise meaning: a force moving a body along its direction, computed as force times displacement in that direction, so holding a bag while standing still is no physical work, however tired you feel! Energy is the capacity to do work, and it takes forms: kinetic for moving bodies, equal to half the mass times speed squared, and potential for raised or compressed ones. Power is the rate of doing work: climbing the same stairs walking or running is the same work, but running is more power because it happens in less time. Energy conservation ties the whole triangle: energy transforms and never vanishes.",
+    "story": "تخيّل عاملين يرفعان صندوقين متماثلين إلى الطابق الثالث: الأول بالمصعد في 30 ثانية، والثاني على السلم في 5 دقائق. الشغل المبذول واحد تماماً لأن القوة والارتفاع واحدان، لكن قدرة المصعد أكبر بعشر مرات لأنه أنجز الشغل نفسه في زمن أقل بعشر مرات. لهذا نقيس قدرة المحركات لا \"شغلها\".",
+    "storyEn": "Imagine two workers lifting identical boxes to the third floor: one by elevator in 30 seconds, one by stairs in 5 minutes. The work done is exactly the same, since force and height are equal, but the elevator's power is ten times greater because it did the same work in ten times less time. That is why we rate engines by power, not \"work\".",
+    "quiz": [
+      {
+        "q": "الشغل يساوي:",
+        "o": [
+          "القوة × الإزاحة في اتجاهها",
+          "القوة ÷ الزمن",
+          "الكتلة × السرعة"
+        ],
+        "a": 0
+      },
+      {
+        "q": "طاقة الحركة تساوي:",
+        "o": [
+          "نصف الكتلة × مربع السرعة",
+          "الكتلة × السرعة",
+          "الكتلة × الارتفاع"
+        ],
+        "a": 0
+      },
+      {
+        "q": "صعد شخصان نفس السلم، أحدهما في زمن أقل. أيهما بذل شغلاً أكبر؟",
+        "o": [
+          "الأسرع",
+          "الأبطأ",
+          "الشغل متساوٍ والقدرة مختلفة"
+        ],
+        "a": 2
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Work equals:",
+        "o": [
+          "Force × displacement in its direction",
+          "Force ÷ time",
+          "Mass × speed"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Kinetic energy equals:",
+        "o": [
+          "Half the mass × speed squared",
+          "Mass × speed",
+          "Mass × height"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Two people climbed the same stairs, one faster. Who did more work?",
+        "o": [
+          "The faster one",
+          "The slower one",
+          "Equal work, different power"
+        ],
+        "a": 2
+      }
+    ]
+  },
+  {
+    "id": "memory",
+    "emoji": "🧠",
+    "cat": "علم نفس",
+    "catEn": "Psychology",
+    "title": "الذاكرة",
+    "titleEn": "Memory",
+    "src": "https://en.wikipedia.org/wiki/Memory",
+    "video": "شرح الذاكرة وكيف نتذكر",
+    "videoEn": "how memory works psychology",
+    "kw": [
+      "الذاكرة",
+      "memory",
+      "النسيان"
+    ],
+    "ar": "الذاكرة ليست صندوقاً واحداً بل نظام من ثلاث مراحل: ذاكرة حسية تحتفظ بالانطباع ثواني، وذاكرة قصيرة المدى تحمل نحو سبعة عناصر لثوانٍ أيضاً، وذاكرة طويلة المدى تخزن ما ركزنا عليه وكررناه. الانتقال للذاكرة الطويلة يحتاج الانتباه أولاً ثم التكرار المتباعد والفهم لا الحفظ الأعمى. النسيان ليس عيباً بل تنظيف: الدماغ يحتفظ بما استُخدم. أفضل استراتيجيات المذاكرة مبنية على هذا: استرجاع المعلومة من ذاكرتك (اختبر نفسك!) أقوى من إعادة القراءة، والتوزيع على أيام أقوى من الحشو ليلة الامتحان.",
+    "en": "Memory is not one box but a system of three stages: sensory memory holding impressions for seconds, short-term memory holding about seven items for seconds too, and long-term memory storing what we attended to and repeated. Moving to long-term memory needs attention first, then spaced repetition and understanding rather than blind memorization. Forgetting is not a flaw but a cleanup: the brain keeps what gets used. The best study strategies are built on this: retrieving information from your memory (test yourself!) beats re-reading, and spreading over days beats cramming the night before.",
+    "story": "تخيّل طالبين يذاكران الدرس نفسه: الأول أعاد قراءته خمس مرات في ليلة واحدة، والثاني قرأه مرة ثم اختبر نفسه فيه على مدى ثلاثة أيام. في الامتحان يتفوق الثاني رغم مذاكرته الأقل. السر أن الاسترجاع تمرين لعضلة الذاكرة، بينما إعادة القراءة مجرد مشاهدة للتمرين من المقاعد.",
+    "storyEn": "Imagine two students studying the same lesson: one re-read it five times in one night, the other read it once then tested himself over three days. In the exam the second wins despite studying less. The secret is that retrieval is exercise for the memory muscle, while re-reading is just watching the exercise from the stands.",
+    "quiz": [
+      {
+        "q": "سعة الذاكرة قصيرة المدى تقريباً:",
+        "o": [
+          "7 عناصر",
+          "70 عنصراً",
+          "عنصران"
+        ],
+        "a": 0
+      },
+      {
+        "q": "أفضل طريقة لتثبيت المعلومة:",
+        "o": [
+          "إعادة القراءة المتكررة في ليلة واحدة",
+          "الاسترجاع المتباعد على أيام",
+          "التظليل بالألوان"
+        ],
+        "a": 1
+      },
+      {
+        "q": "النسيان وظيفته:",
+        "o": [
+          "عيب في الدماغ",
+          "تنظيف يحتفظ بالمستخدم",
+          "مرض"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Short-term memory capacity is about:",
+        "o": [
+          "7 items",
+          "70 items",
+          "2 items"
+        ],
+        "a": 0
+      },
+      {
+        "q": "The best way to fix information:",
+        "o": [
+          "Repeated re-reading in one night",
+          "Spaced retrieval over days",
+          "Color highlighting"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Forgetting's function is:",
+        "o": [
+          "A brain flaw",
+          "A cleanup keeping what is used",
+          "A disease"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "learning",
+    "emoji": "🎓",
+    "cat": "علم نفس",
+    "catEn": "Psychology",
+    "title": "نظريات التعلم",
+    "titleEn": "Learning Theories",
+    "src": "https://en.wikipedia.org/wiki/Learning_theory_(education)",
+    "video": "شرح نظريات التعلم في علم النفس",
+    "videoEn": "learning theories psychology explained",
+    "kw": [
+      "التعلم",
+      "learning",
+      "بافلوف",
+      "الشرطية"
+    ],
+    "ar": "كيف نتعلم؟ سؤال علم النفس الأقدم، وأجابت عنه مدارس. المدرسة السلوكية: نتعلم بالارتباط والتعزيز، وكلب بافلوف الشهير لعابه سال لصوت الجرس بعد ارتباطه بالطعام، والطفل يكرر ما يُكافأ عليه. المدرسة المعرفية: التعلم فهم وبناء معنى داخل العقل، لا مجرد استجابات. والمدرسة الاجتماعية: نتعلم بالملاحظة والتقليد، فالطفل يقلد من يحب قبل أن يُوجَّه. المدرسة البنائية: المتعلم يبني معرفته بنفسه من خبراته، والمعلم مرشد لا ملقن. الواقع مزيج منها كلها حسب الموقف والمهارة.",
+    "en": "How do we learn? Psychology's oldest question, answered by several schools. Behaviorism: we learn by association and reinforcement; Pavlov's famous dog salivated at a bell after it was linked to food, and a child repeats what is rewarded. Cognitivism: learning is understanding and building meaning inside the mind, not mere responses. Social learning: we learn by observation and imitation; a child copies who they love before being instructed. Constructivism: the learner builds knowledge from their own experiences, and the teacher is a guide, not a lecturer. Reality is a mix of them all, depending on the situation and the skill.",
+    "story": "تخيّل طفلة تتعلم ركوب الدراجة: تقلد أخاها (تعلم اجتماعي)، وتفرح بتشجيع أبيها فيتعزز استمرارها (سلوكي)، وتفهم فجأة فكرة التوازن (معرفي)، وتركب فشلها الأول لتبني أسلوبها الخاص (بنائي). مهارة واحدة جمعت النظريات الأربع في خمس دقائق.",
+    "storyEn": "Imagine a girl learning to ride a bike: she copies her brother (social learning), her father's encouragement reinforces her persistence (behaviorist), she suddenly grasps the idea of balance (cognitive), and she rides her first wobble into her own style (constructivist). One skill gathered all four theories in five minutes.",
+    "quiz": [
+      {
+        "q": "كلب بافلوف سال لعابه للجرس بسبب:",
+        "o": [
+          "الارتباط الشرطي",
+          "الجوع فقط",
+          "حب الموسيقى"
+        ],
+        "a": 0
+      },
+      {
+        "q": "التعلم بالملاحظة والتقليد هو جوهر المدرسة:",
+        "o": [
+          "السلوكية",
+          "الاجتماعية",
+          "التحليلية"
+        ],
+        "a": 1
+      },
+      {
+        "q": "في المدرسة البنائية دور المعلم:",
+        "o": [
+          "ملقن",
+          "مرشد",
+          "مراقب صامت"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Pavlov's dog salivated at the bell because of:",
+        "o": [
+          "Conditioned association",
+          "Hunger only",
+          "Love of music"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Learning by observation and imitation is the core of which school:",
+        "o": [
+          "Behaviorist",
+          "Social learning",
+          "Analytic"
+        ],
+        "a": 1
+      },
+      {
+        "q": "In constructivism the teacher's role is:",
+        "o": [
+          "Lecturer",
+          "Guide",
+          "Silent observer"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "motivation",
+    "emoji": "🔥",
+    "cat": "علم نفس",
+    "catEn": "Psychology",
+    "title": "الدافعية",
+    "titleEn": "Motivation",
+    "src": "https://en.wikipedia.org/wiki/Motivation",
+    "video": "شرح الدافعية في علم النفس",
+    "videoEn": "motivation psychology explained",
+    "kw": [
+      "الدافعية",
+      "motivation",
+      "ماسلو"
+    ],
+    "ar": "لماذا نفعل ما نفعل؟ الدافعية هي المحرك الداخلي للسلوك، وتنقسم لنوعين: داخلية (تفعل الشيء لمتعته ومعناه ذاته) وخارجية (تفعله لمكافأة أو خوف عقاب). الدراسات تُظهر أن الدافعية الداخلية أطول عمراً وأعمق أثراً، وأن الإفراط في المكافآت الخارجية قد يقتلها: طفل يحب الرسم قد يفقد شغفه إذا صار يرسم مقابل النقود فقط. هرم ماسلو الشهير يرتب حاجات الإنسان: فسيولوجية ثم أمان ثم انتماء ثم تقدير ثم تحقيق ذات، والحاجات الأساسية تنافس على الانتباه قبل العليا. الجوعان لا يحلم بالفلسفة.",
+    "en": "Why do we do what we do? Motivation is the inner engine of behavior, split in two types: intrinsic (doing something for its own joy and meaning) and extrinsic (doing it for a reward or fear of punishment). Studies show intrinsic motivation lasts longer and cuts deeper, and that overdosing on external rewards can kill it: a child who loves drawing may lose the passion if drawing becomes only for money. Maslow's famous pyramid orders human needs: physiological, then safety, then belonging, then esteem, then self-actualization, with basic needs competing for attention before higher ones. A hungry person does not dream of philosophy.",
+    "story": "تخيّل جدّين يزرعان: الأول يزرع ليبيع في السوق، والثاني يزرع لأنه يحب الأرض. في موسم الجفاف يتوقف الأول: لا ربح فلا عمل. أما الثاني فيسقي نباته ويقول \"أنا سعيد هنا\". الدافعية الخارجية تتوقف عند توقف المكافأة، والداخلية تحمل صاحبها عبر المواسم الصعبة.",
+    "storyEn": "Imagine two farmers: one plants to sell at the market, the other plants because he loves the land. In a drought season the first stops: no profit, no work. The second keeps watering his plants saying \"I am happy here\". Extrinsic motivation stops when the reward stops; intrinsic motivation carries its owner through hard seasons.",
+    "quiz": [
+      {
+        "q": "الدافعية الداخلية تعني أنك تفعل الشيء:",
+        "o": [
+          "لمكافأة مالية",
+          "لمتعته ومعناه ذاته",
+          "خوفاً من العقاب"
+        ],
+        "a": 1
+      },
+      {
+        "q": "في هرم ماسلو تأتي حاجة الأمان:",
+        "o": [
+          "قبل الحاجات الفسيولوجية",
+          "بعد الحاجات الفسيولوجية",
+          "في قمة الهرم"
+        ],
+        "a": 1
+      },
+      {
+        "q": "الإفراط في المكافآت الخارجية قد:",
+        "o": [
+          "يضعف الدافعية الداخلية",
+          "يقويها دائماً",
+          "لا يؤثر"
+        ],
+        "a": 0
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Intrinsic motivation means you do something:",
+        "o": [
+          "For money",
+          "For its own joy and meaning",
+          "Fearing punishment"
+        ],
+        "a": 1
+      },
+      {
+        "q": "In Maslow's pyramid, safety needs come:",
+        "o": [
+          "Before physiological needs",
+          "After physiological needs",
+          "At the pyramid's top"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Overdoing external rewards may:",
+        "o": [
+          "Weaken intrinsic motivation",
+          "Always strengthen it",
+          "Have no effect"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "development",
+    "emoji": "🌱",
+    "cat": "علم نفس",
+    "catEn": "Psychology",
+    "title": "مراحل النمو النفسي",
+    "titleEn": "Stages of Psychological Development",
+    "src": "https://en.wikipedia.org/wiki/Developmental_psychology",
+    "video": "شرح مراحل النمو عند بياجيه",
+    "videoEn": "Piaget stages of development explained",
+    "kw": [
+      "بياجيه",
+      "Piaget",
+      "مراحل النمو",
+      "النمو النفسي"
+    ],
+    "ar": "علم النفس النموذي يدرس كيف يتغير تفكير الإنسان من الرضاعة للشيخوخة. أشهر نماذجه مراحل بياجيه الأربع: الحسية الحركية (0-2 سنة) يعرف الطفل العالم بحواسه ويدرك أن الأشياء تبقى حتى لو غابت عن عينه، وما قبل العمليات (2-7) تزدهر اللغة والخيال مع تفكير متمركز حول الذات، والعمليات المحسوسة (7-11) يتقن المنطق على الأشياء المادية كالحفظ والترتيب، والعمليات المجردة (11+) يستطيع التفكير في الفرضيات والمثل والاحتمالات. فهم المراحل يعلمنا ألا نطلب من الطفل ما يفوق مرحلته، وأن التفكير المجرد مهارة متأخرة النمو.",
+    "en": "Developmental psychology studies how human thinking changes from infancy to old age. Its most famous model is Piaget's four stages: sensorimotor (0-2 years), where the infant knows the world through senses and learns that things persist when out of sight; preoperational (2-7), where language and imagination bloom alongside self-centered thinking; concrete operational (7-11), where logic over physical things matures, like conservation and ordering; and formal operational (11+), where thinking about hypotheses, ideals and possibilities becomes possible. Understanding the stages teaches us not to demand from a child what exceeds their stage, and that abstract thinking is a late-growing skill.",
+    "story": "تخيّل أمام طفلين كوبي عصير: واسع قصير وضيق طويل، بنفس الكمية. الصغير في الخامسة يصر أن الطويل فيه أكثر لأنه \"أعلى\"، وأخاه في العاشرة يضحك: الكمية واحدة! الفارق ليس ذكاءً بل مرحلة نمو: مفهوم حفظ الكمية يولد تقريباً في السابعة، ولا خطأ في من لم يبلغه بعد.",
+    "storyEn": "Picture two juice glasses before two children: a wide short one and a narrow tall one, with the same amount. The five-year-old insists the tall one holds more because it is \"higher\", while his ten-year-old brother laughs: same quantity! The difference is not intelligence but developmental stage: the concept of conservation is born around age seven, and there is no fault in one who has not reached it yet.",
+    "quiz": [
+      {
+        "q": "إدراك استمرارية الأشياء (تبقى رغم غيابها عن العين) يحدث في مرحلة:",
+        "o": [
+          "الحسية الحركية",
+          "العمليات المجردة",
+          "ما قبل العمليات"
+        ],
+        "a": 0
+      },
+      {
+        "q": "التفكير المجرد والفرضيات يبدأ في مرحلة:",
+        "o": [
+          "2-7 سنوات",
+          "7-11 سنة",
+          "11 سنة فأكثر"
+        ],
+        "a": 2
+      },
+      {
+        "q": "مفهوم \"حفظ الكمية\" يتقنه الطفل تقريباً في سن:",
+        "o": [
+          "3 سنوات",
+          "7 سنوات",
+          "15 سنة"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Object permanence (things persist out of sight) develops in which stage:",
+        "o": [
+          "Sensorimotor",
+          "Formal operational",
+          "Preoperational"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Abstract and hypothetical thinking begins in the stage of:",
+        "o": [
+          "2-7 years",
+          "7-11 years",
+          "11 years and up"
+        ],
+        "a": 2
+      },
+      {
+        "q": "The concept of conservation is mastered around age:",
+        "o": [
+          "3 years",
+          "7 years",
+          "15 years"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "thinking",
+    "emoji": "💭",
+    "cat": "علم نفس",
+    "catEn": "Psychology",
+    "title": "الذكاء والتفكير",
+    "titleEn": "Intelligence and Thinking",
+    "src": "https://en.wikipedia.org/wiki/Intelligence",
+    "video": "شرح الذكاء وأنواعه",
+    "videoEn": "intelligence and types of thinking explained",
+    "kw": [
+      "الذكاء",
+      "intelligence",
+      "IQ",
+      "التفكير"
+    ],
+    "ar": "ما الذكاء؟ لا تعريف واحد متفق عليه، لكن معظم العلماء يصفونه بالقدرة على التعلم وحل المشكلات والتكيف مع الجديد. اختبارات IQ تقيس جانباً منه (المنطقي اللغوي الرياضي) لكنها ليست حكماً نهائياً على قيمة الإنسان أو مستقبله. نظرية الذكاءات المتعددة لجاردنر توسع الصورة: ذكاء لغوي ومنطقي ومكاني وموسيقي وجسدي حركي واجتماعي وذاتي وطبيعي، وقد يتفوق شخص في بعضها دون غيرها. والتفكير نوعان مشهوران: سريع حدسي يوفر الجهد لكنه يقع في تحيزات، وبطيء تحليلي أدق لكنه متعب. الحكمة أن تعرف متى تثق بحدسك ومتى تُبطئ.",
+    "en": "What is intelligence? There is no single agreed definition, but most scientists describe it as the ability to learn, solve problems and adapt to the new. IQ tests measure one slice of it (logical, verbal, mathematical), but they are not a final verdict on a person's worth or future. Gardner's multiple intelligences widen the picture: linguistic, logical, spatial, musical, bodily-kinesthetic, social, intrapersonal and naturalist, and a person may excel in some without others. Thinking itself has two famous modes: fast intuitive thinking that saves effort but falls into biases, and slow analytic thinking that is more accurate but tiring. Wisdom is knowing when to trust your gut and when to slow down.",
+    "story": "تخيّل طالباً ضعيفاً في الامتحانات الورقية لكنه يصلح أي جهاز معطل بتفكيكه وإعادة تركيبه ببراعة، وزميلته متفوقة في الحفظ لكنها تتوه في أقرب شارع جديد. أيهما \"أذكى\"؟ نظرية الذكاءات المتعددة تقول: السؤال نفسه خطأ، فلكل منهما نوع ذكاء يتفوق فيه، والمدرسة التقليدية تقيس نوعين فقط من ثمانية.",
+    "storyEn": "Imagine a student weak in paper exams who brilliantly fixes any broken device by taking it apart and rebuilding it, and his classmate who tops memorization tests but gets lost on the nearest new street. Which one is \"smarter\"? Multiple intelligences theory says the question itself is wrong: each has a type of intelligence they excel in, and traditional school measures only two of eight.",
+    "quiz": [
+      {
+        "q": "اختبارات IQ تقيس:",
+        "o": [
+          "كل جوانب الذكاء",
+          "جانباً منطقياً لغوياً رياضياً فقط",
+          "القيمة الإنسانية"
+        ],
+        "a": 1
+      },
+      {
+        "q": "نظرية جاردنر تتحدث عن:",
+        "o": [
+          "ذكاء واحد عام",
+          "ذكاءات متعددة",
+          "ذكاء اصطناعي"
+        ],
+        "a": 1
+      },
+      {
+        "q": "التفكير السريع الحدسي:",
+        "o": [
+          "دائم الخطأ",
+          "يوفر الجهد لكنه عرضة للتحيزات",
+          "لا يستخدمه البشر"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "IQ tests measure:",
+        "o": [
+          "All aspects of intelligence",
+          "A logical-verbal-mathematical slice only",
+          "Human worth"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Gardner's theory is about:",
+        "o": [
+          "One general intelligence",
+          "Multiple intelligences",
+          "Artificial intelligence"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Fast intuitive thinking:",
+        "o": [
+          "Is always wrong",
+          "Saves effort but is prone to biases",
+          "Is never used by humans"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "whatphilosophy",
+    "emoji": "🤔",
+    "cat": "فلسفة",
+    "catEn": "Philosophy",
+    "title": "ما هي الفلسفة",
+    "titleEn": "What Is Philosophy",
+    "src": "https://en.wikipedia.org/wiki/Philosophy",
+    "video": "ما هي الفلسفة",
+    "videoEn": "what is philosophy explained",
+    "kw": [
+      "الفلسفة",
+      "philosophy",
+      "سقراط"
+    ],
+    "ar": "الفلسفة كلمة يونانية تعني \"محبة الحكمة\": محاولة الإنسان فهم العالم ونفسه بالتفكير والحجة لا بالتلقين. تسأل الأسئلة الكبرى التي لا يجيب عنها مختبر واحد: ما الحقيقة؟ ما العدل؟ لماذا نحن هنا؟ أدواتها السؤال العميق، وتحليل المفاهيم، والحجة المنطقية، والتشكيك في البديهيات. سقراط أبوها الروحي علّم أن السؤال المحرج أثمن من الجواب الجاهز، وأن الحياة بلا فحص لا تستحق أن تُعاش. الفلسفة لا تعطيك إجابات نهائية غالباً؛ تعطيك شيئاً أثمن: أسئلة أنضج وعقلاً لا يُخدع بسهولة.",
+    "en": "Philosophy is a Greek word meaning \"love of wisdom\": humanity's attempt to understand the world and itself through thinking and argument, not indoctrination. It asks the big questions no single laboratory can answer: What is truth? What is justice? Why are we here? Its tools are the deep question, concept analysis, logical argument, and doubting the obvious. Socrates, its spiritual father, taught that an embarrassing question is worth more than a ready-made answer, and that the unexamined life is not worth living. Philosophy rarely gives you final answers; it gives you something more valuable: more mature questions and a mind not easily fooled.",
+    "story": "تخيّل سوق أثينا قبل 2400 سنة: رجل عجوز يرتدي ثوباً بسيطاً يوقف الناس ويسألهم: ما العدالة؟ ما الشجاعة؟ يجيب كل منهم بثقة، فيفكك السؤال تلو السؤال ثقتهم حتى يكتشفوا أنهم لا يعرفون. كان سقراط مزعجاً لدرجة أن المدينة حكمت عليه بالموت، لكن طريقته، فن السؤال، غيرت تفكير البشرية للأبد.",
+    "storyEn": "Imagine the marketplace of Athens 2400 years ago: an old man in a simple robe stops people and asks them: what is justice? What is courage? Each answers confidently, and question after question he dismantles their confidence until they discover they do not know. Socrates was so annoying that the city sentenced him to death, yet his method, the art of questioning, changed human thinking forever.",
+    "quiz": [
+      {
+        "q": "كلمة فلسفة يونانية الأصل وتعني:",
+        "o": [
+          "علم الأرقام",
+          "محبة الحكمة",
+          "فن الخطابة"
+        ],
+        "a": 1
+      },
+      {
+        "q": "أشهر أدوات الفيلسوف:",
+        "o": [
+          "المعامل",
+          "السؤال العميق والحجة المنطقية",
+          "التلقين"
+        ],
+        "a": 1
+      },
+      {
+        "q": "من قال \"الحياة بلا فحص لا تستحق أن تعاش\"؟",
+        "o": [
+          "أرسطو",
+          "سقراط",
+          "أفلاطون"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "The word philosophy is Greek for:",
+        "o": [
+          "Science of numbers",
+          "Love of wisdom",
+          "Art of rhetoric"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The philosopher's most famous tools:",
+        "o": [
+          "Laboratories",
+          "Deep questions and logical argument",
+          "Rote teaching"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Who said \"the unexamined life is not worth living\"?",
+        "o": [
+          "Aristotle",
+          "Socrates",
+          "Plato"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "logic",
+    "emoji": "🔗",
+    "cat": "فلسفة",
+    "catEn": "Philosophy",
+    "title": "المنطق والحجة",
+    "titleEn": "Logic and Argument",
+    "src": "https://en.wikipedia.org/wiki/Logic",
+    "video": "شرح المنطق للمبتدئين",
+    "videoEn": "logic and arguments explained",
+    "kw": [
+      "المنطق",
+      "logic",
+      "الحجة",
+      "المغالطات"
+    ],
+    "ar": "المنطق علم صحة الاستدلال: كيف تنتقل من مقدمات صحيحة إلى نتيجة لازمة. القياس الأرسطي أشهر صوره: كل البشر فانون (مقدمة كبرى)، وسقراط إنسان (صغرى)، إذن سقراط فانٍ (نتيجة). انتبه: النتيجة الصحيحة شكلياً تحتاج مقدمات صادقة؛ حجة سليمة البناء بمقدمات كاذبة تضلل. والمغالطات المنطقية أفخاخ شائعة: الهجوم على الشخص بدل فكرته، ورجل القش (تشويه رأي الخصم ليسهل الرد عليه)، والاستعجال في التعميم من مثال واحد. تعلم المنطق درعك اليومي ضد الإعلانات والشائعات والجدالات العقيمة.",
+    "en": "Logic is the science of valid reasoning: how to move from true premises to a necessary conclusion. The Aristotelian syllogism is its most famous form: all humans are mortal (major premise), Socrates is human (minor), therefore Socrates is mortal (conclusion). Beware: a formally valid conclusion still needs true premises; a well-built argument with false premises misleads. Logical fallacies are common traps: attacking the person instead of their idea, the straw man (distorting an opponent's view to make it easy to answer), and hasty generalization from a single example. Learning logic is your daily armor against ads, rumors and sterile arguments.",
+    "story": "تخيّل إعلاناً يقول: \"لاعب كرة شهير يشرب هذه العصير، إذن هذا العصير يصنع الأبطال\". اضحك، لكن لاحظ البنية: مغالطة السببية الزائفة، فالشهرة لا تصنعها العصائر. من تعلم رؤية بنية الحجة صار يقرأ الإعلانات كما يقرأ الرياضي تمريرات الخصم: يراها قبل وصولها.",
+    "storyEn": "Imagine an ad saying: \"A famous footballer drinks this juice, therefore this juice makes champions.\" Laugh, but notice the structure: the false-cause fallacy, since fame is not made by juices. Whoever learns to see an argument's structure reads ads the way an athlete reads an opponent's passes: seeing them before they arrive.",
+    "quiz": [
+      {
+        "q": "القياس المنطقي يتكون من:",
+        "o": [
+          "مقدمتين ونتيجة",
+          "ثلاث نتائج",
+          "مثال واحد"
+        ],
+        "a": 0
+      },
+      {
+        "q": "الهجوم على شخص صاحب الفكرة بدل مناقشة فكرته:",
+        "o": [
+          "حجة قوية",
+          "مغالطة منطقية",
+          "قياس صحيح"
+        ],
+        "a": 1
+      },
+      {
+        "q": "\"صديقي جرب هذا الدواء وشفي إذن هو يشفي الجميع\" مثال على:",
+        "o": [
+          "التعميم المتعجل",
+          "القياس الصحيح",
+          "المنطق الاستنتاجي"
+        ],
+        "a": 0
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "A syllogism consists of:",
+        "o": [
+          "Two premises and a conclusion",
+          "Three conclusions",
+          "One example"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Attacking the person instead of discussing their idea is:",
+        "o": [
+          "A strong argument",
+          "A logical fallacy",
+          "Valid reasoning"
+        ],
+        "a": 1
+      },
+      {
+        "q": "\"My friend tried this medicine and recovered, so it cures everyone\" is an example of:",
+        "o": [
+          "Hasty generalization",
+          "Valid syllogism",
+          "Deductive logic"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "ethics",
+    "emoji": "⚖️",
+    "cat": "فلسفة",
+    "catEn": "Philosophy",
+    "title": "فلسفة الأخلاق",
+    "titleEn": "Ethics",
+    "src": "https://en.wikipedia.org/wiki/Ethics",
+    "video": "شرح فلسفة الأخلاق",
+    "videoEn": "ethics philosophy explained",
+    "kw": [
+      "الأخلاق",
+      "ethics",
+      "عربة الترام",
+      "trolley"
+    ],
+    "ar": "الأخلاق فرع الفلسفة الذي يسأل: ما الصواب وما الخطأ، ولماذا؟ ثلاث نظريات كبرى تجيب بطرق مختلفة: النظرية النفعية تحكم بالنتائج (الفعل الأصوب ما أعطى أكبر خير لأكبر عدد)، ونظرية الواجب عند كانط تحكم بالمبدأ (افعل ما يصلح أن يصبح قانوناً عاماً للجميع)، وأخلاق الفضيلة عند أرسطو تركز على الشخص لا الفعل (كن شجاعاً عادلاً حكيماً وستأتي الأفعال الصواب تبعاً). معضلة عربة الترام الشهيرة تختبر حدوسنا: هل تحول مسار عربة لتقتل واحداً وتنقذ خمسة؟ لا جواب سحري، لكن التفكير فيها يدرب ضميرك.",
+    "en": "Ethics is the branch of philosophy asking: what is right and wrong, and why? Three grand theories answer differently: utilitarianism judges by outcomes (the rightest act gives the greatest good to the greatest number), Kant's duty ethics judges by principle (act only as you could will to become a universal law), and Aristotle's virtue ethics focuses on the person, not the act (be courageous, just and wise, and right actions will follow). The famous trolley problem tests our intuitions: would you redirect a trolley to kill one and save five? There is no magic answer, but thinking about it trains your conscience.",
+    "story": "تخيّل أنك وجدت محفظة بها مبلغ كبير وبطاقة صاحبها. النفعي يسأل: إعادتها تسعد صاحبها وتحفظ ثقة المجتمع. أتباع كانط يسألون: هل أقبل أن يصبح الاحتفاظ بالمحافظ قانوناً عاماً؟ لا. الأرسطي يسأل: ماذا يفعل الإنسان الأمين؟ ثلاث طرق، وكلها تقود هنا للفعل نفسه، لكن في المعضلات الصعبة تتفرق الطرق ويبدأ النقاش الحقيقي.",
+    "storyEn": "Imagine finding a wallet with a large sum and its owner's card. The utilitarian asks: returning it makes the owner happy and preserves society's trust. Kant's followers ask: could I accept keeping wallets as a universal law? No. The Aristotelian asks: what would an honest person do? Three paths, all leading here to the same act, but in hard dilemmas the paths diverge and the real debate begins.",
+    "quiz": [
+      {
+        "q": "النظرية النفعية تحكم على الفعل بـ:",
+        "o": [
+          "نية صاحبه",
+          "نتائجه وخيرها للأكثرية",
+          "قدمه التاريخية"
+        ],
+        "a": 1
+      },
+      {
+        "q": "\"افعل ما يصلح قانوناً عاماً\" مبدأ:",
+        "o": [
+          "كانط",
+          "أرسطو",
+          "سقراط"
+        ],
+        "a": 0
+      },
+      {
+        "q": "أخلاق الفضيلة تركز على:",
+        "o": [
+          "النتائج",
+          "بناء شخصية الإنسان الفاضلة",
+          "القوانين"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Utilitarianism judges an act by:",
+        "o": [
+          "The doer's intention",
+          "Its outcomes and good for the majority",
+          "Its historical age"
+        ],
+        "a": 1
+      },
+      {
+        "q": "\"Act only as you could will to be a universal law\" is whose principle:",
+        "o": [
+          "Kant",
+          "Aristotle",
+          "Socrates"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Virtue ethics focuses on:",
+        "o": [
+          "Outcomes",
+          "Building the person's virtuous character",
+          "Laws"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "epistemology",
+    "emoji": "🔍",
+    "cat": "فلسفة",
+    "catEn": "Philosophy",
+    "title": "المعرفة والحقيقة",
+    "titleEn": "Knowledge and Truth",
+    "src": "https://en.wikipedia.org/wiki/Epistemology",
+    "video": "شرح نظرية المعرفة",
+    "videoEn": "epistemology explained simply",
+    "kw": [
+      "المعرفة",
+      "epistemology",
+      "الحقيقة",
+      "ديكارت",
+      "كهف أفلاطون"
+    ],
+    "ar": "نظرية المعرفة تسأل سؤالاً يبدو سخيفاً حتى تفكر فيه: كيف تعرف أنك تعرف؟ ما الفرق بين معرفة واعتقاد وظن؟ التعريف الكلاسيكي: المعرفة اعتقاد صادق مبرر بدليل. ديكارت شك في كل شيء بحثاً عن يقين، فوجده في التفكير نفسه: \"أنا أفكر إذن أنا موجود\". وأفلاطون ضرب مثل الكهف: سجناء يرون ظلالاً على جدار ويحسبونها العالم الحقيقي، فهل ما نراه نحن حقيقة أم ظلال أكبر؟ في عصر الأخبار الزائفة أصبحت هذه الأسئلة مهارة بقاء: اسأل دائماً ما الدليل، ومن المصدر، وما احتمال أن أكون مخطئاً.",
+    "en": "Epistemology asks a question that sounds silly until you think about it: how do you know that you know? What separates knowledge from belief and guesswork? The classic definition: knowledge is a true belief justified by evidence. Descartes doubted everything searching for certainty, and found it in thinking itself: \"I think, therefore I am\". Plato offered the cave allegory: prisoners watch shadows on a wall and take them for the real world; is what we see truth or bigger shadows? In the age of fake news these questions became a survival skill: always ask what the evidence is, who the source is, and how likely it is that I am wrong.",
+    "story": "تخيّل أشخاصاً قضوا عمرهم مقيدين في كهف، يرون جداراً أمامهم تعرض عليه ظلال أشياء تمر خلفهم أمام نار. الظلال هي عالمهم كله. لو تحرر أحدهم وخرج ليرى الشمس ثم عاد يخبرهم، هل يصدقونه؟ مثل أفلاطون عمره 2400 سنة، وكل مرة تصدق فيها شاشة دون تحقق، فأنت تنظر إلى ظلال جدار وتسميها حقيقة.",
+    "storyEn": "Imagine people who spent their lives chained in a cave, facing a wall showing shadows of things passing behind them in front of a fire. The shadows are their whole world. If one broke free, saw the sun, and returned to tell them, would they believe him? Plato's allegory is 2400 years old, and every time you believe a screen without verification, you are watching wall shadows and calling them truth.",
+    "quiz": [
+      {
+        "q": "التعريف الكلاسيكي للمعرفة:",
+        "o": [
+          "اعتقاد صادق مبرر بدليل",
+          "أي اعتقاد قوي",
+          "ما يقوله الأكثرية"
+        ],
+        "a": 0
+      },
+      {
+        "q": "\"أنا أفكر إذن أنا موجود\" لمن:",
+        "o": [
+          "أفلاطون",
+          "ديكارت",
+          "أرسطو"
+        ],
+        "a": 1
+      },
+      {
+        "q": "مثل كهف أفلاطون يعلمنا أن:",
+        "o": [
+          "الظلال حقيقة",
+          "ما نراه قد لا يكون الحقيقة الكاملة",
+          "الكهوف آمنة"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "The classic definition of knowledge:",
+        "o": [
+          "A true belief justified by evidence",
+          "Any strong belief",
+          "What the majority says"
+        ],
+        "a": 0
+      },
+      {
+        "q": "\"I think, therefore I am\" belongs to:",
+        "o": [
+          "Plato",
+          "Descartes",
+          "Aristotle"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Plato's cave allegory teaches us that:",
+        "o": [
+          "Shadows are truth",
+          "What we see may not be the full truth",
+          "Caves are safe"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "freewill",
+    "emoji": "🕊️",
+    "cat": "فلسفة",
+    "catEn": "Philosophy",
+    "title": "حرية الإرادة",
+    "titleEn": "Free Will",
+    "src": "https://en.wikipedia.org/wiki/Free_will",
+    "video": "شرح مشكلة حرية الإرادة",
+    "videoEn": "free will problem explained",
+    "kw": [
+      "حرية الإرادة",
+      "free will",
+      "الجبرية",
+      "الاختيار"
+    ],
+    "ar": "هل تختار فعلاً أم أن اختياراتك محسومة سلفاً؟ هذه مشكلة حرية الإرادة، من أعقد مسائل الفلسفة. الحتمية تقول: الكون يسير بقوانين سببية، وقرارك الآن نتيجة حتمية لجيناتك وتربيتك وظروف لحظتك، فالحرية وهم. والإرادية تقول: الإنسان يختار حقاً ويتحمل مسؤولية اختياره، وبدون ذلك ينهار معنى الثواب والعقاب والندم. وبينهما التوافقية: الحرية ليست التحرر من الأسباب بل أن تكون أنت مصدر الفعل بلا إكراه خارجي، حتى لو شكلتك أسباب سابقة. المسألة لم تُحسم بعد، لكن التفكير فيها يغير نظرتك لنفسك ولأخطاء الآخرين.",
+    "en": "Do you truly choose, or were your choices settled in advance? This is the problem of free will, among philosophy's hardest. Determinism says: the universe runs by causal laws, and your decision now is the inevitable result of your genes, upbringing and the moment's circumstances, so freedom is an illusion. Libertarianism says: humans genuinely choose and bear responsibility for their choices, without which reward, punishment and regret lose meaning. Between them stands compatibilism: freedom is not escaping causes but being the source of your act without external coercion, even if prior causes shaped you. The question remains unsettled, but thinking about it changes how you see yourself and others' mistakes.",
+    "story": "تخيّل طالباً أهمل المذاكرة فرسب، وقال: \"لم يكن بيدي، هكذا خُلقت\". صديقه أجاب: \"لو صح هذا فلماذا تغضب من نفسك؟ الغضب نفسه دليل أنك تؤمن بأنك كنت تستطيع\". حوار بسيط يلخص 2500 سنة من الجدل: نعيش كأننا أحرار، ونفكر كأننا نتائج، وبين الاثنين تسكن الفلسفة.",
+    "storyEn": "Imagine a student who neglected studying, failed, and said: \"It was not in my hands; I was made this way.\" His friend answered: \"If that were true, why are you angry at yourself? The anger itself is proof you believe you could have.\" A simple dialogue summing up 2500 years of debate: we live as if we are free, we think as if we are outcomes, and philosophy lives between the two.",
+    "quiz": [
+      {
+        "q": "الحتمية ترى أن:",
+        "o": [
+          "قراراتنا نتيجة حتمية لأسباب سابقة",
+          "الحرية مطلقة",
+          "لا قوانين في الكون"
+        ],
+        "a": 0
+      },
+      {
+        "q": "التوافقية ترى الحرية:",
+        "o": [
+          "مستحيلة",
+          "متوافقة مع وجود أسباب سابقة",
+          "مجرد وهم كامل"
+        ],
+        "a": 1
+      },
+      {
+        "q": "أهم ما يهدد انهياره إذا أنكرنا حرية الإرادة:",
+        "o": [
+          "قوانين الفيزياء",
+          "معنى المسؤولية والثواب والعقاب",
+          "اللغة"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Determinism holds that:",
+        "o": [
+          "Our decisions are the inevitable result of prior causes",
+          "Freedom is absolute",
+          "The universe has no laws"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Compatibilism sees freedom as:",
+        "o": [
+          "Impossible",
+          "Compatible with prior causes",
+          "A complete illusion"
+        ],
+        "a": 1
+      },
+      {
+        "q": "What most threatens to collapse if free will is denied:",
+        "o": [
+          "The laws of physics",
+          "The meaning of responsibility, reward and punishment",
+          "Language"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "placevalue",
+    "emoji": "🔢",
+    "cat": "رياضيات",
+    "catEn": "Mathematics",
+    "title": "القيمة المكانية",
+    "titleEn": "Place Value",
+    "src": "https://en.wikipedia.org/wiki/Positional_notation",
+    "video": "شرح القيمة المكانية",
+    "videoEn": "place value explained for kids",
+    "kw": [
+      "القيمة المكانية",
+      "place value",
+      "الخانات"
+    ],
+    "ar": "سر الأرقام التي نكتبها كلها في فكرة عبقرية واحدة: قيمة الرقم تعتمد على مكانه. الرقم 5 في خانة الآحاد يساوي خمسة، وفي خانة العشرات يساوي خمسين، وفي خانة المئات خمسمئة. فالعدد 365 يعني 3 مئات + 6 عشرات + 5 آحاد = 300 + 60 + 5. النظام العشري يبني كل خانة على عشر أمثال سابقتها، والصفر بطل صامت يحفظ الخانة الفارغة حتى لا تضيع القيم. افهم القيمة المكانية تجيد الجمع والطرح بترتيب، وتفهم الكسور العشرية لاحقاً بسهولة.",
+    "en": "The secret of all the numbers we write is one brilliant idea: a digit's value depends on its place. The digit 5 in the ones place equals five, in the tens place fifty, and in the hundreds place five hundred. So 365 means 3 hundreds + 6 tens + 5 ones = 300 + 60 + 5. The decimal system builds each place at ten times the one before it, and zero is a silent hero holding the empty place so values are not lost. Understand place value and you master orderly addition and subtraction, and later decimals come easily.",
+    "story": "تخيّل صرافاً في محل معه أدراج: درج للعملات من فئة واحد، ودرج لفئة عشرة، ودرج لفئة مئة. لو وضع ورقة العشرة في درج المئة سيحسب الفاتورة ألفاً بدل مئة! خانات الأرقام أدراج مرتبة: كل رقم له درجه، ووضعه في درج جاره يغير قيمته عشر مرات.",
+    "storyEn": "Imagine a shop cashier with drawers: one for one-unit coins, one for tens, one for hundreds. If he puts a ten note in the hundreds drawer he will count the bill as a thousand instead of a hundred! Number places are tidy drawers: each digit has its drawer, and placing it in the neighbor's drawer changes its value tenfold.",
+    "quiz": [
+      {
+        "q": "قيمة الرقم 7 في العدد 472:",
+        "o": [
+          "7",
+          "70",
+          "700"
+        ],
+        "a": 1
+      },
+      {
+        "q": "كل خانة في النظام العشري تساوي:",
+        "o": [
+          "ضعف سابقتها",
+          "عشر أمثال سابقتها",
+          "نصف سابقتها"
+        ],
+        "a": 1
+      },
+      {
+        "q": "العدد 205 يساوي:",
+        "o": [
+          "مئتين + 5",
+          "عشرين + 5",
+          "ألفين + 5"
+        ],
+        "a": 0
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "The value of digit 7 in 472:",
+        "o": [
+          "7",
+          "70",
+          "700"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Each place in the decimal system equals:",
+        "o": [
+          "Twice the previous",
+          "Ten times the previous",
+          "Half the previous"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The number 205 equals:",
+        "o": [
+          "Two hundreds + 5",
+          "Twenty + 5",
+          "Two thousands + 5"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "multdivision",
+    "emoji": "✖️",
+    "cat": "رياضيات",
+    "catEn": "Mathematics",
+    "title": "الضرب والقسمة",
+    "titleEn": "Multiplication and Division",
+    "src": "https://en.wikipedia.org/wiki/Multiplication",
+    "video": "شرح الضرب والقسمة",
+    "videoEn": "multiplication and division for kids",
+    "kw": [
+      "الضرب",
+      "القسمة",
+      "multiplication",
+      "division"
+    ],
+    "ar": "الضرب جمع متكرر مقنن: 4 × 3 تعني 4 + 4 + 4 = 12. والقسمة عكسه: توزيع بالتساوي، فـ 12 ÷ 4 تعني وزع 12 على 4 مجموعات متساوية، كل واحدة تأخذ 3. علاقتهما صداقة قوية: كل جدول ضرب هو جدول قسمة مقلوب. حيل تسرع حسابك: الضرب في 10 يضيف صفراً، والضرب في 5 نصف الضرب في 10، وتحقق من القسمة بضرب الناتج في المقسوم عليه لترجع للمقسوم. جدول الضرب ليس حفظاً أعمى؛ هو أنماط جميلة: لوحات 9 ناتجها مجموع أرقامها 9 دائماً.",
+    "en": "Multiplication is codified repeated addition: 4 × 3 means 4 + 4 + 4 = 12. Division is its inverse: equal sharing, so 12 ÷ 4 means distribute 12 into 4 equal groups, each taking 3. Their relationship is a strong friendship: every times table is an upside-down division table. Tricks to speed your arithmetic: multiplying by 10 appends a zero, multiplying by 5 is half of multiplying by 10, and check division by multiplying the result by the divisor to return to the dividend. The times table is not blind memorization; it is beautiful patterns: multiples of 9 always have digits summing to 9.",
+    "story": "تخيّل مخبزاً يرص الخبز في صوانٍ: كل صينية 4 صفوف، كل صف 3 أرغفة. بدل أن يعد رغيفاً رغيفاً، يضرب 4 × 3 = 12 ويعرف فوراً. وعندما يوزع 12 رغيفاً على 4 زبائن بالتساوي، يقسم 12 ÷ 4 = 3 لكل زبون. الضرب يبني الصواني، والقسمة توزعها بعدل.",
+    "storyEn": "Imagine a bakery arranging bread in trays: each tray has 4 rows, each row 3 loaves. Instead of counting loaf by loaf, he multiplies 4 × 3 = 12 and knows instantly. And when he distributes 12 loaves equally among 4 customers, he divides 12 ÷ 4 = 3 per customer. Multiplication builds the trays; division shares them fairly.",
+    "quiz": [
+      {
+        "q": "الضرب هو:",
+        "o": [
+          "جمع متكرر",
+          "طرح متكرر",
+          "قسمة متكررة"
+        ],
+        "a": 0
+      },
+      {
+        "q": "12 ÷ 4 =",
+        "o": [
+          "2",
+          "3",
+          "4"
+        ],
+        "a": 1
+      },
+      {
+        "q": "للتحقق من 20 ÷ 5 = 4 نضرب:",
+        "o": [
+          "4 × 20",
+          "4 × 5",
+          "5 × 20"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Multiplication is:",
+        "o": [
+          "Repeated addition",
+          "Repeated subtraction",
+          "Repeated division"
+        ],
+        "a": 0
+      },
+      {
+        "q": "12 ÷ 4 =",
+        "o": [
+          "2",
+          "3",
+          "4"
+        ],
+        "a": 1
+      },
+      {
+        "q": "To verify 20 ÷ 5 = 4 we multiply:",
+        "o": [
+          "4 × 20",
+          "4 × 5",
+          "5 × 20"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "shapes2d",
+    "emoji": "🔷",
+    "cat": "رياضيات",
+    "catEn": "Mathematics",
+    "title": "الأشكال الهندسية",
+    "titleEn": "Geometric Shapes",
+    "src": "https://en.wikipedia.org/wiki/Shape",
+    "video": "شرح الاشكال الهندسية",
+    "videoEn": "2d shapes for kids",
+    "kw": [
+      "الاشكال الهندسية",
+      "shapes",
+      "المثلث",
+      "المحيط",
+      "المساحة"
+    ],
+    "ar": "الأشكال الهندسية حولك في كل مكان: العجلة دائرة، والكتاب مستطيل، وشريحة البيتزا مثلث. كل شكل له بطاقة هوية: المثلث ثلاثة أضلاع وثلاث زوايا مجموعها 180 درجة، والمربع أربعة أضلاع متساوية وزوايا قائمة، والمستطيل كل ضلعين متقابلين متساويان، والدائرة كل نقاطها على بعد واحد (نصف القطر) من المركز. مفهومان يقيسان الأشكال: المحيط طول السياج حول الشكل (اجمع الأضلاع)، والمساحة حجم السطح داخله (المستطيل: الطول × العرض). فرّق بينهما: المحيط يقاس بالسنتيمتر والمساحة بالسنتيمتر المربع.",
+    "en": "Geometric shapes are all around you: the wheel is a circle, the book a rectangle, the pizza slice a triangle. Each shape has an ID card: a triangle has three sides and three angles summing to 180 degrees, a square has four equal sides and right angles, a rectangle has each pair of opposite sides equal, and a circle has all its points at one distance (the radius) from the center. Two concepts measure shapes: perimeter is the fence length around a shape (add the sides), and area is the size of the surface inside (rectangle: length × width). Distinguish them: perimeter is measured in centimeters, area in square centimeters.",
+    "story": "تخيّل أنك تبني بيت لعب من الكرتون. تحتاج شريطاً لاصقاً حول حدود الأرضية المستطيلة: هذا حساب المحيط. ثم تفرشها سجادة تغطيها كاملة: هذا حساب المساحة. لو خلطت بينهما ستشتري سجادة بطول الشريط أو شريطاً بحجم السجادة، وهندسة بيتك ستضحك عليك!",
+    "storyEn": "Imagine building a cardboard playhouse. You need tape around the edges of the rectangular floor: that is perimeter calculation. Then you lay a rug covering it fully: that is area calculation. If you mixed them up you would buy a rug the length of the tape or tape the size of the rug, and your house's geometry would laugh at you!",
+    "quiz": [
+      {
+        "q": "مجموع زوايا المثلث:",
+        "o": [
+          "90 درجة",
+          "180 درجة",
+          "360 درجة"
+        ],
+        "a": 1
+      },
+      {
+        "q": "مساحة مستطيل طوله 5 وعرضه 3:",
+        "o": [
+          "8",
+          "15",
+          "16"
+        ],
+        "a": 1
+      },
+      {
+        "q": "المحيط يعني:",
+        "o": [
+          "طول الحدود حول الشكل",
+          "السطح داخل الشكل",
+          "عدد الزوايا"
+        ],
+        "a": 0
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "The sum of a triangle's angles:",
+        "o": [
+          "90 degrees",
+          "180 degrees",
+          "360 degrees"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The area of a rectangle 5 by 3:",
+        "o": [
+          "8",
+          "15",
+          "16"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Perimeter means:",
+        "o": [
+          "The length of the border around a shape",
+          "The surface inside a shape",
+          "The number of angles"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "measurement",
+    "emoji": "📏",
+    "cat": "رياضيات",
+    "catEn": "Mathematics",
+    "title": "القياس والوحدات",
+    "titleEn": "Measurement and Units",
+    "src": "https://en.wikipedia.org/wiki/Measurement",
+    "video": "شرح القياس ووحداته",
+    "videoEn": "measurement and units for kids",
+    "kw": [
+      "القياس",
+      "measurement",
+      "الوحدات",
+      "المتر",
+      "الكيلو"
+    ],
+    "ar": "القياس مقارنة كمية بوحدة متفق عليها. قديماً قاس الناس بالشبر والذراع فاختلفت القياسات باختلاف الأجساد، حتى اتفق العالم على وحدات موحدة: الطول بالمتر (والمسافات الطويلة بالكيلومتر = 1000 متر)، والكتلة بالجرام (والثقيلة بالكيلوجرام = 1000 جرام)، والحجم باللتر (المليلتر جزء من ألف)، والزمن بالثانية والدقيقة والساعة. قاعدة ذهبية: لا تجمع وحدات مختلفة قبل توحيدها؛ جمع 2 كيلوجرام و500 جرام يحتاج تحويلاً أولاً: 2000 + 500 = 2500 جرام.",
+    "en": "Measurement is comparing a quantity to an agreed unit. Long ago people measured by spans and cubits, so measurements differed with bodies, until the world agreed on unified units: length in meters (long distances in kilometers = 1000 meters), mass in grams (heavy things in kilograms = 1000 grams), volume in liters (the milliliter a thousandth), and time in seconds, minutes and hours. A golden rule: never add different units before unifying them; adding 2 kilograms and 500 grams needs conversion first: 2000 + 500 = 2500 grams.",
+    "story": "تخيّل بنّائين يركبان باباً: الأول قاس الفتحة بذراعه الطويل فكتب \"3 أذرع\"، والثاني صنع الباب بذراعه القصير. جاء الباب أصغر من الفتحة! كارثة كهذه كلفت مركبة فضائية فعلاً عام 1999 عندما استخدم فريق وحدات أمريكية وآخر وحدات مترية. الوحدات الموحدة ليست رفاهية؛ هي لغة الدقة المشتركة للبشر.",
+    "storyEn": "Imagine two builders fitting a door: the first measured the opening with his long arm and wrote \"3 cubits\"; the second built the door by his short arm. The door came out smaller than the opening! A disaster like this actually cost a spacecraft in 1999 when one team used American units and another metric. Unified units are not a luxury; they are humanity's shared language of precision.",
+    "quiz": [
+      {
+        "q": "الكيلومتر يساوي:",
+        "o": [
+          "100 متر",
+          "1000 متر",
+          "10 آلاف متر"
+        ],
+        "a": 1
+      },
+      {
+        "q": "وحدة قياس الكتلة الأساسية:",
+        "o": [
+          "المتر",
+          "الجرام",
+          "اللتر"
+        ],
+        "a": 1
+      },
+      {
+        "q": "2 كيلوجرام + 500 جرام =",
+        "o": [
+          "502 جرام",
+          "2500 جرام",
+          "700 جرام"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "A kilometer equals:",
+        "o": [
+          "100 meters",
+          "1000 meters",
+          "10,000 meters"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The base unit of mass:",
+        "o": [
+          "Meter",
+          "Gram",
+          "Liter"
+        ],
+        "a": 1
+      },
+      {
+        "q": "2 kilograms + 500 grams =",
+        "o": [
+          "502 grams",
+          "2500 grams",
+          "700 grams"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "rounding",
+    "emoji": "🎯",
+    "cat": "رياضيات",
+    "catEn": "Mathematics",
+    "title": "التقريب",
+    "titleEn": "Rounding",
+    "src": "https://en.wikipedia.org/wiki/Rounding",
+    "video": "شرح التقريب",
+    "videoEn": "rounding numbers for kids",
+    "kw": [
+      "التقريب",
+      "rounding",
+      "تقدير"
+    ],
+    "ar": "التقريب تبسيط عدد لأقرب قيمة سهلة مع بقائه قريباً من الأصل. القاعدة: انظر للرقم الذي على يمين الخانة المطلوبة؛ إن كان 4 أو أقل أبقِ الرقم كما هو (تقريب لأسفل)، وإن كان 5 أو أكثر زِده واحداً (تقريب لأعلى). فـ 47 لأقرب عشرة تصبح 50 لأن 7 كبيرة، و43 تصبح 40 لأن 3 صغيرة. فائدته: تقدير سريع قبل الحساب الدقيق؛ في السوبر ماركت تقدر أن 99 + 48 ≈ 100 + 50 = 150 فتعرف هل ميزانيتك تكفي. التقريب فن التوازن: كلما قربت لخانة أكبر صار أسهل وأقل دقة.",
+    "en": "Rounding simplifies a number to a nearby easy value while staying close to the original. The rule: look at the digit right of the target place; if it is 4 or less keep the digit as is (round down), if 5 or more raise it by one (round up). So 47 to the nearest ten becomes 50 because 7 is big, and 43 becomes 40 because 3 is small. Its use: quick estimation before exact calculation; at the supermarket you estimate 99 + 48 ≈ 100 + 50 = 150 and know whether your budget suffices. Rounding is the art of balance: the bigger the place you round to, the easier and less precise it gets.",
+    "story": "تخيّل سيدة في السوق سعر سلتها 99 + 48 + 25 جنيهاً ومعها 200 جنيه. لا تحتاج آلة حاسبة: تقرب إلى 100 + 50 + 25 = 175، فتبتسم وتضيف شيئاً صغيراً لسلتها. البائع الذي يحسب بالمليم يتأخر في الطابور؛ من يقدر جيداً يتسوق بثقة وسرعة.",
+    "storyEn": "Imagine a lady at the market whose basket costs 99 + 48 + 25 pounds, holding 200 pounds. She needs no calculator: she rounds to 100 + 50 + 25 = 175, smiles, and adds a small item. The seller who counts to the exact millime holds up the line; whoever estimates well shops with confidence and speed.",
+    "quiz": [
+      {
+        "q": "47 لأقرب عشرة:",
+        "o": [
+          "40",
+          "45",
+          "50"
+        ],
+        "a": 2
+      },
+      {
+        "q": "الرقم 4 أو أقل في الخانة التالية يعني:",
+        "o": [
+          "نقرب لأعلى",
+          "نقرب لأسفل",
+          "نحذف الرقم"
+        ],
+        "a": 1
+      },
+      {
+        "q": "أهم فائدة عملية للتقريب:",
+        "o": [
+          "تقدير سريع",
+          "إلغاء الحساب",
+          "زخرفة الأرقام"
+        ],
+        "a": 0
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "47 to the nearest ten:",
+        "o": [
+          "40",
+          "45",
+          "50"
+        ],
+        "a": 2
+      },
+      {
+        "q": "A digit of 4 or less in the next place means:",
+        "o": [
+          "Round up",
+          "Round down",
+          "Delete the digit"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The main practical benefit of rounding:",
+        "o": [
+          "Quick estimation",
+          "Canceling calculation",
+          "Decorating numbers"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "rocks",
+    "emoji": "🪨",
+    "cat": "جيولوجيا",
+    "catEn": "Geology",
+    "title": "أنواع الصخور",
+    "titleEn": "Types of Rocks",
+    "src": "https://en.wikipedia.org/wiki/Rock_(geology)",
+    "video": "شرح انواع الصخور",
+    "videoEn": "types of rocks for kids",
+    "kw": [
+      "الصخور",
+      "rocks",
+      "نارية",
+      "رسوبية",
+      "متحولة"
+    ],
+    "ar": "الصخور ثلاث عائلات كبرى تحكي كل واحدة قصة ميلاد مختلفة. الصخور النارية تولد من تبريد الصهارة المنصهرة: ببطء تحت الأرض فتتكون بلورات كبيرة كالجرانيت، أو بسرعة على السطح بعد ثورة بركان كالبازلت. الصخور الرسوبية تولد طبقة فوق طبقة: رمال وطين وبقايا كائنات تتراكم وتتصلب بضغط الزمن كالحجر الجيري والرملي. والصخور المتحولة أعادت الحرارة والضغط تشكيل أسلافها فتحول الحجر الجيري إلى رخام والجرانيت إلى نايس. ودورة الصخور تربط الثلاث: صخر ينصهر فيبرد، يتفتت فيترسب، يُضغط فيتحول، بلا نهاية.",
+    "en": "Rocks form three great families, each telling a different birth story. Igneous rocks are born from cooling molten magma: slowly underground, forming large crystals like granite, or quickly on the surface after a volcanic eruption like basalt. Sedimentary rocks are born layer upon layer: sand, clay and creature remains pile up and harden under the pressure of time, like limestone and sandstone. Metamorphic rocks had heat and pressure reshape their ancestors, turning limestone into marble and granite into gneiss. The rock cycle links all three: a rock melts and cools, crumbles and settles, gets squeezed and transforms, endlessly.",
+    "story": "تخيّل قطعة رخام في أرضية متحف. قبل ملايين السنين كانت قاع بحر يتراكم فيه صدف الكائنات حجراً جيرياً، ثم دفنتها طبقات الأرض وضغطتها وسخنتها حتى أعادت ترتيب بلوراتها رخاماً لامعاً. حملها النحاتون وصنعوا منها تماثيل خالدة. صخرة واحدة عاشت ثلاث حيوات: بحر، وضغط، وفن.",
+    "storyEn": "Imagine a piece of marble on a museum floor. Millions of years ago it was a seafloor where creature shells piled up into limestone, then Earth's layers buried, pressed and heated it until its crystals rearranged into gleaming marble. Sculptors carried it and made immortal statues. One rock lived three lives: sea, pressure, and art.",
+    "quiz": [
+      {
+        "q": "الصخور النارية تتكون من:",
+        "o": [
+          "تبريد الصهارة",
+          "تراكم الرمال",
+          "ضغط الصخور القديمة"
+        ],
+        "a": 0
+      },
+      {
+        "q": "الرخام صخر:",
+        "o": [
+          "ناري",
+          "رسوبي",
+          "متحول"
+        ],
+        "a": 2
+      },
+      {
+        "q": "الحجر الجيري مثال على الصخور:",
+        "o": [
+          "النارية",
+          "الرسوبية",
+          "المتحولة"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Igneous rocks form from:",
+        "o": [
+          "Cooling magma",
+          "Sand accumulation",
+          "Pressure on old rocks"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Marble is a:",
+        "o": [
+          "Igneous rock",
+          "Sedimentary rock",
+          "Metamorphic rock"
+        ],
+        "a": 2
+      },
+      {
+        "q": "Limestone is an example of:",
+        "o": [
+          "Igneous rocks",
+          "Sedimentary rocks",
+          "Metamorphic rocks"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "tectonics",
+    "emoji": "🌍",
+    "cat": "جيولوجيا",
+    "catEn": "Geology",
+    "title": "الصفائح التكتونية",
+    "titleEn": "Tectonic Plates",
+    "src": "https://en.wikipedia.org/wiki/Plate_tectonics",
+    "video": "شرح الصفائح التكتونية",
+    "videoEn": "plate tectonics explained",
+    "kw": [
+      "الصفائح",
+      "tectonic plates",
+      "القارات",
+      "الجبال"
+    ],
+    "ar": "قشرة الأرض ليست قطعة واحدة بل ألواح صخرية عملاقة تسمى الصفائح التكتونية، تطفو على طبقة منصهرة لزجة وتتحرك بضعة سنتيمترات سنوياً، بسرعة نمو أظافرك تقريباً! عند حدودها تحدث الروايات الكبرى: تتباعد فتولد قيعان محيطات جديدة، تتصادم فتُرفع الجبال كالهيمالايا (التي ما زالت تنمو)، تنزلق إحداها تحت الأخرى فتولد البراكين والخنادق البحرية، أو تنزلق جنباً إلى جنب كصدع سان أندرياس. هذه الحركة البطيئة شرحت كل شيء: لماذا تتشابه سواحل أمريكا الجنوبية وأفريقيا كقطعتي بازل، ولماذا تتركز الزلازل والبراكين في أحزمة محددة.",
+    "en": "Earth's crust is not one piece but giant rocky slabs called tectonic plates, floating on a viscous molten layer and moving a few centimeters yearly, about the speed your fingernails grow! At their borders the grand stories happen: they diverge and new ocean floors are born, they collide and mountains rise like the Himalayas (still growing), one slides under another and volcanoes and ocean trenches are born, or they slide side by side like the San Andreas Fault. This slow motion explained everything: why South America's and Africa's coasts fit like puzzle pieces, and why earthquakes and volcanoes concentrate in specific belts.",
+    "story": "تخيّل قِطع بسكويت تطفو على طبق شوربة ساخن. الحرارة من الأسفل تحرك الشوربة ببطء، فتتزحزح القطع: تتباعد هنا، وتتكدس هناك مكونة طيات. قشرة الأرض بسكويتنا، والوشاح المنصهر شوربتنا، ونحن نعيش على قطع تتحرك دون أن نشعر. قبل 200 مليون سنة كانت القارات كلها قطعة واحدة اسمها بانجيا!",
+    "storyEn": "Imagine biscuit pieces floating on a plate of hot soup. Heat from below slowly stirs the soup, shifting the pieces: diverging here, piling up there into folds. Earth's crust is our biscuit, the molten mantle our soup, and we live on pieces moving without feeling it. 200 million years ago all continents were one piece called Pangaea!",
+    "quiz": [
+      {
+        "q": "الصفائح التكتونية تتحرك سنوياً تقريباً:",
+        "o": [
+          "كيلومترات",
+          "بضعة سنتيمترات",
+          "أمتار"
+        ],
+        "a": 1
+      },
+      {
+        "q": "جبال الهيمالايا تكونت من:",
+        "o": [
+          "تباعد الصفائح",
+          "تصادم صفيحتين",
+          "زلازل"
+        ],
+        "a": 1
+      },
+      {
+        "q": "اسم القارة العملاقة القديمة:",
+        "o": [
+          "أطلانتس",
+          "بانجيا",
+          "جوندوانا"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Tectonic plates move yearly about:",
+        "o": [
+          "Kilometers",
+          "A few centimeters",
+          "Meters"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The Himalayas formed from:",
+        "o": [
+          "Plate divergence",
+          "Two plates colliding",
+          "Earthquakes"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The ancient supercontinent's name:",
+        "o": [
+          "Atlantis",
+          "Pangaea",
+          "Gondwana"
+        ],
+        "a": 1
+      }
+    ]
+  },
+  {
+    "id": "earthquakes",
+    "emoji": "〰️",
+    "cat": "جيولوجيا",
+    "catEn": "Geology",
+    "title": "الزلازل",
+    "titleEn": "Earthquakes",
+    "src": "https://en.wikipedia.org/wiki/Earthquake",
+    "video": "شرح الزلازل",
+    "videoEn": "earthquakes explained for kids",
+    "kw": [
+      "الزلازل",
+      "earthquakes",
+      "ريختر",
+      "التوابع"
+    ],
+    "ar": "الزلزال انطلاق مفاجئ لطاقة متراكمة: الصفائح تتحرك لكن حوافها تتشابك وتعلق، فيتراكم الضغط سنوات، ثم تنكسر الصخور فجأة منطلقة موجات تهز الأرض. النقطة الداخلية اسمها البؤرة، ونقطة السطح فوقها المركز السطحي. تقيس الأجهزة الموجات الزلزالية، وسلم ريختر الشهير لوغاريتمي: كل درجة تعني طاقة أكبر بنحو 32 مرة، فزلزال قوته 7 ليس أعنف قليلاً من 6 بل أعنف 32 مرة! معظم الزلازل خفيف لا يُحس، لكن الكبيرة تدمر. القاعدة الذهبية للسلامة: اختبئ تحت طاولة قوية، ابتعد عن النوافذ، ولا تستخدم المصعد أثناء الهزة.",
+    "en": "An earthquake is the sudden release of stored energy: plates move, but their edges interlock and stick, pressure builds for years, then the rocks suddenly snap, launching waves that shake the ground. The interior point is the focus (hypocenter), the surface point above it the epicenter. Instruments measure seismic waves, and the famous Richter scale is logarithmic: each degree means about 32 times more energy, so a magnitude 7 quake is not a bit stronger than 6 but 32 times stronger! Most quakes are too light to feel, but big ones destroy. The golden safety rule: take cover under a sturdy table, stay away from windows, and never use the elevator during shaking.",
+    "story": "تخيّل أنك تثني عصا ببطء: تقاوم، تقاوم، ثم فجأة تُسمع طقطقتها وتنكسر، وتشعر يداك بالاهتزاز. صخور الأرض عصي عملاقة: تنثني صامتة عقوداً تحت ضغط الصفائح، ثم تنكسر في ثوانٍ وتطلق طاقة كانت تختزنها منذ قبل ميلادك. الزلزال ليس غضب الأرض؛ هو استرخاء مفاجئ بعد شد طويل.",
+    "storyEn": "Imagine slowly bending a stick: it resists, resists, then suddenly you hear its crack as it snaps, and your hands feel the jolt. Earth's rocks are giant sticks: bending silently for decades under plate pressure, then breaking in seconds, releasing energy stored since before you were born. An earthquake is not Earth's anger; it is a sudden relaxation after long tension.",
+    "quiz": [
+      {
+        "q": "الزلازل تحدث غالباً عند:",
+        "o": [
+          "وسط القارات",
+          "حدود الصفائح التكتونية",
+          "القطبين"
+        ],
+        "a": 1
+      },
+      {
+        "q": "زلزال قوته 7 أقوى من قوته 6 بـ:",
+        "o": [
+          "مرة واحدة",
+          "نحو 32 مرة",
+          "مئتين"
+        ],
+        "a": 1
+      },
+      {
+        "q": "المركز السطحي هو:",
+        "o": [
+          "نقطة السطح فوق بؤرة الزلزال",
+          "أعمق نقطة",
+          "أقرب مدينة"
+        ],
+        "a": 0
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Earthquakes mostly happen at:",
+        "o": [
+          "Continent centers",
+          "Tectonic plate boundaries",
+          "The poles"
+        ],
+        "a": 1
+      },
+      {
+        "q": "A magnitude 7 quake is stronger than 6 by:",
+        "o": [
+          "One time",
+          "About 32 times",
+          "Two hundred times"
+        ],
+        "a": 1
+      },
+      {
+        "q": "The epicenter is:",
+        "o": [
+          "The surface point above the quake's focus",
+          "The deepest point",
+          "The nearest city"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "volcanoes",
+    "emoji": "🌋",
+    "cat": "جيولوجيا",
+    "catEn": "Geology",
+    "title": "البراكين",
+    "titleEn": "Volcanoes",
+    "src": "https://en.wikipedia.org/wiki/Volcano",
+    "video": "شرح البراكين",
+    "videoEn": "volcanoes explained for kids",
+    "kw": [
+      "البراكين",
+      "volcanoes",
+      "الحمم",
+      "الصهارة"
+    ],
+    "ar": "البركان نافذة من سطح الأرض إلى مطبخها الداخلي: صهارة منصهرة تتجمع في غرفة تحت الأرض، تذيب الغازات فيها كغازات زجاجة الصودا، فإذا زاد الضغط انطلقت ثائرة حمماً ورماداً وغازات. تتنوع أشكالها: براكين درعية واسعة منحدرة بلطف تسيل حممها بعيداً كبراكين هاواي، وبراكين طبقية مخروطية شاهقة تتناوب فيها الحمم والرماد كجبل فوجي. البراكين ليست شراً محضاً: رمادها يخصب التربة للزراعة، وبخارها يسخن طاقة حرارية نظيفة، وجزراً كاملة كهاواي ولدت منها. يعيش ملايين البشر قرب براكين نشطة لأن أرضها من أخصب أراضي العالم.",
+    "en": "A volcano is a window from Earth's surface into its inner kitchen: molten magma gathers in a chamber underground, gases dissolving in it like a soda bottle's gases, and when pressure grows it erupts as lava, ash and gases. Their shapes vary: wide gently sloping shield volcanoes whose lava flows far, like Hawaii's, and towering cone-shaped stratovolcanoes alternating lava and ash, like Mount Fuji. Volcanoes are not pure evil: their ash fertilizes soil for farming, their steam heats clean geothermal energy, and whole islands like Hawaii were born from them. Millions live near active volcanoes because their land is among the world's most fertile.",
+    "story": "تخيّل زجاجة مياه غازية رججتها بقوة ثم فتحت الغطاء: تنفجر الفوران عالياً. غرفة الصهارة زجاجة الأرض العملاقة: الغازات مضغوطة في الصهارة، وعندما تجد ثغرة تصعد مسرعة ساحبة الصهارة المنصهرة في عمود ناري. في بومبي الرومانية دفن بركان فيزوف المدينة بالرماد عام 79 ميلادية، فحفظها كصورة فوتوغرافية كاملة للحياة الرومانية!",
+    "storyEn": "Imagine a soda bottle shaken hard, then you open the cap: the fizz bursts high. The magma chamber is Earth's giant bottle: gases pressed into the magma, and when they find a gap they race up, dragging molten rock in a fiery column. In Roman Pompeii, Mount Vesuvius buried the city in ash in 79 AD, preserving it as a complete photograph of Roman life!",
+    "quiz": [
+      {
+        "q": "الصهارة المنصهرة على سطح الأرض تسمى:",
+        "o": [
+          "رماداً",
+          "حمماً",
+          "رملاً"
+        ],
+        "a": 1
+      },
+      {
+        "q": "براكين هاواي من النوع:",
+        "o": [
+          "الدرعي",
+          "الطبقي",
+          "المنقرض"
+        ],
+        "a": 0
+      },
+      {
+        "q": "من فوائد البراكين:",
+        "o": [
+          "تخصيب التربة",
+          "زيادة الزلازل فقط",
+          "تلوث الهواء"
+        ],
+        "a": 0
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "Molten rock on Earth's surface is called:",
+        "o": [
+          "Ash",
+          "Lava",
+          "Sand"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Hawaii's volcanoes are of the:",
+        "o": [
+          "Shield type",
+          "Stratovolcano type",
+          "Extinct type"
+        ],
+        "a": 0
+      },
+      {
+        "q": "One benefit of volcanoes:",
+        "o": [
+          "Soil fertilization",
+          "More earthquakes only",
+          "Air pollution"
+        ],
+        "a": 0
+      }
+    ]
+  },
+  {
+    "id": "fossils",
+    "emoji": "🦕",
+    "cat": "جيولوجيا",
+    "catEn": "Geology",
+    "title": "الحفريات",
+    "titleEn": "Fossils",
+    "src": "https://en.wikipedia.org/wiki/Fossil",
+    "video": "شرح الحفريات",
+    "videoEn": "fossils explained for kids",
+    "kw": [
+      "الحفريات",
+      "fossils",
+      "الديناصورات",
+      "الانقراض"
+    ],
+    "ar": "الحفرية أثر محفوظ لكائن قديم: عظمة أو صدفة أو ورقة أو حتى أثر قدم، تحجرت عبر ملايين السنين. تتكون غالباً هكذا: يموت كائن قرب ماء، يدفنه الطين سريعاً بعيداً عن الهواء والفضوليين، تتراكم الطبقات، وتذوب الأجزاء العضوية ببطء مستبدلة بمعادن، فيصبح العظم حجراً بشكل عظم. الحفريات آلة زمن الجيولوجيين: منها عرفنا الديناصورات التي حكمت الأرض 165 مليون سنة قبل أن يمحوها كويكب قبل 66 مليون سنة، وعرفنا أن الحيتان أسلافها برمائية ذات أرجل، وأن أسماكاً عاشت فوق قمم جبال كانت يوماً قاع محيط.",
+    "en": "A fossil is a preserved trace of an ancient creature: a bone, shell, leaf or even a footprint, petrified over millions of years. They usually form like this: a creature dies near water, mud buries it quickly away from air and scavengers, layers pile up, and the organic parts slowly dissolve, replaced by minerals, so the bone becomes bone-shaped stone. Fossils are geologists' time machine: from them we learned about dinosaurs that ruled Earth for 165 million years before an asteroid erased them 66 million years ago, learned that whales had amphibious ancestors with legs, and that fish lived atop mountain peaks that were once seafloors.",
+    "story": "تخيّل سمكة ماتت في بحيرة هادئة قبل 50 مليون سنة، غطاها الطين قبل أن ينهشها أحد، ونامت تحت طبقات تتراكم قرناً فوق قرن. اليوم يشقّ باحث صخرة بإزميل، فتنفلق كاشفة كل زعنفة وفقرة محفوظة كأنها نامت أمس. الحفرية رسالة من ماضٍ سحيق، وصلتنا لأن الطبيعة أتقنت فن الأرشفة.",
+    "storyEn": "Imagine a fish that died in a calm lake 50 million years ago, mud covering it before anything could scavenge it, sleeping under layers piling century upon century. Today a researcher splits a rock with a chisel, and it cracks open revealing every fin and vertebra preserved as if it slept yesterday. A fossil is a message from a deep past, reaching us because nature mastered the art of archiving.",
+    "quiz": [
+      {
+        "q": "الحفرية تتكون عندما:",
+        "o": [
+          "يدفن كائن سريعاً ويتحول لحجر",
+          "يموت كائن في الهواء",
+          "تجف المياه"
+        ],
+        "a": 0
+      },
+      {
+        "q": "الديناصورات انقرضت قبل تقريباً:",
+        "o": [
+          "مليون سنة",
+          "66 مليون سنة",
+          "مليار سنة"
+        ],
+        "a": 1
+      },
+      {
+        "q": "وجود حفريات أسماك على جبال يعني:",
+        "o": [
+          "الأسماك كانت تتسلق",
+          "الجبال كانت قاع محيط",
+          "الحفريات طارت"
+        ],
+        "a": 1
+      }
+    ],
+    "quizEn": [
+      {
+        "q": "A fossil forms when:",
+        "o": [
+          "A creature is buried quickly and turns to stone",
+          "A creature dies in open air",
+          "Water dries up"
+        ],
+        "a": 0
+      },
+      {
+        "q": "Dinosaurs went extinct about:",
+        "o": [
+          "One million years ago",
+          "66 million years ago",
+          "A billion years ago"
+        ],
+        "a": 1
+      },
+      {
+        "q": "Finding fish fossils on mountains means:",
+        "o": [
+          "Fish used to climb",
+          "The mountains were a seafloor",
+          "Fossils flew"
+        ],
+        "a": 1
+      }
+    ]
   }
 ];
 const MENTOR_ANSWERS = [
@@ -10833,5 +13201,285 @@ const MENTOR_ANSWERS = [
   "src": "https://openstax.org/books/astronomy-2e/pages/4-5-phases-and-motions-of-the-moon",
   "ar": "المفاجأة أولاً: القمر يدور حول نفسه! لكنه يكمل دورته الذاتية في 29.5 يوماً بالضبط، وهي المدة نفسها التي يدور بها حول الأرض، فكأنه راقص يستدير حول شريكه وهو يواجهه دائماً. هذه المصادفة ليست صدفة: جاذبية الأرض \"شدّت\" انتفاخ القمر المدّي عبر ملايين السنين حتى أبطأت دورانه للتزامن التام، ظاهرة اسمها القفل المدّي وهي شائعة في أقمار النظام الشمسي. الوجه الخفي ظل مجهولاً للبشر حتى صوّرته مركبة سوفييتية 1959: تضاريس أكثر فوهات بلا \"بحار\" داكنة!",
   "en": "First surprise: the Moon does spin! But it completes one rotation in exactly 29.5 days, the same period it orbits Earth, like a dancer circling a partner while always facing them. This coincidence is no coincidence: Earth's gravity tugged the Moon's tidal bulge over millions of years until it slowed its spin to perfect synchrony, a phenomenon called tidal locking, common among solar system moons. The far side stayed unknown to humans until a Soviet probe photographed it in 1959: more cratered terrain without the dark \"seas\"!"
-}
+},
+  {
+    "keys": [
+      "هل الخوارزميات شريرة",
+      "are algorithms bad",
+      "خوارزميات السوشيال ميديا"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Algorithm",
+    "ar": "الخوارزمية نفسها مجرد خطوات، لا نية لها؛ الحكم يقع على الهدف الذي صممها له الإنسان وعلى بيانات تدريبها. خوارزمية توصيات الفيديو هدفها إبقاءك أطول وقت ممكن أمام الشاشة، فقد تقترح محتوى مثيراً لا مفيداً. الوعي هنا قوة: عندما تعرف أن المنصة تقيس نجاحها بوقتك لا بفائدتك، تستطيع أن تختار وقف التمرير بوعي. تعلّم كيف تعمل الخوارزميات هو أفضل دفاع ضد أن تقودك دون أن تشعر.",
+    "en": "An algorithm itself is just steps; it has no intent. Judgment falls on the goal humans designed it for and on its training data. A video recommendation algorithm aims to keep you watching as long as possible, so it may suggest exciting rather than useful content. Awareness is power here: when you know the platform measures success by your time, not your benefit, you can choose to stop scrolling consciously. Learning how algorithms work is the best defense against being led by them without noticing."
+  },
+  {
+    "keys": [
+      "لماذا اسم المتغير مهم",
+      "why variable names matter"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Variable_(computer_science)",
+    "ar": "قد يعمل الكود بأسماء قصيرة غامضة مثل x وy، لكن البرمجة الحقيقية كتابة يقرأها البشر قبل الأجهزة. اسم مثل totalPrice يحكي قصة القيمة فوراً، بينما tp يجبر كل قارئ (بما فيه أنت بعد أسبوعين) على التخمين والبحث. القاعدة العملية: سمِّ المتغير بما يمثله في العالم الحقيقي، وكن متسقاً في أسلوب التسمية. معظم وقت المبرمجين يقضونه في قراءة كود قديم، لا كتابة جديد، فاجعل القراءة رحمة بمن بعدك وبنفسك.",
+    "en": "Code can run with short cryptic names like x and y, but real programming is writing that humans read before machines do. A name like totalPrice tells the value's story instantly, while tp forces every reader (including you in two weeks) to guess and search. The practical rule: name a variable after what it represents in the real world, and stay consistent in naming style. Most of a programmer's time goes to reading old code, not writing new, so make reading a mercy to those who come after you, and to yourself."
+  },
+  {
+    "keys": [
+      "ما هو اللوب اللانهائي",
+      "what is an infinite loop",
+      "حلقة لا نهائية"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Control_flow",
+    "ar": "الحلقة اللانهائية أشهر خطأ للمبتدئين: حلقة شرطها لا يتحقق زواله أبداً، فتدور للأبد ويتجمد البرنامج. مثال كلاسيكي: حلقة تزيد العداد خطأ في الاتجاه المعاكس، أو شرط يقارن قيمة لا تتغير أبداً داخل الحلقة. الوقاية ثلاثية: تأكد أن متغير الشرط يتغير داخل الحلقة، وتأكد أن التغيير يقترب فعلاً من شرط الإنهاء، واطبع قيم العداد أثناء التطوير لترى الحركة. أول لوب لا نهائي تصنعه بنفسك درس لا يُنسى، مرحباً بك في النادي.",
+    "en": "The infinite loop is every beginner's most famous bug: a loop whose exit condition never becomes false, so it spins forever and the program freezes. A classic example: a loop incrementing its counter in the wrong direction, or a condition comparing a value that never changes inside the loop. Prevention is threefold: make sure the condition's variable changes inside the loop, make sure the change actually approaches the exit condition, and print counter values while developing to watch the motion. The first infinite loop you create yourself is an unforgettable lesson; welcome to the club."
+  },
+  {
+    "keys": [
+      "كيف يخزن الكمبيوتر الحروف",
+      "how does a computer store letters"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Binary_number",
+    "ar": "سؤال ذكي: إن كان كل شيء أرقاماً، فأين الحروف؟ الجواب: جداول ترميز متفق عليها عالمياً. كل حرف له رقم في الجدول: في ترميز ASCII القديم كان الحرف A هو 65، يخزن ثنائياً كـ 1000001. اليوم يحكم الترميز العالمي Unicode الذي أعطى كل حرف في كل لغات البشر رقماً، بما فيها العربية والإيموجي (القلب ❤️ له رقم أيضاً!). فعندما تقرأ هذه الرسالة، فجهازك يحول أرقاماً ثنائية إلى حروف عبر جدول متفق عليه، والاتفاق هو السر كله.",
+    "en": "A smart question: if everything is numbers, where do letters live? The answer: globally agreed encoding tables. Every letter has a number in the table: in the old ASCII encoding, A was 65, stored in binary as 1000001. Today the Unicode standard rules, giving every character in every human language a number, including Arabic and emoji (the heart ❤️ has a number too!). So as you read this message, your device converts binary numbers into letters through an agreed table, and the agreement is the whole secret."
+  },
+  {
+    "keys": [
+      "هل انترنت واحد يمكن ان ينقطع كله",
+      "can the whole internet go down"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Internet",
+    "ar": "الإنترنت صُمم أصلاً لينجو من تدمير أجزاء كبيرة منه: فكرته الأولى كانت شبكة بلا مركز واحد يُشلّها. لهذا انقطاعه \"كله\" دفعة واحدة شبه مستحيل تقنياً. لكن ما يحدث فعلاً هو انقطاعات إقليمية أو خدمية: كابل بحري يُقطع فتبطئ قارة، أو خدمة سحابية كبرى تتعطل فتتوقف آلاف المواقع معها ونشعر أن \"الإنترنت تعطل\"، أو مزود محلي يفصل الخدمة عن بلد. الحوادث الكبرى تعلمنا أن هشاشة الإنترنت ليست في شبكته الأساسية، بل في تمركز خدماته الشهيرة لدى شركات قليلة.",
+    "en": "The internet was originally designed to survive the destruction of large parts of it: its founding idea was a network with no single center to paralyze. That is why a total global outage is technically near-impossible. What actually happens is regional or service outages: a cut undersea cable slows a continent, a major cloud provider fails and thousands of sites stop together making us feel \"the internet is down\", or a local provider cuts service to a country. Big incidents teach us that internet fragility is not in its core network, but in how its famous services are concentrated in a few companies."
+  },
+  {
+    "keys": [
+      "ما فائدة التفاضل في الحياة",
+      "what is calculus used for",
+      "ليش ندرس التفاضل"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Derivative",
+    "ar": "سؤال كل طالب ثانوية! التفاضل ليس عقاباً تعليمياً بل لغة العالم الحديث: كلما تغير شيء بمعدل متغير احتجته. شركات الاتصالات تستخدمه لتحسين تغطية الشبكة، والاقتصاديون لإيجاد أقل تكلفة وأعلى ربح (مشاكل القيم العظمى والصغرى)، والأطباء لحساب سرعة انتشار وباء، ومهندسو الصواريخ لحساب ميلان مسار لحظي. حتى خوارزميات الذكاء الاصطناعي التي تتعلم تستخدم مشتقات لتحسين أوزانها خطوة بخطوة. لن تشتق يومياً على ورقة، لكن كل تقنية حولك اشتقت عنك.",
+    "en": "The question of every secondary student! Calculus is not an educational punishment but the language of the modern world: whenever something changes at a varying rate, you need it. Telecom companies use it to optimize network coverage, economists to find lowest cost and highest profit (maxima-minima problems), doctors to compute an epidemic's spread rate, and rocket engineers for instantaneous path tilt. Even the AI algorithms that learn use derivatives to improve their weights step by step. You will not differentiate on paper daily, but every technology around you differentiates for you."
+  },
+  {
+    "keys": [
+      "ما هو ثابت التكامل C",
+      "what is the constant of integration",
+      "لماذا نكتب C في التكامل"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Integral",
+    "ar": "لأن التكامل \"عكس\" التفاضل، والتفاضل يمحو الثوابت! مشتقة x² + 5 هي 2x، ومشتقة x² + 100 هي 2x أيضاً. فعندما نكامل 2x نسأل: ما الدالة الأصلية؟ الجواب: x² زائد أي ثابت ممكن، لأن كلها تفاضلها يعطي 2x. هذا \"أي ثابت\" هو C. عملياً نحدد قيمته بمعلومة إضافية تسمى شرطاً ابتدائياً، كمعرفة موقع الجسم عند زمن صفر، فينحل اللغز ويتحدد الثابت. بدون C تكون إجابتك ناقصة، وفي الامتحان تفقد الدرجة.",
+    "en": "Because integration \"reverses\" differentiation, and differentiation erases constants! The derivative of x² + 5 is 2x, and the derivative of x² + 100 is also 2x. So integrating 2x asks: what was the original function? The answer: x² plus any possible constant, since all of them differentiate to 2x. That \"any constant\" is C. In practice we pin its value with extra information called an initial condition, like knowing a body's position at time zero, which solves the mystery. Without C your answer is incomplete, and in the exam you lose the mark."
+  },
+  {
+    "keys": [
+      "لماذا نستخدم اللوغاريتم في المقاييس",
+      "why are scales logarithmic"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Logarithm",
+    "ar": "لأن بعض الظواهر تمتد عبر مدى هائل يستحيل رسمه على خط عادي! شدة الزلازل من اهتزاز لا يُحس إلى دمار مدينة: ملايين الأضعاف. المقياس اللوغاريتمي يضغط هذا المدى: زلزال بقوة 6 أقوى عشر مرات من 5، ومئة مرة من 4، فيصبح الرقم صغيراً مفهوماً. نفس المنطق في الديسيبل للصوت (أذنك تحس بنسب لا بفروق ثابتة) وفي pH للحموضة. حتى إحساسك بالأرقام نفسه يميل للوغاريتمي: الفرق بين 1 و10 جنيه يهمك أكثر من بين 1001 و1010، رغم أن الفرق واحد.",
+    "en": "Because some phenomena span a range too enormous for an ordinary line! Earthquake intensity runs from an unfelt tremor to a city's destruction: millions of times. A logarithmic scale compresses this range: a magnitude 6 quake is ten times stronger than 5 and a hundred times stronger than 4, so the number stays small and graspable. The same logic in decibels for sound (your ear senses ratios, not fixed differences) and in pH for acidity. Even your number sense itself leans logarithmic: the difference between 1 and 10 pounds matters more to you than between 1001 and 1010, though the difference is identical."
+  },
+  {
+    "keys": [
+      "لماذا السرعة متجه والمسافة قياسية",
+      "why is velocity a vector but distance scalar"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Euclidean_vector",
+    "ar": "الفرق في سؤال \"هل يكفي رقم واحد لوصفها؟\". المسافة: يكفي أن تقول 10 كيلومترات ليعرف الجميع كل شيء. لكن قل \"تحرك بسرعة 60\" فيسألون فوراً: في أي اتجاه؟ بدون الاتجاه الوصف ناقص وقد يكون مضللاً: سيارة تسير 60 شرقاً وأخرى 60 غرباً لهما \"سرعة قياسية\" متساوية لكنهما تبتعدان بمعدل 120! لهذا نفرق: السرعة المتجهة (velocity) مقدار + اتجاه، والسرعة القياسية (speed) المقدار فقط. القاعدة: إن كان السؤال \"نحو أين؟\" له معنى فهو متجه، وإن كان بلا معنى فهو قياسي.",
+    "en": "The difference lies in asking \"is one number enough to describe it?\" Distance: saying 10 kilometers tells everyone everything. But say \"moving at 60\" and people immediately ask: in which direction? Without direction the description is incomplete and can mislead: a car going 60 east and another 60 west have equal speeds, yet they separate at 120! That is why we distinguish: velocity is magnitude + direction, speed is magnitude only. The rule: if the question \"toward where?\" is meaningful, it is a vector; if it is meaningless, it is a scalar."
+  },
+  {
+    "keys": [
+      "لماذا حمل الحقيبة واقفا ليس شغلا",
+      "why is holding a bag not work"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Work_(physics)",
+    "ar": "لأن الفيزياء تعرف الشغل بنتيجة ملموسة لا بالإحساس بالتعب: لا إزاحة في اتجاه القوة يعني لا شغل، نقطة. ذراعاك تبذلان جهدًا عضلياً حقيقياً وتستهلكان طاقة كيميائية من غذائك، لكنها طاقة تتحول إلى حرارة داخل جسمك، لا إلى شغل ميكانيكي على الحقيبة. الفيزياء لا تكافئ الوقوف الثابت! هذا التعريف \"القاسي\" هو ما يجعل الحسابات تعمل: به نربط الشغل بتغير الطاقة الحركية بدقة رياضية تامة، وهو أساس قانون الشغل والطاقة كله. تعبك حقيقي، لكنه حساب بيولوجي آخر.",
+    "en": "Because physics defines work by a tangible result, not by the feeling of tiredness: no displacement in the force's direction means no work, period. Your arms exert real muscular effort and burn chemical energy from your food, but that energy turns into heat inside your body, not mechanical work on the bag. Physics does not reward standing still! This \"harsh\" definition is exactly what makes the calculations work: it ties work to the change in kinetic energy with total mathematical precision, forming the basis of the whole work-energy theorem. Your tiredness is real, but it belongs to a different, biological accounting."
+  },
+  {
+    "keys": [
+      "كيف اذاكر بذكاء",
+      "how to study smart",
+      "نسيت كل اللي ذاكرته"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Memory",
+    "ar": "أكثر سؤال عملي يصلني! الخطة المبنية على علم الذاكرة: أولاً اقرأ بفهم وتلخيص بأسلوبك لا بنقل النص. ثانياً أغلق الكتاب واختبر نفسك، فالاسترجاع هو التمرين الحقيقي. ثالثاً وزّع المذاكرة: اليوم، ثم بعد يومين، ثم بعد أسبوع، وكل مرة استرجاع لا إعادة قراءة. رابعاً نم جيداً ليلة الامتحان، فالنوم هو وقت نقل المعلومات للذاكرة طويلة المدى. خامساً اشرح لشخص آخر؛ عجزك عن الشرح يكشف فجوات الفهم قبل الامتحان. ساعة مركزة بهذه الطريقة تغني عن أربع ساعات قراءة سلبية.",
+    "en": "The most practical question I get! The plan built on memory science: first, read for understanding and summarize in your own words, not by copying the text. Second, close the book and test yourself; retrieval is the real workout. Third, spread the studying: today, then after two days, then after a week, each time retrieving, not re-reading. Fourth, sleep well the night before the exam; sleep is when information moves to long-term memory. Fifth, explain to someone else; struggling to explain reveals understanding gaps before the exam does. One focused hour this way beats four hours of passive reading."
+  },
+  {
+    "keys": [
+      "لماذا انسى ما احفظه",
+      "why do I forget what I memorize"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Learning_theory_(education)",
+    "ar": "لأن الحفظ دون فهم يبني معلومة معزولة بلا جذور! الدماغ يخزن المعنى شبكياً: معلومة مربوطة بعشر معلومات تعرفها ترسو، ومعلومة محفوظة كالأسطر تطفو ثم تتلاشى. الحل في ثلاث خطوات تطبقها نظريات التعلم: افهم أولاً (اربط الجديد بما تعرف)، ثم طبق (حل أمثلة بنفسك فالتعلم بالفعل أثبت)، ثم كرر باسترجاع متباعد. الحفظ الآلي مفيد فقط لما لا معنى له أصلاً كالأرقام والأسماء، وحتى هنا تساعد القصص والاختصارات. اسأل نفسك بعد كل درس: هل أستطيع شرحه لصديق بأسلوبي؟ إن لا، فأنت لم تتعلمه بعد.",
+    "en": "Because memorizing without understanding builds an isolated fact with no roots! The brain stores meaning as a network: a fact tied to ten facts you already know anchors down, while a line memorized by rote floats then fades. The fix is three steps from learning theories: understand first (tie the new to what you know), then apply (solve examples yourself; learning by doing is proven), then repeat with spaced retrieval. Rote memorization helps only for what is meaningless by nature, like numbers and names, and even there stories and mnemonics help. Ask yourself after each lesson: can I explain it to a friend in my own words? If not, you have not learned it yet."
+  },
+  {
+    "keys": [
+      "فقدت شغفي بالمذاكرة",
+      "lost my motivation to study",
+      "مفيش دافعية"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Motivation",
+    "ar": "يحدث للجميع، وهذا طبيعي. أولاً اطمئن: الدافعية تتموج ولا تبقى عالية دائماً، والناجحون يعتمدون على نظام لا على الحماس. جرّب هذه الخطوات العملية: قسّم الهدف الكبير لمهام صغيرة جداً (صفحة واحدة تبدأ بها)، فالإنجاز الصغير يولد دافعية جديدة. اربط المادة بحلمك الحقيقي: لماذا تذاكر أصلاً؟ اكتب السبب وعلقه أمامك. كافئ نفسك بعد كل جلسة بشيء صغير. وانتبه لقاعدة ماسلو: الجوع والأرق والوحدة يسرقون الدافعية قبل أي شيء، فاعتنِ بجسمك أولاً. وأخيراً ابدأ قبل أن تشعر بالاستعداد؛ الدافعية غالباً تتبع الفعل لا تسبقه.",
+    "en": "It happens to everyone, and that is normal. First, relax: motivation waves and never stays high forever; successful people rely on systems, not enthusiasm. Try these practical steps: break the big goal into very small tasks (start with one page), because a small achievement births new motivation. Tie the subject to your real dream: why are you studying at all? Write the reason and hang it in front of you. Reward yourself after each session with something small. And mind Maslow's rule: hunger, sleeplessness and loneliness steal motivation before anything else, so care for your body first. Finally, start before you feel ready; motivation usually follows action rather than preceding it."
+  },
+  {
+    "keys": [
+      "هل ذكاء الطفل ثابت",
+      "is a childs intelligence fixed"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Developmental_psychology",
+    "ar": "لا، وهذه من أهم رسائل علم النفس الحديث: القدرات تنمو بالتمرين والبيئة المحفزة، والدماغ يبقى قابلاً للتشكل طوال العمر. الدراسات أظهرت أن الأطفال الذين يُمدحون على \"اجتهادهم واستراتيجياتهم\" يتطورون أكثر من الممدوحين على \"ذكائهم الفطري\"، لأن الأول يبني عقلية نمو (أستطيع أن أتحسن) والثاني عقلية ثبات (أنا كذا ولن أتغير). فهم مراحل بياجيه يضيف بُعداً: بعض القدرات تأتي بوقتها ولا تُستعجل بالضغط. الخلاصة للوالدين والمعلمين: ركزوا على الجهد والفضول والطرق، لا على الأحكام الثابتة.",
+    "en": "No, and this is one of modern psychology's most important messages: abilities grow with practice and a stimulating environment, and the brain stays plastic throughout life. Studies showed children praised for \"their effort and strategies\" develop more than those praised for \"their innate smarts\", because the first builds a growth mindset (I can improve) and the second a fixed one (I am this way and will not change). Understanding Piaget's stages adds a dimension: some abilities arrive in their own time and cannot be rushed by pressure. The takeaway for parents and teachers: focus on effort, curiosity and methods, not fixed judgments."
+  },
+  {
+    "keys": [
+      "ما هي التحيزات المعرفية",
+      "what are cognitive biases"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Intelligence",
+    "ar": "التحيز المعرفي خطأ منهجي في التفكير يقع فيه الجميع لأن دماغنا يستخدم اختصارات سريعة. أمثلة مشهورة: تحيز التأكيد (نبحث فقط عما يؤيد رأينا ونتجاهل ما يعارضه)، والتحيز للحداثة (آخر خبر سمعناه يبدو لنا الأشيع)، وتحيز الهالة (نعجب بشخص فنفترض أن كل صفاته حسنة). لا نستطيع إلغاءها لأنها جزء من تصميم الدماغ الاقتصادي، لكن الوعي بها يبطئ أخطاءها: قبل قرار مهم اسأل نفسك، ما الدليل الذي سيغير رأيي؟ ومن يعارضني وماذا يقول؟ العقل الجيد ليس الخالي من التحيزات، بل الذي يشك في نفسه أولاً.",
+    "en": "A cognitive bias is a systematic thinking error everyone falls into because our brains use quick shortcuts. Famous examples: confirmation bias (we seek only what supports our view and ignore what opposes it), recency bias (the latest news we heard seems the most common), and the halo effect (liking someone makes us assume all their traits are good). We cannot delete them, as they are part of the brain's economical design, but awareness slows their damage: before a big decision ask yourself, what evidence would change my mind? Who disagrees with me and what do they say? A good mind is not one free of biases, but one that doubts itself first."
+  },
+  {
+    "keys": [
+      "ما فائدة الفلسفة في حياتي",
+      "what is the point of philosophy",
+      "ليش ندرس فلسفة"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Philosophy",
+    "ar": "الفلسفة لا تصنع خبزاً مباشرة، لكنها تصنع العقل الذي يقرر كيف يعيش. فوائدها العملية: تدربك على التفكير النقدي فلا تنخدع بالشعارات، وتعلمك صياغة الأسئلة الصحيحة قبل البحث عن إجابات، وتوسع وجهات نظرك فترى المسألة بعيون غيرك، وتعينك على قراراتك الكبرى: مهنتك، قيمك، موقفك من المال والنجاح. التاريخ يشهد أيضاً: أعظم ثورات العلم بدأت أسئلة فلسفية، وعلماء مثل نيوتن كانوا يسمون أنفسهم فلاسفة طبيعة. من يظن الفلسفة كلاماً فارغاً يستخدم غالباً فلسفة رديئة دون أن يدري.",
+    "en": "Philosophy does not bake bread directly, but it builds the mind that decides how to live. Its practical benefits: it trains critical thinking so slogans cannot fool you, teaches you to frame the right questions before hunting answers, widens your perspectives so you see the issue through others' eyes, and helps with your big decisions: your career, values, and stance on money and success. History also testifies: the greatest scientific revolutions began as philosophical questions, and scientists like Newton called themselves natural philosophers. Whoever thinks philosophy is empty talk usually practices bad philosophy without knowing it."
+  },
+  {
+    "keys": [
+      "كيف اكتشف المغالطات في الجدل",
+      "how to spot fallacies in arguments"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Logic",
+    "ar": "خطة عملية من أربع خطوات: أولاً حدد الاستنتاج: ما الذي يريد المتحدث إقناعك به بالضبط؟ ثانياً اكتب المقدمات التي قدمها. ثالثاً اسأل: هل النتيجة تتبعها فعلاً؟ هنا تظهر القفزات. رابعاً ابحث عن الحيل الشائعة: هل هاجم الشخص لا الفكرة؟ هل قدّم خيارين زائفين وكأنهما الوحيدان؟ هل عمّم من قصة واحدة؟ تدرب على الأخبار ومنشورات التواصل يومياً، فهي معمل مغالطات مجاني. وتذكر قاعدة أخلاقية: اكشف المغالطة باحترام؛ الهدف الحقيقة لا الفوز في الجدال.",
+    "en": "A practical four-step plan: first, identify the conclusion: what exactly does the speaker want to convince you of? Second, write down the premises they offered. Third, ask: does the conclusion actually follow? This is where the leaps appear. Fourth, scan for the common tricks: did they attack the person, not the idea? Offer false either-or choices as if they were the only ones? Generalize from one story? Practice daily on news and social posts; they are a free fallacy laboratory. And remember an ethical rule: expose the fallacy respectfully; the goal is truth, not winning the argument."
+  },
+  {
+    "keys": [
+      "هل الاخلاق نسبية ام مطلقة",
+      "are morals relative or absolute"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Ethics",
+    "ar": "سؤال مركزي في فلسفة الأخلاق، والفلاسفة منقسمون. النسبيون يقولون: الأخلاق نتاج ثقافة وعصر، وما يُعد صواباً هنا قد يكون خطأ هناك، والتاريخ مليء بأعراف تغيرت. والمطلقون يجيبون: بعض المبادئ لا تقبل النسبية، كحرمة قتل الأبرياء وقيمة الصدق، وإلا فقدنا حق إدانة الظلم في أي مجتمع. موقف وسط شائع: قواعد أساسية مشتركة بين البشر (لا قتل، لا خيانة، احترام الوعد) مع مرونة في التطبيقات الثانوية. الأهم من الحسم: أن تميز بين \"أعرف ماذا يفعل الناس\" و\"ما الذي يجب أن يُفعل\"، فالوصف ليس حكماً.",
+    "en": "A central question in moral philosophy, and philosophers are split. Relativists say: morals are products of culture and era, and what counts as right here may be wrong there; history is full of norms that changed. Absolutists answer: some principles do not accept relativity, like the wrongness of killing innocents and the value of honesty, otherwise we lose the right to condemn injustice in any society. A common middle position: core rules shared across humanity (no killing, no betrayal, keeping promises) with flexibility in secondary applications. More important than settling it: distinguishing between \"what I know people do\" and \"what ought to be done\"; description is not judgment."
+  },
+  {
+    "keys": [
+      "كيف اعرف ان الخبر حقيقي",
+      "how do I know news is true",
+      "اخبار مزيفة"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Epistemology",
+    "ar": "هذه نظرية المعرفة مطبقة على حياتك اليومية. قائمة فحص سريعة قبل تصديق أو مشاركة أي خبر: من المصدر الأصلي؟ (تتبع الخبر لأول ناشر، فالنقل يشوه). هل نشرته مصادر مستقلة متعددة أم مصدر واحد مجهول؟ هل العنوان صادم بشكل مثير للغرائز؟ (الصدمة المتعمدة علامة تحذير). هل الصورة قديمة أو مقتطعة من سياق آخر؟ (ابحث عنها). ما الدليل المقدم: بيانات أم \"يقولون\"؟ واسأل نفسك سؤال ديكارت: هل أصدقه لأنني أريده صادقاً؟ خبر مؤجل نشره حتى التحقق خير من شائعة ساهمت في نشرها.",
+    "en": "This is epistemology applied to your daily life. A quick checklist before believing or sharing any news: who is the original source? (Trace the news to its first publisher; forwarding distorts.) Was it reported by multiple independent sources or one anonymous one? Is the headline engineered to shock your instincts? (Deliberate shock is a warning sign.) Is the photo old or cropped from another context? (Search it.) What evidence is offered: data or \"they say\"? And ask yourself Descartes' question: do I believe it because I want it to be true? A delayed post until verification is better than a rumor you helped spread."
+  },
+  {
+    "keys": [
+      "لو مفيش ارادة حرة ليه اعاقب نفسي",
+      "if there is no free will why blame myself"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Free_will",
+    "ar": "سؤال عميق يستحق تأملاً هادئاً. حتى لو قبلنا الحتمية نظرياً، فاللوم العقابي الجلد للذات لا ينفع ولا يتبع منها منطقياً! الموقف الأنضج: افصل بين التقييم والجلد. التقييم ضروري: ما القرار الخاطئ؟ ما أسبابه الحقيقية (تعب، معلومات ناقصة، ضغط)؟ هذا تحليل ميكانيكي هادئ يعلمك. أما جلد الذات فيستهلك طاقتك دون أن يغير الماضي، ويدفعك للاستسلام لا للتعلم. نصيحة الفلاسفة العمليين: عامل ماضيك كحتمية لا يمكن تغييرها فتقبله، وعامل مستقبلك كحرية كاملة فخطط له. هذا الخلط العملي هو أفضل ما أنتجته المسألة كلها.",
+    "en": "A deep question that deserves calm reflection. Even if we accepted determinism theoretically, punitive self-flagellation neither helps nor follows from it logically! The more mature stance: separate evaluation from self-punishment. Evaluation is necessary: what was the wrong decision? What were its real causes (fatigue, missing information, pressure)? That is a calm mechanical analysis that teaches you. Self-flagellation, though, burns your energy without changing the past, and pushes you toward surrender, not learning. The practical philosophers' advice: treat your past as unchangeable determinism, so accept it, and treat your future as complete freedom, so plan for it. This practical blend is the best the entire debate has produced."
+  },
+  {
+    "keys": [
+      "ليه الصفر مهم في الارقام",
+      "why is zero important in numbers"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Positional_notation",
+    "ar": "الصفر بطل صامت يقوم بمهمتين حاسمتين. الأولى: هو رقم بذاته يعني \"لا شيء\"، وقد استغرق البشر آلاف السنين لاختراعه! الثانية والأهم: حارس الخانات. بدون الصفر لا نستطيع كتابة 205 تمييزاً لها عن 25؛ الصفر يمسك خانة العشرات الفارغة حتى لا تنزلق الخانات. تاريخياً، العرب والهند طوروا هذا النظام الذي انتقل لأوروبا فغير التجارة والعلم. جرب: اكتب ألف وخمسة بدون صفر، ستفهم لماذا سماه بعض المؤرخين أعظم اختراع رياضي.",
+    "en": "Zero is a silent hero with two decisive jobs. First: it is a number itself meaning \"nothing\", and humans took thousands of years to invent it! Second and more important: the guardian of places. Without zero we cannot write 205 distinct from 25; zero holds the empty tens place so the places do not slip. Historically, Arabs and Indians developed this system that traveled to Europe and transformed trade and science. Try it: write one thousand and five without zero, and you will see why some historians called it the greatest mathematical invention."
+  },
+  {
+    "keys": [
+      "كيف احفظ جدول الضرب بسهولة",
+      "how to memorize multiplication tables"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Multiplication",
+    "ar": "السر: لا تحفظ 144 حقيقة، افهم الأنماط فتقل الحقائق للنصف أولاً (لأن 3×7 = 7×3). ثم خصص حيلاً لكل جدول: جدول 2 مضاعفة، وجدول 5 ينتهي بـ 0 أو 5، وجدول 9 أرقام ناتجه مجموعها 9 (18، 27، 36...)، وجدول 10 أسهلهم: أضف صفراً. ابدأ بالسهل (1، 2، 5، 10) ثم تسلق للأصعب. والأهم: تدرب 10 دقائق يومياً بالتناوب مع ألعاب، فالذاكرة العضلية للأرقام تبنى بالتكرار المتباعد لا بالحفظ المرهق قبل الامتحان.",
+    "en": "The secret: do not memorize 144 facts; understand the patterns to cut them in half first (since 3×7 = 7×3). Then give each table a trick: the 2s table is doubling, the 5s ends in 0 or 5, the 9s have digits summing to 9 (18, 27, 36...), and the 10s is the easiest: append a zero. Start with the easy (1, 2, 5, 10) then climb to the harder. Most important: practice 10 minutes daily alternating with games, since numerical muscle memory is built by spaced repetition, not exhausting cramming before the exam."
+  },
+  {
+    "keys": [
+      "ما الفرق بين المحيط والمساحة",
+      "difference between perimeter and area"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Shape",
+    "ar": "فروق ثلاثة تحسم الخلط للأبد. المعنى: المحيط طول الحد الخارجي (السياج حول الحديقة)، والمساحة حجم السطح الداخلي (العشب داخلها). الوحدة: المحيط بالسنتيمتر أو المتر (أطوال)، والمساحة بالسنتيمتر المربع (مربعات صغيرة تغطي السطح). الحساب: المحيط تجمع الأضلاع، والمساحة لها قوانين (المستطيل: طول × عرض). خدعة الذاكرة: المحيط مثل التمشي حول الشكل على حدوده، والمساحة مثل طلاء الشكل من الداخل. مثال قاطع: حديقة 10×5 محيطها 30 متراً ومساحتها 50 متراً مربعاً، ولن يتساويا أبداً لأنهما شيئان مختلفان.",
+    "en": "Three differences settle the confusion forever. Meaning: perimeter is the outer border length (the fence around a garden), area is the inner surface size (the grass inside). Unit: perimeter in centimeters or meters (lengths), area in square centimeters (little squares covering the surface). Calculation: perimeter adds the sides, area has formulas (rectangle: length × width). A memory trick: perimeter is like walking around the shape on its border, area is like painting the shape from inside. A decisive example: a 10×5 garden has perimeter 30 meters and area 50 square meters, and they never equal each other because they are two different things."
+  },
+  {
+    "keys": [
+      "كيف احول بين الوحدات",
+      "how to convert between units"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Measurement",
+    "ar": "التحويل بين وحدات النظام المتري سهل لأنه مبني على 10. الطريقة: احفظ السلم: كيلو ← وحدة أساسية (متر/جرام/لتر) ← جزء (سنتي/ملي). النزول للأصغر يعني الضرب في 10 أو 100 أو 1000 (لكل درجة صفر)، والصعود للأكبر يعني القسمة. مثال: 3 كيلومتر = 3000 متر (نزلنا درجة كبيرة: × 1000)، و500 سنتيمتر = 5 متر (صعدنا: ÷ 100). خدعة: التحويل لوحدة أصغر يعطي عدداً أكبر، والعكس. تحقق دائماً: هل النتيجة منطقية الحجم؟ لو حولت كيلومترات لأمتار وخرج عدد أصغر فهناك خطأ.",
+    "en": "Converting between metric units is easy because it is built on 10. The method: memorize the ladder: kilo ← base unit (meter/gram/liter) ← small part (centi/milli). Descending to smaller means multiplying by 10, 100 or 1000 (a zero per step), ascending to bigger means dividing. Example: 3 kilometers = 3000 meters (we went down a big step: × 1000), and 500 centimeters = 5 meters (we went up: ÷ 100). A trick: converting to a smaller unit gives a bigger number, and vice versa. Always check: is the result's size logical? If you converted kilometers to meters and got a smaller number, something went wrong."
+  },
+  {
+    "keys": [
+      "ليه التقريب مهم في الحياة",
+      "why is rounding important in life"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Rounding",
+    "ar": "لأن الحياة لا تمنحك وقتاً للدقة دائماً! التقريب أداة التقدير، والتقدير مهارة القرارات السريعة: تقدر الفاتورة قبل الكاشير فتكشف الأخطاء، وتقدر الوقت اللازم لمشوارك فلا تتأخر، وتقدر مصروف الشهر من مصروف الأسبوع. العلماء والمهندسون يقدرون قبل أن يحسبوا؛ تقدير خشن صحيح الاتجاه أفضل من حساب دقيق على أرقام خاطئة. والأهم: التقريب يدرب حسك العددي، ذلك الإحساس بما إذا كان الناتج معقولاً، وهو مهارة تفصل من يفهم الأرقام عمن ينفذها فقط.",
+    "en": "Because life does not always grant you time for precision! Rounding is the tool of estimation, and estimation is the skill of quick decisions: you estimate the bill before the cashier and catch errors, you estimate your trip time and avoid being late, you estimate the month's allowance from the week's. Scientists and engineers estimate before they compute; a rough estimate in the right direction beats an exact calculation on wrong numbers. Most important: rounding trains your number sense, that feeling for whether a result is reasonable, the skill separating those who understand numbers from those who merely execute them."
+  },
+  {
+    "keys": [
+      "كيف اميز بين انواع الصخور",
+      "how to identify rock types"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Rock_(geology)",
+    "ar": "ابدأ بثلاث ملاحظات بسيطة. أولاً: هل ترى طبقات أو حبيبات رملية أو بقايا أصداف؟ غالباً رسوبي. ثانياً: هل الصخر متجانس بلوراته متشابكة بلا طبقات، أو به فقاعات غازية؟ فكّر في الناري (الفقاعات علامة حمم بردت بسرعة). ثالثاً: هل ترى خطوطاً متموجة ملتوية أو بلورات مضغوطة في اتجاه واحد؟ هذه بصمة التحول بالحرارة والضغط. أدوات مساعدة: الخدش بالظفر أو العملة يقيس الصلادة، وقطرة خل تفور على الحجر الجيري. وللتأكد استخدم كتيباً مصوراً أو تطبيق تعريف صخور، فالخبرة تتراكم بالمقارنة الميدانية.",
+    "en": "Start with three simple observations. First: do you see layers, sandy grains or shell remains? Probably sedimentary. Second: is the rock uniform with interlocking crystals and no layers, or does it have gas bubbles? Think igneous (bubbles mark quickly cooled lava). Third: do you see wavy twisted bands or crystals pressed in one direction? That is the fingerprint of transformation by heat and pressure. Helpful tools: scratching with a fingernail or coin gauges hardness, and a vinegar drop fizzes on limestone. For certainty use an illustrated guide or a rock-ID app; expertise builds through field comparison."
+  },
+  {
+    "keys": [
+      "هل القارات لسه بتتحرك",
+      "are continents still moving"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Plate_tectonics",
+    "ar": "نعم، تتحرك الآن بينما تقرأ هذه الكلمات! الأدلة مذهلة: أقمار GPS الاصطناعية تقيس مواقع محطات على قارات مختلفة فتجدها تتباعد فعلاً بضعة سنتيمترات سنوياً. المحيط الأطلسي يتسع ببطء دافعاً أمريكا بعيداً عن أوروبا وأفريقيا، والبحر الأحمر يتوسع مولداً محيطاً مستقبلياً، والهيمالايا تعلو مليمترات كل عام لأن الهند ما زالت تصطدم بآسيا. المستقبل البعيد؟ نماذج العلماء ترسم قارة عملاقة جديدة بعد 250 مليون سنة. الحركة بطيئة جداً لن نشعر بها، لكن آثارها حولنا: الزلازل والبراكين نبض هذه القارات المتحركة.",
+    "en": "Yes, they are moving right now as you read these words! The evidence is amazing: GPS satellites measure station locations on different continents and find them actually diverging a few centimeters yearly. The Atlantic Ocean is slowly widening, pushing America away from Europe and Africa; the Red Sea is expanding, birthing a future ocean; and the Himalayas rise millimeters yearly because India still collides with Asia. The far future? Scientists' models sketch a new supercontinent in 250 million years. The motion is too slow to feel, but its effects surround us: earthquakes and volcanoes are the pulse of these moving continents."
+  },
+  {
+    "keys": [
+      "ماذا افعل اثناء الزلزال",
+      "what to do during an earthquake",
+      "سلامة زلزال"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Earthquake",
+    "ar": "قواعد السلامة في ثلاث كلمات: انبط، احتم، تمسك. انبط على يديك وركبتك فوراً، احتم تحت طاولة قوية أو بجانب جدار داخلي بعيداً عن النوافذ والخزانات، وتمسك برجل الطاولة حتى تتوقف الهزة. لا تركض للخارج أثناء الاهتزاز فأغلب الإصابات من السقوط والزجاج المتطاير، ولا تستخدم المصعد أبداً. إن كنت خارجاً: ابتعد عن المباني والأعمدة والأسلاك لمنطقة مفتوحة. بعد التوقف: توقع توابع، افحص الغاز والكهرباء بحذر، واتبع تعليمات الدفاع المدني. جهز حقيبة طوارئ بيتك: ماء ومصباح وبطارية وإسعافات، فالاستعداد السابق ينقذ أرواحاً.",
+    "en": "Safety rules in three words: drop, cover, hold on. Drop to your hands and knees immediately, take cover under a sturdy table or beside an interior wall away from windows and cabinets, and hold the table leg until shaking stops. Do not run outside during shaking; most injuries come from falls and flying glass, and never use the elevator. If outdoors: move away from buildings, poles and wires to an open area. After it stops: expect aftershocks, check gas and electricity carefully, and follow civil defense instructions. Prepare a home emergency bag: water, flashlight, power bank and first aid, since prior preparation saves lives."
+  },
+  {
+    "keys": [
+      "هل البركان يمكن التنبؤ به",
+      "can volcanoes be predicted"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Volcano",
+    "ar": "ليس كتوقع الطقس باليوم والساعة، لكن العلماء يرصدون علامات إنذار مبكر قوية. مراصد البراكين تراقب: زلازل صغيرة متزايدة تحت البركان (الصهارة تصعد فتهز الصخور)، انتفاخ جوانب الجبل (مقاس بأقمار GPS)، تغير كمية ونوع الغازات الخارجة، وارتفاع حرارة الفوهة والينابيع القريبة. هذه العلامات مجتمعة أنقذت أرواحاً كثيرة: إجلاءات سبقت ثورات كبرى. لكن التوقيت الدقيق صعب؛ قد تهدأ العلامات دون ثورة أو تثور بسرعة فاجأة. لهذا يبني سكان المناطق البركانية حياتهم على خطط إخلاء جاهزة، ويثقون بتقارير المراصد الرسمية لا الشائعات.",
+    "en": "Not like forecasting weather by day and hour, but scientists monitor strong early-warning signs. Volcano observatories watch: increasing small earthquakes under the volcano (rising magma shaking rocks), swelling of the mountain's sides (measured by GPS satellites), changes in the amount and type of emitted gases, and rising temperatures at the crater and nearby springs. Together these signs saved many lives: evacuations preceded major eruptions. But precise timing is hard; signs may calm without eruption or erupt with startling speed. That is why volcanic-zone residents build their lives on ready evacuation plans and trust official observatory reports, not rumors."
+  },
+  {
+    "keys": [
+      "كيف يستخرج العلماء الحفريات",
+      "how do scientists dig up fossils"
+    ],
+    "src": "https://en.wikipedia.org/wiki/Fossil",
+    "ar": "استخراج الحفريات علم دقيق اسمه التنقيب، أبطأ وألطف مما تتخيل الأفلام! الخطوات: تحديد الموقع بالدراسات الجيولوجية (صخور رسوبية بعمر مناسب)، ثم مسح السطح بحثاً عن شظايا بارزة. عند الاكتشاف: توثيق فوتوغرافي وخرائط دقيقة قبل لمس أي شيء، ثم إزالة الصخور المحيطة بفرش وأزاميل صغيرة بصبر أيام وأسابيع. الحفرية الهشة تُغطى بجبس وخيش كجبيرة طبية لنقلها سليمة للمختبر، حيث تنظف بأدوات مجهرية أشهراً. كل حفرية تسجل برقم وموقع وطبقة، فالسياق نصف قيمتها العلمية: حفرية بلا سجل قصة بلا عنوان.",
+    "en": "Fossil extraction is a precise science called excavation, slower and gentler than films imagine! The steps: locate the site through geological studies (sedimentary rocks of suitable age), then sweep the surface for protruding fragments. On discovery: photographic documentation and precise maps before touching anything, then removing surrounding rock with brushes and small chisels, patiently for days and weeks. A fragile fossil is wrapped in plaster and burlap like a medical splint to reach the lab intact, where microscopic tools clean it for months. Every fossil is registered with a number, site and layer, since context is half its scientific value: a fossil without a record is a story without an address."
+  }
+
 ];
