@@ -2016,7 +2016,298 @@ MODELS.moonphases=function(){
  return {group:g,animate:function(t){g.rotation.x=0.25;g.rotation.y=Math.sin(t*0.00025)*0.15;},legend:{ar:['منظر علوي غير مقياسي؛ المواضع الأربعة أوقات مختلفة لا أربعة أقمار.','الشمس يميناً. تخيل المنظر من الأرض لفهم الأطوار.'],en:['Not-to-scale top view; four positions are different times, not four moons.','Sunlight from the right. Imagine the view from Earth to understand phases.']}};
 };
 
+// ---- v8 batch: programming, thanaweya, psychology, philosophy, math basics, geology ----
+
+MODELS.algorithms=function(){
+ var g=new THREE.Group();
+ g.add(L(cyl(0.02,2.2,0x94a3b8,0,0,-1.1,0,0,1.1),'المسار - ترتيب الخطوات','The path - step order'));
+ g.add(L(bx(1.5,0.5,0.7,0x22c55e,0,0.3,-1.5),'خطوة 1 - بداية','Step 1 - start'));
+ g.add(L(bx(1.5,0.5,0.7,0x3b82f6,0,0.3,0),'خطوة 2 - معالجة','Step 2 - process'));
+ g.add(L(bx(1.5,0.5,0.7,0xf59e0b,0,0.3,1.5),'خطوة 3 - نهاية','Step 3 - end'));
+ arr3(g,0,0.3,-1.1,0,0.3,-0.4,0x94a3b8,'انتقال للخطوة التالية','Move to next step');
+ arr3(g,0,0.3,0.4,0,0.3,1.1,0x94a3b8,'انتقال للخطوة التالية','Move to next step');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0004)*0.3;},legend:{ar:['الخوارزمية خطوات مرتبة تنفذ واحدة تلو الأخرى.','هذا مخطط مبسط لثلاث خطوات؛ الخوارزميات الواقعية أطول وتتفرع.'],en:['An algorithm is ordered steps executed one after another.','A simplified three-step flowchart; real algorithms are longer and branch.']}};
+};
+MODELS.variables=function(){
+ var g=new THREE.Group();
+ var data=[['x',0x3b82f6,-1.4],['y',0x22c55e,0],['name',0xf59e0b,1.4]];
+ data.forEach(function(d){
+  g.add(L(bx(1.1,0.8,0.8,d[1],d[2],0,0),'صندوق ذاكرة - المتغير '+d[0],'Memory box - variable '+d[0]));
+  g.add(L(sph(0.22,0xf8fafc,d[2],0.65,0),'القيمة المخزنة','The stored value'));
+ });
+ arr3(g,-1.4,0.95,0,-1.4,0.35,0.5,0x94a3b8,'الاسم يشير للقيمة','The name points to the value');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0004)*0.35;},legend:{ar:['المتغير اسم يشير إلى قيمة مخزنة في صندوق بالذاكرة.','تغيير القيمة لا يغير اسم الصندوق.'],en:['A variable is a name pointing to a value stored in a memory box.','Changing the value does not change the box name.']}};
+};
+MODELS.controlflow=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(1.3,0.5,0.6,0xf59e0b,0,0.9,0),'شرط - سؤال نعم أو لا','Condition - a yes or no question'));
+ arr3(g,-0.4,0.6,0,-1.4,-0.5,0,0x22c55e,'نعم - نفذ ثم كرر','Yes - run then repeat');
+ arr3(g,0.4,0.6,0,1.6,-0.5,0,0xef4444,'لا - اخرج من الحلقة','No - exit the loop');
+ g.add(L(bx(1.1,0.5,0.6,0x22c55e,-1.6,-0.8,0),'جسم الحلقة - التنفيذ','Loop body - the action'));
+ g.add(L(bx(1.1,0.5,0.6,0x64748b,1.8,-0.8,0),'ما بعد الحلقة','After the loop'));
+ var back=ring(0.5,0x22c55e,0.7);back.rotation.x=Math.PI/2;back.position.set(-1.6,-0.8,0);g.add(back);
+ return {group:g,animate:function(t){back.rotation.z=t*0.001;g.rotation.y=Math.sin(t*0.0003)*0.3;},legend:{ar:['الحلقة تسأل الشرط: نعم تنفذ وتعود، لا تخرج.','رسم مبسط لتدفق التحكم لا لغة برمجة محددة.'],en:['The loop asks its condition: yes runs and returns, no exits.','A simplified control-flow diagram, not a specific language.']}};
+};
+MODELS.binary=function(){
+ var g=new THREE.Group();
+ for(var i=0;i<8;i++){
+  var on=i%2===0;
+  g.add(L(bx(0.5,0.5,0.3,on?0x22c55e:0x334155,(i-3.5)*0.62,0,0),'بت '+(on?'1':'0')+' - خانة قيمتها '+Math.pow(2,7-i),'Bit '+(on?'1':'0')+' - place worth '+Math.pow(2,7-i)));
+ }
+ arr3(g,-2.2,0.6,0,2.2,0.6,0,0x94a3b8,'اتجاه قراءة الخانات','Reading direction of places');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0004)*0.25;},legend:{ar:['8 بتات تصنع بايتاً واحداً؛ كل خانة ضعف سابقتها.','الأخضر 1 والداكن 0؛ الأجهزة تخزن كل شيء بهذين الرمزين.'],en:['8 bits make one byte; each place doubles the previous.','Green is 1 and dark is 0; devices store everything in these two symbols.']}};
+};
+MODELS.internet=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(1.0,0.7,0.7,0x3b82f6,0,0.9,0),'خادم - يخزن المواقع','Server - stores websites'));
+ var devs=[[-1.8,-0.6,0xf59e0b,'حاسوب','Computer'],[1.8,-0.6,0x22c55e,'هاتف','Phone'],[0,-0.9,0x8b5cf6,'راوتر - موزع الاتصال','Router - connection hub']];
+ devs.forEach(function(d){
+  g.add(L(bx(0.8,0.55,0.5,d[2],d[0],d[1],0),d[3],d[4]));
+  arr3(g,d[0]*0.7,d[1]+0.35,0,0,0.5,0,0x94a3b8,'طلبات وردود عبر الشبكة','Requests and replies over the network');
+ });
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.00035)*0.35;},legend:{ar:['أجهزتك تطلب من الخوادم عبر الراوتر، والرد يعود بالمسار نفسه.','رسم مبسط؛ الإنترنت الحقيقي ملايين الخوادم والكابلات.'],en:['Your devices ask servers through the router, and replies return the same way.','A simplified drawing; the real internet is millions of servers and cables.']}};
+};
+
+MODELS.differentiation=function(){
+ var g=new THREE.Group();
+ var pts=[];for(var i=0;i<=40;i++){var x=-2+i*0.1;pts.push(new THREE.Vector3(x,0.25*x*x*x*0.3+x*0.2,0));}
+ var curve=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),40,0.04,8),new THREE.MeshStandardMaterial({color:0x3b82f6}));
+ g.add(L(curve,'المنحنى - دالة تتغير','The curve - a changing function'));
+ g.add(L(cyl(0.035,2.4,0xef4444,-0.4,0.35,0,1.2,0.9,0),'المماس - الميل عند نقطة','Tangent - slope at a point'));
+ g.add(L(sph(0.12,0xfbbf24,0.4,0.6,0),'نقطة التماس','Point of tangency'));
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.4;},legend:{ar:['التفاضل يقيس ميل المنحنى عند نقطة: سرعة تغير الدالة هناك.','المماس الأحمر يلامس المنحنى عند نقطة واحدة ويحمل ميلها.'],en:['Differentiation measures the curve slope at a point: the rate of change there.','The red tangent touches the curve at one point and carries its slope.']}};
+};
+MODELS.integration=function(){
+ var g=new THREE.Group();
+ for(var i=0;i<10;i++){
+  var x=(i-4.5)*0.32;var h=0.3+0.35*Math.sin(i*0.6)+0.25;
+  g.add(L(bx(0.28,h,0.3,0x3b82f6,x,h/2,0),'شريط ضيق - مساحة تقريبية','Narrow strip - approximate area'));
+ }
+ arr3(g,-1.6,1.5,0,1.6,1.5,0,0x22c55e,'نجمع مساحات الأشرطة','We sum the strip areas');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.4;},legend:{ar:['التكامل جمع مساحات أشرطة ضيقة جداً تحت المنحنى.','كلما ضاقت الأشرطة اقترب المجموع من المساحة الحقيقية.'],en:['Integration sums the areas of very narrow strips under a curve.','The narrower the strips, the closer the sum to the true area.']}};
+};
+MODELS.logarithms=function(){
+ var g=new THREE.Group();
+ var sizes=[0.3,0.55,1.0,1.8];
+ sizes.forEach(function(s,i){
+  g.add(L(bx(s,s*0.5,s,0x3b82f6,-2+i*1.35,s*0.25,0),'قيمة تتضاعف: '+Math.pow(2,i),'A doubling value: '+Math.pow(2,i)));
+  g.add(L(sph(0.13,0xfbbf24,-2+i*1.35,s*0.5+0.35,0),'أس يساوي '+i,'An exponent of '+i));
+ });
+ arr3(g,-2,1.5,0,2,1.5,0,0x94a3b8,'اللوغاريتم يسأل: كم مرة ضربنا؟','The logarithm asks: how many times did we multiply?');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.35;},legend:{ar:['اللوغاريتم عكس الأس: log2 لـ 8 يساوي 3 لأن 2^3 = 8.','الكرات الصفراء تعد مرات الضرب لا حجم الناتج.'],en:['A logarithm is the inverse of an exponent: log2 of 8 is 3 because 2^3 = 8.','The yellow balls count the multiplications, not the result size.']}};
+};
+MODELS.vectors=function(){
+ var g=new THREE.Group();
+ arr3(g,0,0,0,2.0,0,0,0x3b82f6,'مركبة أفقية - المحور السيني','Horizontal component - x axis');
+ arr3(g,2.0,0,0,2.0,1.4,0,0x22c55e,'مركبة رأسية - المحور الصادي','Vertical component - y axis');
+ arr3(g,0,0,0,2.0,1.4,0,0xef4444,'المتجه المحصل - الجمع','Resultant vector - the sum');
+ g.add(L(sph(0.12,0xfbbf24,0,0,0),'نقطة البداية','Starting point'));
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.3;g.rotation.x=0.15;},legend:{ar:['المتجه سهم له مقدار واتجاه، ويجمع بتركيب المركبات.','السهم الأحمر ناتج جمع الأزرق والأخضر (قاعدة المثلث).'],en:['A vector is an arrow with magnitude and direction, added by components.','The red arrow is the sum of blue and green (the triangle rule).']}};
+};
+MODELS.workenergy=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(3.2,0.15,1.2,0x94a3b8,0,-0.1,0),'سطح - يتحرك عليه الجسم','Surface - the body moves on it'));
+ var crate=L(bx(0.7,0.7,0.7,0xf59e0b,-1.2,0.32,0),'جسم - يكتسب طاقة حركة','Body - gaining kinetic energy');
+ g.add(crate);
+ arr3(g,-1.9,0.32,0,-1.45,0.32,0,0x22c55e,'قوة دفع ثابتة','A steady pushing force');
+ arr3(g,-0.8,0.9,0,0.4,0.9,0,0xef4444,'إزاحة - مسافة الحركة','Displacement - distance moved');
+ return {group:g,animate:function(t){crate.position.x=-1.2+((t*0.0004)%2.4);},legend:{ar:['الشغل = القوة × الإزاحة، ويتحول إلى طاقة حركة للجسم.','النموذج يهمل الاحتكاك تبسيطاً.'],en:['Work = force × displacement, turning into the body kinetic energy.','The model ignores friction for simplicity.']}};
+};
+
+MODELS.memory=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(1.0,0.6,0.6,0x38bdf8,-1.8,0,0),'ذاكرة حسية - لحظات','Sensory memory - moments'));
+ g.add(L(bx(1.2,0.7,0.7,0xf59e0b,0,0,0),'ذاكرة قصيرة - ثوانٍ','Short-term memory - seconds'));
+ g.add(L(bx(1.5,0.9,0.9,0x22c55e,2.0,0,0),'ذاكرة طويلة - سنوات','Long-term memory - years'));
+ arr3(g,-1.2,0,0,-0.7,0,0,0x94a3b8,'الانتباه ينقل المعلومة','Attention moves the information');
+ arr3(g,0.7,0,0,1.2,0,0,0x94a3b8,'التكرار يرسخ المعلومة','Repetition consolidates it');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.35;},legend:{ar:['نموذج مبسط لثلاثة مخازن للذاكرة يمر بها الحفظ.','الانتباه والتكرار والنوم عوامل ترسخ الانتقال للذاكرة الطويلة.'],en:['A simplified three-store model of memory stages.','Attention, repetition and sleep help move memories to long-term storage.']}};
+};
+MODELS.learning=function(){
+ var g=new THREE.Group();
+ var n1=L(sph(0.22,0x8b5cf6,-1,0.6,0),'خلية عصبية - مرسلة','Neuron - sender');g.add(n1);
+ var n2=L(sph(0.22,0x8b5cf6,1,0.6,0),'خلية عصبية - مستقبلة','Neuron - receiver');g.add(n2);
+ var link=L(cyl(0.05,2.0,0xf59e0b,-0.8,0.6,0,0.8,0.6,0),'مشبك عصبي - يقوى بالتدريب','Synapse - strengthens with practice');g.add(link);
+ arr3(g,-0.7,0.85,0,0.7,0.85,0,0x22c55e,'إشارات متكررة','Repeated signals');
+ return {group:g,animate:function(t){var s=1+0.3*Math.abs(Math.sin(t*0.001));link.scale.set(s,1,1);g.rotation.y=Math.sin(t*0.0003)*0.3;},legend:{ar:['التعلم يقوي الوصلات بين الخلايا العصبية مع التكرار.','رسم رمزي؛ المشابك الحقيقية فجوات تعبرها ناقلات كيميائية.'],en:['Learning strengthens connections between neurons with repetition.','Symbolic drawing; real synapses are gaps crossed by chemical messengers.']}};
+};
+MODELS.motivation=function(){
+ var g=new THREE.Group();
+ g.add(L(cyl(0.7,0.15,0x334155,0,0,0,0,0.15,0),'عدسة مقياس','Gauge base'));
+ var dial=L(cyl(0.6,0.06,0xf8fafc,0,0.2,0,0,0.26,0),'ميناء الدافعية','Motivation dial');g.add(dial);
+ var needle=L(bx(0.06,0.04,0.5,0xef4444,0,0.32,0.2),'مؤشر مستوى الدافعية','Motivation level needle');g.add(needle);
+ g.add(L(sph(0.18,0xfbbf24,1.3,0.6,0),'هدف - وقود الاستمرار','A goal - the fuel of persistence'));
+ arr3(g,0.9,0.55,0,0.4,0.35,0,0x94a3b8,'الهدف يرفع المؤشر','The goal raises the needle');
+ return {group:g,animate:function(t){needle.rotation.y=Math.sin(t*0.001)*0.7;},legend:{ar:['رسم رمزي: الدافعية ترتفع بوضوح الهدف وتنخفض بغيابه.','الدافعية الحقيقية مزيج داخلي وخارجي وليست عداداً واحداً.'],en:['A symbolic gauge: motivation rises with a clear goal and falls without one.','Real motivation blends inner and outer drivers; it is not a single meter.']}};
+};
+MODELS.development=function(){
+ var g=new THREE.Group();
+ var hs=[0.5,0.8,1.1,1.4];
+ hs.forEach(function(h,i){
+  g.add(L(bx(0.55,h,0.55,0x3b82f6,-1.4+i*0.95,h/2,0),'مرحلة نمو '+(i+1),'Growth stage '+(i+1)));
+  g.add(L(sph(0.16,0xfbbf24,-1.4+i*0.95,h+0.25,0),'قدرات المرحلة','Stage abilities'));
+ });
+ arr3(g,-1.4,1.9,0,1.5,1.9,0,0x94a3b8,'ترتيب المراحل مع الزمن','Stage order over time');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.3;},legend:{ar:['النمو النفسي يمر بمراحل مرتبة لكل منها قدرات مميزة.','الأعمدة رمزية؛ سرعات المراحل تختلف من شخص لآخر.'],en:['Psychological development passes ordered stages, each with its own abilities.','The bars are symbolic; stage timing varies from person to person.']}};
+};
+MODELS.thinking=function(){
+ var g=new THREE.Group();
+ g.add(L(sph(0.5,0x8b5cf6,0,0,0),'مركز التفكير - المشكلة','Thinking hub - the problem'));
+ var nodes=[[1.3,0.5,0,'تحليل','Analysis'],[-1.3,0.5,0,'مقارنة','Comparison'],[0,1.4,0,'استنتاج','Inference'],[0,-0.2,1.3,'خيال','Imagination'],[-0.9,-0.2,-1.0,'ذاكرة','Memory']];
+ nodes.forEach(function(n){
+  g.add(L(sph(0.22,0x22c55e,n[0],n[1],n[2]),n[3],n[4]));
+  g.add(L(cyl(0.03,Math.sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2]),0x94a3b8,0,0,0,n[0],n[1],n[2]),'وصلة فكرية','A thinking link'));
+ });
+ return {group:g,animate:function(t){g.rotation.y=t*0.0004;},legend:{ar:['التفكير شبكة عمليات: تحليل ومقارنة واستنتاج وخيال وذاكرة.','رسم رمزي لعمليات ذهنية لا لمناطق تشريحية في الدماغ.'],en:['Thinking is a network of operations: analysis, comparison, inference, imagination, memory.','A symbolic drawing of mental operations, not brain anatomy.']}};
+};
+
+MODELS.whatphilosophy=function(){
+ var g=new THREE.Group();
+ var arc=new THREE.Mesh(new THREE.TorusGeometry(0.7,0.14,12,40,Math.PI*1.35),new THREE.MeshStandardMaterial({color:0x8b5cf6,roughness:0.5}));
+ arc.rotation.z=Math.PI*0.82;arc.position.y=0.5;g.add(L(arc,'علامة الاستفهام - السؤال الكبير','Question mark - the big question'));
+ g.add(L(sph(0.14,0x8b5cf6,0,-0.15,0),'نقطة الاستفهام','Question mark dot'));
+ g.add(L(sph(0.3,0xfbbf24,1.6,0.3,0),'الحكمة - هدف الفلسفة','Wisdom - philosophy goal'));
+ arr3(g,0.4,0.1,0,1.2,0.25,0,0x94a3b8,'من السؤال إلى الحكمة','From question to wisdom');
+ return {group:g,animate:function(t){g.rotation.y=t*0.0005;},legend:{ar:['الفلسفة تبدأ بسؤال كبير وتنتهي بحكمة أعمق لا بإجابة جاهزة.','علامة الاستفهام رمز لمنهج التشكيك والفحص.'],en:['Philosophy starts with a big question and ends in deeper wisdom, not a ready answer.','The question mark symbolizes the method of doubt and examination.']}};
+};
+MODELS.logic=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(1.2,0.5,0.6,0x3b82f6,-1.3,0.6,0),'مقدمة كبرى','Major premise'));
+ g.add(L(bx(1.2,0.5,0.6,0x22c55e,-1.3,-0.3,0),'مقدمة صغرى','Minor premise'));
+ g.add(L(bx(1.4,0.6,0.7,0xf59e0b,1.3,0.15,0),'نتيجة لازمة','Necessary conclusion'));
+ arr3(g,-0.6,0.6,0,0.5,0.3,0,0x94a3b8,'استدلال','Inference');
+ arr3(g,-0.6,-0.3,0,0.5,0,0,0x94a3b8,'استدلال','Inference');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.35;},legend:{ar:['القياس: نتيجة لازمة إذا صدقت المقدمتان وسلم البناء.','بناء سليم بمقدمات كاذبة يضلل؛ افحص الاثنين معاً.'],en:['A syllogism: the conclusion follows if premises are true and form valid.','Valid form with false premises misleads; check both.']}};
+};
+MODELS.ethics=function(){
+ var g=new THREE.Group();
+ g.add(L(cyl(0.06,1.6,0x94a3b8,0,-0.8,0,0,0.8,0),'عمود الميزان','Scale pillar'));
+ var beam=L(bx(2.6,0.1,0.1,0xf59e0b,0,0.8,0),'كفة الميزان - الموازنة','Scale beam - the weighing');g.add(beam);
+ g.add(L(sph(0.28,0x3b82f6,-1.2,0.25,0),'كفة النتائج - النفعية','Outcomes pan - utilitarian'));
+ g.add(L(sph(0.28,0x22c55e,1.2,0.25,0),'كفة المبادئ - الواجب','Principles pan - duty'));
+ g.add(L(bx(0.9,0.12,0.9,0x64748b,0,-0.86,0),'قاعدة ثابتة','A steady base'));
+ return {group:g,animate:function(t){beam.rotation.z=Math.sin(t*0.0008)*0.06;},legend:{ar:['الأخلاق موازنة بين نتائج الفعل ومبادئه وفضيلة فاعله.','رسم رمزي؛ لا توجد نظرية واحدة اتفق عليها الجميع.'],en:['Ethics weighs an act outcomes against its principles and the doer virtue.','Symbolic; no single theory has won universal agreement.']}};
+};
+MODELS.epistemology=function(){
+ var g=new THREE.Group();
+ g.add(L(sph(0.25,0xef4444,-2,0.4,0),'نار الكهف - مصدر الظلال','Cave fire - the shadow source'));
+ g.add(L(bx(0.3,1.0,0.3,0x64748b,-0.8,0,0),'السجين - يراقب الجدار','The prisoner - watching the wall'));
+ var wall=L(bx(0.15,2.0,2.4,0x94a3b8,1.2,0.2,0),'جدار الظلال','Wall of shadows');g.add(wall);
+ g.add(L(sph(0.18,0x1e293b,1.0,0.5,0.4),'ظل يُحسب حقيقة','A shadow taken for truth'));
+ arr3(g,-1.6,0.4,0,0.9,0.5,0.3,0xf59e0b,'ضوء يصنع الظلال','Light casting shadows');
+ arr3(g,-0.6,-0.6,0,-1.6,-1.2,0,0x22c55e,'طريق الخروج للحقيقة','The way out to truth');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.3;},legend:{ar:['محاكاة رمزية لمثل كهف أفلاطون: الظلال ليست العالم كله.','التحقق من المصادر خروج معاصر من الكهف.'],en:['A symbolic take on Plato cave: shadows are not the whole world.','Verifying sources is a modern way out of the cave.']}};
+};
+MODELS.freewill=function(){
+ var g=new THREE.Group();
+ g.add(L(sph(0.2,0xfbbf24,0,0,0),'لحظة القرار','Moment of decision'));
+ arr3(g,0,0,0,1.6,0.8,0,0x22c55e,'اختيار ممكن','A possible choice');
+ arr3(g,0,0,0,1.6,-0.1,0,0x3b82f6,'اختيار ممكن','A possible choice');
+ arr3(g,0,0,0,1.6,-0.9,0,0xef4444,'اختيار ممكن','A possible choice');
+ g.add(L(bx(0.5,0.5,0.5,0x64748b,-1.4,0,0),'أسباب سابقة - ماضيك','Prior causes - your past'));
+ arr3(g,-1.1,0,0,-0.3,0,0,0x94a3b8,'تؤثر ولا تُجبر بالضرورة','Influences, perhaps without forcing');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.3;},legend:{ar:['حرية الإرادة: هل تتفرع المسارات حقاً أم أن مساراً واحداً محسوم؟','رسم للمسألة لا حل لها؛ الفلاسفة مختلفون منذ قرون.'],en:['Free will: do paths truly branch, or is one path already settled?','A drawing of the question, not its answer; philosophers disagree.']}};
+};
+
+MODELS.placevalue=function(){
+ var g=new THREE.Group();
+ var cols=[['مئات','Hundreds',2,0xef4444],['عشرات','Tens',0,0xf59e0b],['آحاد','Ones',-2,0x22c55e]];
+ cols.forEach(function(c){
+  g.add(L(bx(1.0,0.12,1.0,c[2],c[1],0,0),'خانة '+c[0],c[1]+' place'));
+ });
+ for(var i=0;i<3;i++)g.add(L(bx(0.28,0.28,0.28,0xef4444,2-0.3+(i%3)*0.3,0.3,-0.2),'مئة كاملة - 100','One hundred - 100'));
+ for(var j=0;j<6;j++)g.add(L(bx(0.1,0.1,0.5,0xf59e0b,0-0.25+(j%3)*0.25,0.3,-0.2+Math.floor(j/3)*0.4),'عشرة - 10','A ten - 10'));
+ for(var k=0;k<5;k++)g.add(L(sph(0.12,0x22c55e,-2-0.25+(k%3)*0.25,0.25,-0.2+Math.floor(k/3)*0.35),'واحد - 1','A one - 1'));
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.35;},legend:{ar:['العدد 365: ثلاث مئات وست عشرات وخمسة آحاد.','كل خانة تساوي عشر أمثال التي على يمينها.'],en:['The number 365: three hundreds, six tens and five ones.','Each place is worth ten times the one on its right.']}};
+};
+MODELS.multdivision=function(){
+ var g=new THREE.Group();
+ for(var r=0;r<4;r++)for(var c=0;c<3;c++){
+  g.add(L(sph(0.2,0x3b82f6,(c-1)*0.55,0.25,(r-1.5)*0.55),'عنصر في مصفوفة 4×3','An item in a 4 by 3 array'));
+ }
+ arr3(g,-1.3,0.8,0,1.3,0.8,0,0x94a3b8,'4 صفوف × 3 أعمدة = 12','4 rows x 3 columns = 12');
+ arr3(g,0,-0.5,1.4,0,-0.5,0.4,0xf59e0b,'القسمة توزعها بالتساوي','Division shares them equally');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.4;},legend:{ar:['12 كرة في 4 صفوف و3 أعمدة: الضرب يبني المصفوفة.','القسمة عكسه: توزيع 12 على 4 مجموعات متساوية.'],en:['12 balls in 4 rows and 3 columns: multiplication builds the array.','Division reverses it: sharing 12 into 4 equal groups.']}};
+};
+MODELS.shapes2d=function(){
+ var g=new THREE.Group();
+ var tri=new THREE.Mesh(new THREE.CylinderGeometry(0.8,0.8,0.12,3),new THREE.MeshStandardMaterial({color:0xef4444,roughness:0.5}));
+ tri.position.set(-1.6,0.06,0);g.add(L(tri,'مثلث - 3 أضلاع و180 درجة','Triangle - 3 sides, 180 degrees'));
+ g.add(L(bx(1.3,0.12,1.3,0x22c55e,0,0.06,0),'مربع - أضلاع متساوية','Square - equal sides'));
+ var cir=L(cyl(0.75,0.12,0x3b82f6,1.6,0.06,0,1.6,0.18,0),'دائرة - نصف قطر ثابت','Circle - constant radius');g.add(cir);
+ arr3(g,1.6,0.3,0,1.6,0.3,0.75,0xfbbf24,'نصف القطر','Radius');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.35;},legend:{ar:['ثلاثة أشكال أساسية تختلف في الأضلاع والزوايا.','المحيط طول الحدود، والمساحة السطح الداخلي.'],en:['Three basic shapes differing in sides and angles.','Perimeter is the border length; area is the inner surface.']}};
+};
+MODELS.measurement=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(3.4,0.1,0.5,0xf59e0b,0,0,0),'مسطرة مترية','A metric ruler'));
+ for(var i=0;i<=10;i++){
+  var h=i%5===0?0.42:0.25;
+  g.add(L(bx(0.04,0.04,h,0x1e293b,-1.6+i*0.32,0.08,0),'علامة قياس','A tick mark'));
+ }
+ g.add(L(bx(0.9,0.3,0.3,0x3b82f6,-1.15,0.25,0),'جسم يُقاس طوله','A measured object'));
+ arr3(g,-1.6,0.5,0,-0.7,0.5,0,0x94a3b8,'طول الجسم بالوحدة','Object length in the unit');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.3;},legend:{ar:['القياس مقارنة طول الجسم بوحدة متفق عليها كالمتر.','العلامات الكبيرة كل 5 وحدات للقراءة السريعة.'],en:['Measurement compares an object length to an agreed unit like the meter.','Larger ticks every 5 units speed up reading.']}};
+};
+MODELS.rounding=function(){
+ var g=new THREE.Group();
+ g.add(L(cyl(0.03,4.4,0x94a3b8,-2.2,0,0,2.2,0,0),'خط الأعداد','Number line'));
+ for(var i=0;i<=4;i++)g.add(L(sph(0.09,0x64748b,-2+i*1,0,0),(40+i*5)+'',''+(40+i*5)));
+ g.add(L(sph(0.16,0xef4444,-0.6,0,0),'47 قبل التقريب','47 before rounding'));
+ arr3(g,-0.6,0.35,0,0,0.35,0,0x22c55e,'أقرب عشرة: 50','Nearest ten: 50');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.3;},legend:{ar:['47 أقرب إلى 50 منها إلى 40 لأن 7 أكبر من 5.','التقريب يبسط العدد مع بقائه قريباً من قيمته.'],en:['47 is nearer to 50 than to 40 because 7 is above 5.','Rounding simplifies a number while keeping it close to its value.']}};
+};
+
+MODELS.rocks=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(0.9,0.9,0.9,0x78716c,-1.7,0.45,0),'صخر ناري - بلورات متشابكة','Igneous - interlocked crystals'));
+ for(var i=0;i<4;i++)g.add(L(bx(1.0,0.22,0.9,[0xd6c9a8,0xb8a888,0xcbb897,0xa89878][i],0,0.11+i*0.22,0),'صخر رسوبي - طبقة متراكمة','Sedimentary - stacked layer'));
+ g.add(L(bx(0.9,0.9,0.9,0x9d7bb8,1.7,0.45,0,{metalness:0.3}),'صخر متحول - أعادت الحرارة تشكيله','Metamorphic - reshaped by heat'));
+ return {group:g,animate:function(t){g.rotation.y=t*0.0004;},legend:{ar:['ثلاث عائلات: ناري من صهارة، رسوبي طبقات، متحول بحرارة وضغط.','الألوان رمزية؛ التمييز الحقيقي يحتاج ملمساً وتركيباً.'],en:['Three families: igneous from magma, sedimentary in layers, metamorphic by heat and pressure.','Colors are symbolic; real identification needs texture and composition.']}};
+};
+MODELS.tectonics=function(){
+ var g=new THREE.Group();
+ var p1=L(bx(2.2,0.25,1.6,0x8d6e63,-1.3,0,0),'صفيحة تكتونية - تتحرك','Tectonic plate - moving');g.add(p1);
+ var p2=L(bx(2.2,0.25,1.6,0xa1887f,1.3,0,0),'صفيحة تكتونية - تصطدم','Tectonic plate - colliding');g.add(p2);
+ g.add(L(bx(0.5,0.8,1.2,0x64748b,0,0.4,0),'حافة مرتفعة - جبل ناشئ','Raised edge - a rising mountain'));
+ arr3(g,-2.6,0.3,0,-1.8,0.3,0,0xef4444,'اتجاه الحركة','Direction of motion');
+ arr3(g,2.6,0.3,0,1.8,0.3,0,0xef4444,'اتجاه الحركة','Direction of motion');
+ return {group:g,animate:function(t){var d=Math.sin(t*0.0006)*0.15;p1.position.x=-1.3+d;p2.position.x=1.3-d;},legend:{ar:['عند تصادم صفيحتين ترتفع الحواف مكونة جبالاً كالهيمالايا.','الحركة الحقيقية بضعة سنتيمترات في السنة.'],en:['When two plates collide, edges rise into mountains like the Himalayas.','Real motion is a few centimeters per year.']}};
+};
+MODELS.earthquakes=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(4.0,0.3,2.0,0x8d6e63,0,0,0),'قشرة الأرض عند صدع','Earth crust at a fault'));
+ g.add(L(bx(0.12,0.5,2.0,0x1e293b,0.2,0.1,0),'الصدع - مكان الكسر','The fault - where it breaks'));
+ var w1=ring(0.7,0xef4444,0.8);w1.rotation.x=Math.PI/2;w1.position.y=0.2;g.add(L(w1,'موجة زلزالية - تنتشر','Seismic wave - spreading'));
+ var w2=ring(1.2,0xf59e0b,0.5);w2.rotation.x=Math.PI/2;w2.position.y=0.2;g.add(L(w2,'موجة تالية أضعف','A later weaker wave'));
+ g.add(L(sph(0.15,0xfbbf24,0.2,-0.5,0),'البؤرة - منطلق الطاقة','Focus - energy origin'));
+ return {group:g,animate:function(t){g.position.x=Math.sin(t*0.01)*0.03;g.rotation.y=Math.sin(t*0.0002)*0.2;},legend:{ar:['الطاقة المتراكمة تنطلق موجات من البؤرة فتهز السطح.','الاهتزاز في النموذج مبالغ فيه للتوضيح.'],en:['Stored energy releases as waves from the focus, shaking the surface.','The shaking here is exaggerated for illustration.']}};
+};
+MODELS.volcanoes=function(){
+ var g=new THREE.Group();
+ var cone=new THREE.Mesh(new THREE.CylinderGeometry(0.25,1.6,1.6,24),new THREE.MeshStandardMaterial({color:0x78716c,roughness:0.9}));
+ cone.position.y=0.8;g.add(L(cone,'مخروط البركان - رماد وحمم متراكمة','Volcano cone - piled ash and lava'));
+ g.add(L(cyl(0.22,0.5,0xef4444,0,1.55,0,0,2.05,0),'فوهة - مخرج الثورة','Crater - the eruption vent'));
+ var lava=[];
+ for(var i=0;i<7;i++){var p=L(sph(0.1,0xf97316,(i-3)*0.14,2.3,0),'رذاذ حمم','Lava spray');lava.push(p);g.add(p);}
+ g.add(L(bx(4.0,0.12,3.0,0xa1887f,0,-0.06,0),'سطح الأرض','Ground surface'));
+ return {group:g,animate:function(t){lava.forEach(function(p,k){p.position.y=2.3+((k*0.3+t*0.001)%1.6);p.position.x=(k-3)*0.14*(1+(p.position.y-2.3)*0.6);});g.rotation.y=t*0.0003;},legend:{ar:['الضغط يدفع الصهارة من الفوهة حمماً ورماداً.','الثورة الحقيقية أعنف بكثير؛ هذا نموذج تعليمي آمن.'],en:['Pressure pushes magma out of the crater as lava and ash.','Real eruptions are far more violent; this is a safe teaching model.']}};
+};
+MODELS.fossils=function(){
+ var g=new THREE.Group();
+ g.add(L(bx(2.4,0.3,1.4,0xcbb897,0,0.15,0),'طبقة صخرية علوية','Upper rock layer'));
+ g.add(L(bx(2.4,0.3,1.4,0xa89878,0,-0.15,0),'طبقة أقدم - مكان الحفرية','Older layer - fossil home'));
+ g.add(L(cyl(0.06,1.1,0xf8fafc,-0.5,0.0,0,0.6,0.0,0),'عظمة متحجرة','Fossilized bone'));
+ g.add(L(sph(0.12,0xf8fafc,-0.6,0,0),'نهاية العظمة','Bone end'));
+ g.add(L(sph(0.12,0xf8fafc,0.7,0,0),'نهاية العظمة','Bone end'));
+ arr3(g,0,0.5,0,0,0.25,0,0x94a3b8,'الطبقات تدفن البقايا عبر الزمن','Layers bury remains over time');
+ return {group:g,animate:function(t){g.rotation.y=Math.sin(t*0.0003)*0.35;},legend:{ar:['البقايا المدفونة سريعاً تتحجر باستبدال المعادن بها عبر ملايين السنين.','موضع الحفرية بين الطبقات يحدد عمرها التقريبي.'],en:['Quickly buried remains petrify as minerals replace them over millions of years.','A fossil position between layers sets its approximate age.']}};
+};
+
 var MAP = { cell:'cell', dna:'dna', atom:'atom', heart:'heart', water:'water', solar:'solar', kidney:'kidney', photosynthesis:'photosynthesis', nervous:'nervous', digestion:'digestion', blood:'blood', organelles:'organelles', tissues:'tissues', skeleton:'skeleton', muscles:'muscles', respiration:'respiration', immunity:'immunity', genetics:'genetics', evolution:'evolution', ecology:'ecology', enzymes:'enzymes', virus:'virus', brain:'brain', senses:'senses', endocrine:'endocrine', pollination:'pollination', skin:'skin', circulation:'circulation', microbiome:'microbiome', fungi:'fungi', plants:'plants', protein:'protein', neurons:'neurons', sleep:'sleep', allergy:'allergy', teeth:'teeth', homeostasis:'homeostasis', recursion:'recursion', gravity:'gravity', neural:'neural', bacteria:'bacteria', waves:'waves', triangles:'triangles', electricity:'electricity', magnetism:'magnetism', optics:'optics', motion:'motion', energy:'energy', sound:'sound', heat:'heat', buoyancy:'buoyancy', machines:'machines', pressure:'pressure', periodic:'periodic', bonds:'bonds', acidbase:'acidbase', reactions:'reactions', states:'states', solutions:'solutions', metals:'metals', organic:'organic', electrochem:'electrochem', gases:'gases' };
+
+Object.assign(MAP,{algorithms:'algorithms',variables:'variables',controlflow:'controlflow',binary:'binary',internet:'internet',differentiation:'differentiation',integration:'integration',logarithms:'logarithms',vectors:'vectors',workenergy:'workenergy',memory:'memory',learning:'learning',motivation:'motivation',development:'development',thinking:'thinking',whatphilosophy:'whatphilosophy',logic:'logic',ethics:'ethics',epistemology:'epistemology',freewill:'freewill',placevalue:'placevalue',multdivision:'multdivision',shapes2d:'shapes2d',measurement:'measurement',rounding:'rounding',rocks:'rocks',tectonics:'tectonics',earthquakes:'earthquakes',volcanoes:'volcanoes',fossils:'fossils'});
+
 
 var LEGEND_FIXES={
 atom:{ar:['الأحمر: نواة، والأزرق: إلكترونات.','الدوائر تمثيل لمستويات الطاقة وليست مسارات حرفية.'],en:['Red: nucleus; blue: electrons.','Circles symbolize energy levels, not literal electron paths.']},
