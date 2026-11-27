@@ -294,3 +294,30 @@ body[data-age=university] .stat-cards b{color:#1d4ed8}
 /* Dual listen buttons */
 .tts-row{display:inline-flex;gap:8px;flex-wrap:wrap}
 .tts-dual{font-size:13px;padding:8px 14px}
+
+/* ===== University stage (v14): academic briefs ===== */
+.uni-badge{display:inline-block;background:#e3ecf9;color:#1d4ed8;border-radius:999px;padding:4px 14px;font-size:12.5px;font-weight:800}
+.uni-head{margin-bottom:14px}
+.uni-text{max-width:74ch;line-height:2.05;font-size:17px;color:#16233a}
+body[data-age=university] .lesson-body{white-space:normal;font-size:16.5px;border-radius:16px;padding:28px 30px}
+.uni-terms{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.uni-terms b{display:block;font-size:13.5px;color:var(--muted);margin-bottom:10px;letter-spacing:.3px}
+.term-row{display:flex;flex-wrap:wrap;gap:8px}
+.term{background:#f1f5fb;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:600;color:#233a5c}
+.uni-refs .ref-item{display:block;font-size:14.5px;color:#33475f;padding:3px 0}
+.uni-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.uni-cat{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.uni-cat b{font-size:16px;color:var(--ink)}
+.uni-cat span{font-size:12.5px;color:var(--muted)}
+.uni-cat:hover{border-color:#b9c9dd}
+.uni-card h3{font-size:18px}
+.uni-card p{font-size:14px;line-height:1.85}
+body[data-age=university] .uni-hero{border-radius:18px}
+@media(max-width:520px){
+  .stats{gap:16px 24px}
+  .stats>div{flex:1 1 40%}
+  body[data-age=university] .lesson-body{padding:22px 18px}
+  .uni-text{font-size:16px;line-height:1.95}
+  .uni-cats{grid-template-columns:repeat(2,1fr)}
+}
+.uni-text-en{line-height:1.8}
