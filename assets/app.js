@@ -10,6 +10,24 @@ const store = {
 let lang = store.get('lang','ar');
 let age  = store.get('age',null);       // child | teen | university
 const AGE_LABEL = {child:['طفل','Child'], teen:['مراهق','Teen'], university:['جامعي','University']};
+// Per-age experience: tab order, default tab, voice pace, and tone. Teen keeps the original defaults.
+const AGE_META = {
+  child:{tabs:['story','explain','quiz','video','d3'], defTab:'story', rate:0.88, pitch:1.15,
+    heroEyebrow:['مغامرة التعلّم · ٢٠٢٦','Learning adventure · 2026'],
+    heroSub:['حكايات وألعاب وكويزات بالعربي والإنجليزي، ومجسمات تلعب فيها بصوابعك. اختاري حكاية وابدئي المغامرة!','Stories, games and quizzes in Arabic and English, with models you can play with. Pick a story and start the adventure!'],
+    greet:['أهلاً يا بطل! أنا مرشد إديوبرج. اسألني عن أي حاجة، أو دوس على سؤال من اللي تحت.','Hello, hero! I am the EduBridge mentor. Ask me anything, or tap a question below.'],
+    sugg:[['إيه هو البركان؟','ليه السما لونها أزرق؟','احكيلي عن الديناصورات','إزاي النحلة بتعمل عسل؟'],['What is a volcano?','Why is the sky blue?','Tell me about dinosaurs','How do bees make honey?']],
+    closers:[['برافو عليك! سؤالك كان جميل جداً ⭐','أنت بطل! خليك دايماً بتسأل ليه 🌟','عاش! كل سؤال بتسأله بيكبّر عقلك 🎈'],['Well done! That was a lovely question ⭐','You are a star! Keep asking why 🌟','Yay! Every question you ask grows your brain 🎈']]},
+  teen:{tabs:['explain','story','quiz','video','d3'], defTab:'explain', rate:0.95, pitch:1.05},
+  university:{tabs:['explain','story','quiz','video','d3'], defTab:'explain', rate:1.0, pitch:1.0,
+    heroEyebrow:['منصة تعلّم موثقة · ٢٠٢٦','A sourced learning platform · 2026'],
+    heroSub:['شروحات موثقة بالمصادر بالعربية والإنجليزية، مع نماذج تفاعلية ومرشد موجه وروابط للتعمق الأكاديمي.','Source-cited explanations in Arabic and English, with interactive models, a guided mentor and links for deeper academic reading.'],
+    greet:['أهلاً بك. أنا مرشد إديوبرج الموجه؛ أجيب من محتوى موثق بالمصادر عن موضوعات المكتبة.','Welcome. I am the EduBridge guided mentor; I answer from source-cited content on the library topics.'],
+    sugg:[['اشرح لي الذكاء الاصطناعي بأسلوب بسيط','ساعدني في بحث عن الطاقة المتجددة','ما هي مراحل الانقسام الاختزالي؟','لخص لي نظرية المعرفة'],['Explain artificial intelligence simply','Help me outline research on renewable energy','What are the stages of meiosis?','Summarize epistemology']],
+    closers:[['بالتوفيق في دراستك.','إجابة موثقة يمكنك الاعتماد عليها في مذاكرتك.','راجع المصدر المرفق لمزيد من التفصيل.'],['Good luck with your studies.','A sourced answer you can rely on.','Check the attached source for more detail.']]}
+};
+function ageMeta(){ return AGE_META[age||'teen'] || AGE_META.teen; }
+function applyAge(){ document.body.dataset.age = age||'teen'; }
 
 // ---------- i18n ----------
 function applyLang(){
@@ -23,6 +41,7 @@ function applyLang(){
   document.getElementById('langEn').classList.toggle('active', lang==='en');
   document.getElementById('ageChip').textContent = age ? AGE_LABEL[age][lang==='ar'?0:1] : (lang==='ar'?'المرحلة العمرية':'Age stage');
   document.title = lang==='ar' ? 'EduBridge ,  مرشد تعلّم للمواضيع المتاحة' : 'EduBridge ,  A guided mentor for covered topics';
+  applyAge();
 }
 function setLang(l){ lang=l; store.set('lang',l); applyLang(); route(); }
 
@@ -41,10 +60,13 @@ function ttsSpeak(text, btn, speechLang){
   const u = new SpeechSynthesisUtterance(text);
   u.lang = speechLang==='ar' ? 'ar-SA' : 'en-US';
   const vs = speechSynthesis.getVoices();
-  const v = vs.find(x=>x.lang && x.lang.toLowerCase().startsWith(speechLang));
+  const pref = speechLang==='ar' ? ['ar-eg','ar-sa','ar'] : ['en-us','en-gb','en'];
+  let v=null;
+  for(const p of pref){ v = vs.find(x=>x.lang && x.lang.toLowerCase().startsWith(p)); if(v) break; }
   if(v) u.voice = v;
-  u.rate = 0.95;   // friendly teacher pace
-  u.pitch = 1.05;
+  const _m=ageMeta();
+  u.rate = _m.rate;   // age-tuned teacher pace
+  u.pitch = _m.pitch;
   if(btn){
     btn.classList.add('playing');
     btn.textContent = lang==='ar' ? '⏹ إيقاف' : '⏹ Stop';
@@ -77,11 +99,11 @@ function obStep2(l){
   body.innerHTML = `
     <span class="step-tag">${lang==='ar'?'الخطوة ٢ من ٢ · المرحلة':'Step 2 of 2 · Stage'}</span>
     <h3>${lang==='ar'?'اختيار المرحلة العمرية':'Choose your age stage'}</h3>
-    <p>${lang==='ar'?'اختر مرحلتك لتسجيلها على هذا الجهاز. المحتوى الحالي مشترك بين المراحل، ويمكنك تغيير اختيارك لاحقاً.':'Choose a stage to save on this device. Current lesson content is shared across stages; you can change this later.'}</p>
+    <p>${lang==='ar'?'الشكل والصوت وأسلوب الشرح يتكيّفون مع المرحلة التي تختارها، ويمكنك تغييرها في أي وقت.':'The look, voice and teaching style adapt to the stage you choose, and you can change it anytime.'}</p>
     <div class="choice-row">
-      <button data-age="child">${lang==='ar'?'طفل ٦-١١':'Child 6-11'}</button>
-      <button data-age="teen">${lang==='ar'?'مراهق ١٢-١٧':'Teen 12-17'}</button>
-      <button data-age="university">${lang==='ar'?'جامعي ١٨+':'University 18+'}</button>
+      <button data-age="child">${lang==='ar'?'🧒 طفل ٦-١١':'🧒 Child 6-11'}</button>
+      <button data-age="teen">${lang==='ar'?'🎧 مراهق ١٢-١٧':'🎧 Teen 12-17'}</button>
+      <button data-age="university">${lang==='ar'?'🎓 جامعي ١٨+':'🎓 University 18+'}</button>
     </div>`;
   body.querySelectorAll('[data-age]').forEach(b=>b.onclick=()=>{
     age=b.dataset.age; store.set('age',age);
@@ -112,7 +134,7 @@ function mentorAnswer(q){
   }
   if(authored){
     const rel=authored.src && LESSONS.find(L=>L.src===authored.src);
-    return {text:lang==='ar'?authored.ar:authored.en,src:authored.src||null,urgent:!!authored.urgent,model:(rel&&window.EB3D&&EB3D.available(rel.id))?rel.id:null};
+    return {text:lang==='ar'?authored.ar:authored.en,textAr:authored.ar,textEn:authored.en,src:authored.src||null,urgent:!!authored.urgent,model:(rel&&window.EB3D&&EB3D.available(rel.id))?rel.id:null};
   }
   // 2) lesson explanations - prefer the longest matching title so "عضيات الخلية" beats "الخلية"
   let best=null, bestLen=0;
@@ -122,19 +144,16 @@ function mentorAnswer(q){
     if(hit && hit.length>bestLen){ best=L; bestLen=hit.length; }
   }
   if(best){
-    const intro = lang==='ar' ? `سؤالك عن ${best.title}. إليك شرحاً مبسطاً:` : `You asked about ${best.titleEn}. Here is a simple explanation:`;
-    return {text: intro+'\n\n'+(lang==='ar'?best.ar:best.en), src: best.src||null, model: (window.EB3D && EB3D.available(best.id)) ? best.id : null};
+    const tAr = `سؤالك عن ${best.title}. إليك شرحاً مبسطاً:`+'\n\n'+best.ar;
+    const tEn = `You asked about ${best.titleEn}. Here is a simple explanation:`+'\n\n'+best.en;
+    return {text: lang==='ar'?tAr:tEn, textAr:tAr, textEn:tEn, src: best.src||null, model: (window.EB3D && EB3D.available(best.id)) ? best.id : null};
   }
   // 3) honest fallback, suggesting the closest covered topics
   const words = s.split(/[^a-z\u0621-\u064a0-9]+/).filter(w=>w.length>3);
   const close = LESSONS.filter(L=>words.some(w=>(L.title+' '+L.titleEn+' '+L.ar+' '+L.en).toLowerCase().includes(w))).slice(0,3).map(L=>L.id);
-  return {
-    text: lang==='ar'
-      ? 'لا أملك إجابة موثوقة عن هذا السؤال بعد. أنا مرشد مُوجَّه أجيب من محتوى مكتوب بعناية، ولست ذكاءً اصطناعياً حياً.\n\nجرّب أحد الأسئلة المقترحة، أو افتح أقرب موضوع لسؤالك من المكتبة:'
-      : 'I do not have a reliable answer for that yet. I am a guided mentor answering from carefully written content, not a live AI.\n\nTry one of the suggested questions, or open the closest library topic to your question:',
-    src: null,
-    chips: close.length ? close : ['cell','atom','gravity']
-  };
+  const fbAr = 'لا أملك إجابة موثوقة عن هذا السؤال بعد. أنا مرشد مُوجَّه أجيب من محتوى مكتوب بعناية، ولست ذكاءً اصطناعياً حياً.\n\nجرّب أحد الأسئلة المقترحة، أو افتح أقرب موضوع لسؤالك من المكتبة:';
+  const fbEn = 'I do not have a reliable answer for that yet. I am a guided mentor answering from carefully written content, not a live AI.\n\nTry one of the suggested questions, or open the closest library topic to your question:';
+  return { text: lang==='ar'?fbAr:fbEn, textAr:fbAr, textEn:fbEn, src: null, chips: close.length ? close : ['cell','atom','gravity'] };
 }
 
 // ---------- Views ----------
@@ -142,12 +161,13 @@ const app = document.getElementById('app');
 const esc = s=>s.replace(/</g,'&lt;');
 
 function viewHome(){
+  const m=ageMeta(), li=lang==='ar'?0:1;
   const chips = LESSONS.slice(0,6).map(L=>`<button data-topic="${L.id}">${L.emoji} ${lang==='ar'?L.title:L.titleEn}</button>`).join('');
   app.innerHTML = `
   <section class="hero">
-    <span class="eyebrow">${lang==='ar'?'مرشد المستقبل · ٢٠٢٦':'Mentor of the future · 2026'}</span>
+    <span class="eyebrow">${m.heroEyebrow?m.heroEyebrow[li]:(lang==='ar'?'مرشد المستقبل · ٢٠٢٦':'Mentor of the future · 2026')}</span>
     <h1>${lang==='ar'?'اسأل وجرّب.<br><span class="grad">وافهم خطوة بخطوة.</span>':'Ask and explore.<br><span class="grad">Learn step by step.</span>'}</h1>
-    <p class="sub">${lang==='ar'?'شروحات وقصص وكويزات بالعربية والإنجليزية للمواضيع المتاحة، مع نماذج تعليمية تفاعلية ومرشد موجه من محتوى مؤلف.':'Arabic and English explanations, stories and quizzes for covered topics, with interactive teaching models and an authored guided mentor.'}</p>
+    <p class="sub">${m.heroSub?m.heroSub[li]:(lang==='ar'?'شروحات وقصص وكويزات بالعربية والإنجليزية للمواضيع المتاحة، مع نماذج تعليمية تفاعلية ومرشد موجه من محتوى مؤلف.':'Arabic and English explanations, stories and quizzes for covered topics, with interactive teaching models and an authored guided mentor.')}</p>
     <div class="askbar">
       <input id="heroQ" placeholder="${lang==='ar'?'اسأل عن موضوع من المكتبة، مثل الخلية أو الكهرباء':'Ask about a library topic, such as cells or electricity'}">
       <button class="btn-grad" id="heroGo">${lang==='ar'?'ابدأ الآن':'Start now'}</button>
@@ -237,18 +257,30 @@ function viewLesson(id, startTab){
     <h2>${L.emoji} ${lang==='ar'?L.title:L.titleEn}</h2>
     <span class="tag">${lang==='ar'?L.cat:L.catEn}</span>
     <p><a class="src-link" target="_blank" rel="noopener" href="${esc(L.src)}">${lang==='ar'?'المصدر: ':'Source: '}${esc(new URL(L.src).hostname.replace(/^www\./,''))}</a></p>
-    <div class="lesson-tabs" id="lessonTabs">
-      <button class="active" data-tab="explain">${lang==='ar'?'الشرح':'Explanation'}</button>
-      <button data-tab="story">${lang==='ar'?'القصة':'Story'}</button>
-      <button data-tab="quiz">${lang==='ar'?'الكويز':'Quiz'}</button>
-      <button data-tab="video">${lang==='ar'?'فيديو':'Video'}</button>
-      ${window.EB3D&&EB3D.available(id)?`<button data-tab="d3">${lang==='ar'?'نموذج 3D':'3D model'}</button>`:''}
-    </div>
+    <div class="lesson-tabs" id="lessonTabs"></div>
     <div class="lesson-body" id="lessonBody"></div>
   </section>`;
   const body = document.getElementById('lessonBody');
+  const TAB_LABEL = age==='child'
+    ? {story:['📖 الحكاية','📖 Story'],explain:['🔍 التفصيل','🔍 Details'],quiz:['🎯 اللعبة','🎯 Game'],video:['🎬 فيديو','🎬 Video'],d3:['🧊 المجسم','🧊 The model']}
+    : {explain:['الشرح','Explanation'],story:['القصة','Story'],quiz:['الكويز','Quiz'],video:['فيديو','Video'],d3:['نموذج 3D','3D model']};
+  const hasD3 = window.EB3D&&EB3D.available(id);
+  const tabOrder = ageMeta().tabs.filter(t=>t!=='d3'||hasD3);
+  document.getElementById('lessonTabs').innerHTML = tabOrder.map((t,i)=>`<button${i===0?' class="active"':''} data-tab="${t}">${TAB_LABEL[t][lang==='ar'?0:1]}</button>`).join('');
   const tabs = {
-    explain: ()=> esc(lang==='ar'?L.ar:L.en),
+    explain: ()=>{
+      let html='';
+      if(age==='child' && window.KID_NOTES && KID_NOTES[id]){
+        const kn=KID_NOTES[id];
+        html+=`<div class="kid-box"><b>${lang==='ar'?'💡 الفكرة ببساطة':'💡 The simple idea'}</b><p>${esc(lang==='ar'?kn.ar:kn.en)}</p></div>`;
+      }
+      html+=esc(lang==='ar'?L.ar:L.en);
+      if(age==='university'){
+        const q=encodeURIComponent(L.titleEn);
+        html+=`<div class="deep-box"><b>${lang==='ar'?'🔬 للتعمق أكثر':'🔬 Go deeper'}</b><a target="_blank" rel="noopener" href="${esc(L.src)}">${lang==='ar'?'المصدر الأساسي':'Primary source'}</a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search=${q}">Wikipedia EN: ${esc(L.titleEn)}</a><a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?q=${q}">Google Scholar</a></div>`;
+      }
+      return html;
+    },
     story:   ()=> lang==='ar' ? esc(L.story) : (L.storyEn ? esc(L.storyEn) : `<div dir="rtl" lang="ar">${esc(L.story)}</div>`),
     video:   ()=>{
       const q = lang==='ar'?L.video:L.videoEn;
@@ -264,19 +296,24 @@ function viewLesson(id, startTab){
     quiz:    ()=> renderQuiz(L, body)
   };
   // voice: one persistent listen button reads the visible explain/story tab
-  let curTab=(startTab && ['explain','story','quiz','video','d3'].includes(startTab) && (startTab!=='d3' || (window.EB3D&&EB3D.available(id)))) ? startTab : 'explain';
+  let curTab=(startTab && ['explain','story','quiz','video','d3'].includes(startTab) && (startTab!=='d3' || (window.EB3D&&EB3D.available(id)))) ? startTab : ageMeta().defTab;
   if(ttsAvailable()){
-    const tBtn=document.createElement('button');
-    tBtn.className='tts-btn';
-    tBtn.dataset.label=lang==='ar'?'🔊 استمع':'🔊 Listen';
-    tBtn.textContent=tBtn.dataset.label;
-    tBtn.onclick=()=>{
-      const storyText = lang==='ar' ? L.story : (L.storyEn || L.story);
-      const text = curTab==='story' ? storyText : (lang==='ar'?L.ar:L.en);
-      const speakLang = curTab==='story' ? ((lang==='ar'||!L.storyEn)?'ar':'en') : lang;
-      ttsSpeak(text, tBtn, speakLang);
-    };
-    document.getElementById('lessonTabs').appendChild(tBtn);
+    const row=document.createElement('span');
+    row.className='tts-row';
+    [['ar',lang==='ar'?'🔊 استمع بالعربية':'🔊 Arabic'],['en',lang==='ar'?'🔊 استمع بالإنجليزية':'🔊 English']].forEach(function(pair){
+      const code=pair[0], label=pair[1];
+      const b=document.createElement('button');
+      b.className='tts-btn tts-dual';
+      b.dataset.label=label; b.textContent=label;
+      b.onclick=()=>{
+        const storyText = code==='ar' ? L.story : (L.storyEn || L.story);
+        const text = curTab==='story' ? storyText : (code==='ar'?L.ar:L.en);
+        const speakLang = curTab==='story' ? ((code==='ar'||!L.storyEn)?'ar':'en') : code;
+        ttsSpeak(text, b, speakLang);
+      };
+      row.appendChild(b);
+    });
+    document.getElementById('lessonTabs').appendChild(row);
   }
   app.querySelectorAll('.lesson-tabs button[data-tab]').forEach(b=>b.onclick=()=>{
     ttsStop();
@@ -331,9 +368,10 @@ function renderQuiz(L, body){
 }
 
 function viewMentor(presetQ){
-  const sugg = lang==='ar'
+  const m=ageMeta(), li=lang==='ar'?0:1;
+  const sugg = m.sugg ? m.sugg[li] : (lang==='ar'
     ? ['اشرح لي الذكاء الاصطناعي بأسلوب بسيط','ساعدني في بحث عن الطاقة المتجددة','ناقشني: هل التعلّم الإلكتروني أفضل من التقليدي؟','أشعر بالإحباط وفقدان الشغف، كيف أستعيده؟']
-    : ['Explain artificial intelligence simply','Help me outline research on renewable energy','Debate me: is online learning better than classrooms?','I feel unmotivated, how can I get my passion back?'];
+    : ['Explain artificial intelligence simply','Help me outline research on renewable energy','Debate me: is online learning better than classrooms?','I feel unmotivated, how can I get my passion back?']);
   app.innerHTML = `
   <div class="chat-wrap">
     <div class="chat-head">
@@ -343,9 +381,9 @@ function viewMentor(presetQ){
       <span class="chip">${AGE_LABEL[age||'teen'][lang==='ar'?0:1]}</span>
     </div>
     <div class="chat-box" id="chatBox">
-      <div class="msg bot">${lang==='ar'
+      <div class="msg bot">${m.greet?m.greet[li]:(lang==='ar'
         ?'مرحباً بك! أنا مرشد إديوبرج. أجيب من محتوى تعليمي مكتوب بعناية عن مواضيع المكتبة والأسئلة الشائعة ,  اسألني عن أي موضوع من المكتبة، أو جرّب سؤالاً مقترحاً.'
-        :'Welcome! I am the EduBridge mentor. I answer from carefully written learning content about the library topics and common questions - ask me about any library topic, or try a suggested question.'}</div>
+        :'Welcome! I am the EduBridge mentor. I answer from carefully written learning content about the library topics and common questions - ask me about any library topic, or try a suggested question.')}</div>
     </div>
     <div class="sugg" id="sugg">${sugg.map(s=>`<button>${esc(s)}</button>`).join('')}</div>
     <div class="chat-input">
@@ -364,9 +402,9 @@ function viewMentor(presetQ){
     setTimeout(()=>{
       document.getElementById('typing').remove();
       const ans = mentorAnswer(q);
-      const closers = lang==='ar'
+      const closers = m.closers ? m.closers[li] : (lang==='ar'
         ? ['بالتوفيق! خطوة صغيرة كل يوم تصنع فرقاً كبيراً 🌱','سؤال جميل ,  استمر في فضولك، فهو أقوى أدواتك 💡','أنت على الطريق الصحيح، واصل التقدم 💪']
-        : ['You got this - small steps every day add up! 🌱','Great question - keep that curiosity going, it is your superpower 💡','You are on the right track, keep going 💪'];
+        : ['You got this - small steps every day add up! 🌱','Great question - keep that curiosity going, it is your superpower 💡','You are on the right track, keep going 💪']);
       const closer = closers[(send.n=(send.n||0)+1) % closers.length];
       const div=document.createElement('div');
       div.className='msg bot';
@@ -403,13 +441,15 @@ function viewMentor(presetQ){
         div.appendChild(row2);
       }
       if(ttsAvailable()){
-        const mb=document.createElement('button');
-        mb.className='tts-mini';
-        mb.dataset.label='🔊';
-        mb.textContent='🔊';
-        mb.title=lang==='ar'?'استمع للإجابة':'Listen to the answer';
-        mb.onclick=()=>ttsSpeak(ans.text, mb);
-        div.appendChild(mb);
+        [['ar','🔊 ع'],['en','🔊 EN']].forEach(function(pair){
+          const code=pair[0], lab=pair[1];
+          const mb=document.createElement('button');
+          mb.className='tts-mini';
+          mb.dataset.label=lab; mb.textContent=lab;
+          mb.title=code==='ar'?'استمع بالعربية':'Listen in English';
+          mb.onclick=()=>ttsSpeak(code==='ar'?(ans.textAr||ans.text):(ans.textEn||ans.text), mb, code);
+          div.appendChild(mb);
+        });
       }
       box.appendChild(div);
       box.scrollTop=box.scrollHeight;
@@ -468,7 +508,7 @@ document.getElementById('langAr').onclick=()=>setLang('ar');
 document.getElementById('langEn').onclick=()=>setLang('en');
 document.getElementById('ageChip').onclick=()=>{
   const m=document.getElementById('ageModal'); m.classList.remove('hidden'); applyLang();
-  m.querySelectorAll('[data-age]').forEach(b=>b.onclick=()=>{ age=b.dataset.age; store.set('age',age); m.classList.add('hidden'); applyLang(); });
+  m.querySelectorAll('[data-age]').forEach(b=>b.onclick=()=>{ age=b.dataset.age; store.set('age',age); m.classList.add('hidden'); applyLang(); route(); });
 };
 document.getElementById('ageModal').addEventListener('click',e=>{ if(e.target.id==='ageModal') e.target.classList.add('hidden'); });
 window.addEventListener('hashchange', ()=>{ ttsStop(); route(); });
