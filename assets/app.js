@@ -19,9 +19,9 @@ const AGE_META = {
     sugg:[['إيه هو البركان؟','ليه السما لونها أزرق؟','احكيلي عن الديناصورات','إزاي النحلة بتعمل عسل؟'],['What is a volcano?','Why is the sky blue?','Tell me about dinosaurs','How do bees make honey?']],
     closers:[['برافو عليك! سؤالك كان جميل جداً ⭐','أنت بطل! خليك دايماً بتسأل ليه 🌟','عاش! كل سؤال بتسأله بيكبّر عقلك 🎈'],['Well done! That was a lovely question ⭐','You are a star! Keep asking why 🌟','Yay! Every question you ask grows your brain 🎈']]},
   teen:{tabs:['explain','story','quiz','video','d3'], defTab:'explain', rate:0.95, pitch:1.05},
-  university:{tabs:['explain','story','quiz','video','d3'], defTab:'explain', rate:1.0, pitch:1.0,
-    heroEyebrow:['منصة تعلّم موثقة · ٢٠٢٦','A sourced learning platform · 2026'],
-    heroSub:['شروحات موثقة بالمصادر بالعربية والإنجليزية، مع نماذج تفاعلية ومرشد موجه وروابط للتعمق الأكاديمي.','Source-cited explanations in Arabic and English, with interactive models, a guided mentor and links for deeper academic reading.'],
+  university:{tabs:['explain','quiz','video','d3'], defTab:'explain', rate:1.0, pitch:1.0,
+    heroEyebrow:['منصة دراسة أكاديمية · ٢٠٢٦','An academic study platform · 2026'],
+    heroSub:['لكل موضوع ملخص أكاديمي مكتوب بمستوى جامعي: إطار نظري دقيق، وآلية، وأدلة، وحدود للمعرفة، مع مصطلحات أساسية ومراجع للتعمق.','Every topic has an academic brief written at university level: precise framing, mechanism, evidence and the limits of current knowledge, with key terms and references for depth.'],
     greet:['أهلاً بك. أنا مرشد إديوبرج الموجه؛ أجيب من محتوى موثق بالمصادر عن موضوعات المكتبة.','Welcome. I am the EduBridge guided mentor; I answer from source-cited content on the library topics.'],
     sugg:[['اشرح لي الذكاء الاصطناعي بأسلوب بسيط','ساعدني في بحث عن الطاقة المتجددة','ما هي مراحل الانقسام الاختزالي؟','لخص لي نظرية المعرفة'],['Explain artificial intelligence simply','Help me outline research on renewable energy','What are the stages of meiosis?','Summarize epistemology']],
     closers:[['بالتوفيق في دراستك.','إجابة موثقة يمكنك الاعتماد عليها في مذاكرتك.','راجع المصدر المرفق لمزيد من التفصيل.'],['Good luck with your studies.','A sourced answer you can rely on.','Check the attached source for more detail.']]}
@@ -162,6 +162,7 @@ const esc = s=>s.replace(/</g,'&lt;');
 
 function viewHome(){
   if(age==='child'){ viewKidHome(); return; }
+  if(age==='university'){ viewUniHome(); return; }
   const m=ageMeta(), li=lang==='ar'?0:1;
   const chips = LESSONS.slice(0,6).map(L=>`<button data-topic="${L.id}">${L.emoji} ${lang==='ar'?L.title:L.titleEn}</button>`).join('');
   app.innerHTML = `
@@ -277,6 +278,92 @@ function viewGames(){
   if(!mountGames()) setTimeout(mountGames,120);
 }
 
+// ---------- University stage: academic briefs (v14) ----------
+function uniNote(id){
+  if(typeof UNI_NOTES_1!=='undefined' && UNI_NOTES_1[id]) return UNI_NOTES_1[id];
+  if(typeof UNI_NOTES_2!=='undefined' && UNI_NOTES_2[id]) return UNI_NOTES_2[id];
+  return null;
+}
+const UNI_REFS = {
+  'أحياء':['Campbell Biology (Urry et al.), 12th ed.','Molecular Biology of the Cell (Alberts et al.)'],
+  'كيمياء':['Atkins & de Paula, Physical Chemistry','Clayden et al., Organic Chemistry'],
+  'فيزياء':['Halliday, Resnick & Walker, Fundamentals of Physics','The Feynman Lectures on Physics, Vol. I'],
+  'رياضيات':['Stewart, Calculus: Early Transcendentals','Strang, Introduction to Linear Algebra'],
+  'برمجة':['Cormen et al., Introduction to Algorithms','Goodfellow, Bengio & Courville, Deep Learning'],
+  'فلك':['Carroll & Ostlie, An Introduction to Modern Astrophysics'],
+  'ثانوية عامة':['Stewart, Calculus: Early Transcendentals','Halliday, Resnick & Walker, Fundamentals of Physics'],
+  'علم نفس':['Eysenck & Keane, Cognitive Psychology','Schacter et al., Psychology'],
+  'فلسفة':['Stanford Encyclopedia of Philosophy','Nagel, What Does It All Mean?'],
+  'جيولوجيا':['Press & Siever, Understanding Earth','Prothero, Bringing Fossils to Life']
+};
+function uniRefsBox(L){
+  const ar = lang==='ar';
+  const books = UNI_REFS[L.cat] || [];
+  const q = encodeURIComponent(L.titleEn);
+  return `<div class="deep-box uni-refs"><b>${ar?'🔬 مراجع للتعمق':'🔬 References for depth'}</b>
+    ${books.map(b=>`<span class="ref-item">📗 ${esc(b)}</span>`).join('')}
+    <a target="_blank" rel="noopener" href="${esc(L.src)}">${ar?'المصدر الأساسي':'Primary source'}</a>
+    <a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?q=${q}">Google Scholar · ${esc(L.titleEn)}</a>
+  </div>`;
+}
+function catLabel(cat, ar){
+  if(age==='university' && cat==='ثانوية عامة') return ar?'مقررات أساسية':'Core courses';
+  if(age==='university' && cat==='Secondary School') return 'Core courses';
+  return cat;
+}
+function viewUniHome(){
+  const ar = lang==='ar';
+  const cats = [...new Set(LESSONS.map(L=>L.cat))];
+  const catCards = cats.map(c=>{
+    const sample = LESSONS.find(L=>L.cat===c);
+    const lbl = ar ? catLabel(c,true) : catLabel(sample?sample.catEn:c,false);
+    return `<a class="uni-cat" href="#/library"><b>${lbl}</b><span>${LESSONS.filter(L=>L.cat===c).length} ${ar?'موضوعاً':'topics'}</span></a>`;
+  }).join('');
+  const six = LESSONS.slice(0,6).map(L=>lessonCard(L)).join('');
+  app.innerHTML = `
+  <section class="hero uni-hero">
+    <span class="eyebrow">${ar?'منصة دراسة أكاديمية · ٢٠٢٦':'An academic study platform · 2026'}</span>
+    <h1>${ar?'ادرس الفكرة،<br><span class="grad">لا ملخصها.</span>':'Study the idea,<br><span class="grad">not its summary.</span>'}</h1>
+    <p class="sub">${ar?'لكل موضوع ملخص أكاديمي مكتوب بمستوى جامعي: إطار نظري دقيق، وآلية، وأدلة، وحدود للمعرفة، مع مصطلحات أساسية ومراجع للتعمق.':'Every topic has an academic brief written at university level: precise framing, mechanism, evidence and the limits of current knowledge, with key terms and references for depth.'}</p>
+    <div class="askbar">
+      <input id="heroQ" placeholder="${ar?'ابحث عن موضوع، مثل الحفريات أو الاتزان الكيميائي':'Find a topic, such as fossils or chemical equilibrium'}">
+      <button class="btn-grad" id="heroGo">${ar?'ابحث':'Search'}</button>
+    </div>
+    <div class="stats">
+      <div><b>${LESSONS.length}</b><span>${ar?'موضوعاً':'topics'}</span></div>
+      <div><b>${LESSONS.length}</b><span>${ar?'ملخصاً أكاديمياً':'academic briefs'}</span></div>
+      <div><b>${LESSONS.length*3}</b><span>${ar?'مصطلحاً':'key terms'}</span></div>
+      <div><b>${LESSONS.length}</b><span>${ar?'نموذجاً تفاعلياً':'interactive models'}</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="kicker">${ar?'منهج الدراسة':'How to study here'}</p>
+    <h2>${ar?'ثلاث خطوات لكل موضوع':'Three steps per topic'}</h2>
+    <p class="lead">${ar?'الملخص الأكاديمي ليس نسخة أطول من شرح المدرسة؛ إنه إعادة صياغة بمفاهيم ومصطلحات تخصّ المستوى الجامعي.':'The academic brief is not a longer version of the school explanation; it reframes the topic in university-level concepts and terminology.'}</p>
+    <div class="card-grid">
+      <div class="card"><span class="emoji">📄</span><h3>${ar?'الملخص الأكاديمي':'The academic brief'}</h3><p>${ar?'تعريف دقيق، ثم آلية العمل، ثم الأدلة التي تسنده، ثم ما لا نعرفه بعد.':'A precise definition, the mechanism, the evidence behind it, and what is still unknown.'}</p></div>
+      <div class="card"><span class="emoji">🧪</span><h3>${ar?'اختبر الفهم':'Test understanding'}</h3><p>${ar?'كويز قصير لقياس الفهم لا الحفظ، مع نموذج ثلاثي الأبعاد حيث يلزم.':'A short quiz that tests understanding rather than recall, with a 3D model where it helps.'}</p></div>
+      <div class="card"><span class="emoji">📚</span><h3>${ar?'وسّع بالمراجع':'Extend with references'}</h3><p>${ar?'كتاب مرجعي في التخصص وبحث Scholar ومصدر أساسي لكل درس.':'A standard textbook, a Scholar search and a primary source for every lesson.'}</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="kicker">${ar?'الحقول':'Fields'}</p>
+    <h2>${ar?'عشرة حقول دراسية':'Ten fields of study'}</h2>
+    <div class="uni-cats">${catCards}</div>
+  </section>
+
+  <section class="section">
+    <p class="kicker">${ar?'ابدأ':'Start'}</p>
+    <h2>${ar?'مواضيع مختارة':'Selected topics'}</h2>
+    <div class="card-grid">${six}</div>
+    <p style="margin-top:16px"><a class="go" href="#/library" style="color:var(--primary);font-weight:800">${ar?'كل المواضيع ←':'All topics →'}</a></p>
+  </section>`;
+  document.getElementById('heroGo').onclick = heroAsk;
+  document.getElementById('heroQ').addEventListener('keydown',e=>{if(e.key==='Enter')heroAsk();});
+}
+
 function heroAsk(){
   const q = document.getElementById('heroQ').value.trim();
   const hit = LESSONS.find(L=>q && (q.includes(L.title)||q.toLowerCase().includes(L.titleEn.toLowerCase())));
@@ -285,6 +372,16 @@ function heroAsk(){
 
 function lessonCard(L){
   if(age==='child') return kidTile(L);
+  if(age==='university'){
+    const u = uniNote(L.id);
+    const body = u ? (lang==='ar'?u.ar:u.en) : (lang==='ar'?L.ar:L.en);
+    return `<div class="card uni-card">
+      <span class="tag">${lang==='ar'?'ملخص أكاديمي':'Academic brief'} · ${catLabel(lang==='ar'?L.cat:L.catEn, lang==='ar')}</span>
+      <h3>${L.emoji} ${lang==='ar'?L.title:L.titleEn}</h3>
+      <p>${esc(body.slice(0,150))}…</p>
+      <a class="go" href="#/lesson/${L.id}">${lang==='ar'?'افتح الملخص ←':'Open the brief →'}</a>
+    </div>`;
+  }
   return `<div class="card">
     <span class="emoji">${L.emoji}</span>
     <span class="tag">${lang==='ar'?L.cat:L.catEn}</span>
@@ -303,10 +400,12 @@ function viewLibrary(){
     <h2>${lang==='ar'?(age==='child'?'اختار درس':'كل المواضيع الجاهزة'):(age==='child'?'Pick a lesson':'All ready topics')}</h2>
     <p class="${age==='child'?'kid-lead':'lead'}">${age==='child'
       ? (lang==='ar'?'اختار درس تحبه واضغط عليه. كل درس فيه حكاية ولعبة ومجسم.':'Pick a lesson you like and tap it. Every lesson has a story, a game and a model.')
-      : (lang==='ar'?LESSONS.length+' درساً بالشرح ومشهد تعليمي وكويز بالعربية والإنجليزية ونموذج تفاعلي. روابط البحث والفيديوهات الخارجية تحتاج اتصالاً بالإنترنت.':LESSONS.length+' lessons with explanations, stories, quizzes and models in Arabic and English. External searches and videos need an internet connection.')}</p>
+      : (age==='university'
+        ? (lang==='ar'?LESSONS.length+' موضوعاً، لكل موضوع ملخص أكاديمي ومصطلحات ومراجع للتعمق وكويز ونموذج تفاعلي. روابط البحث والفيديوهات الخارجية تحتاج اتصالاً بالإنترنت.':LESSONS.length+' topics, each with an academic brief, key terms, references, a quiz and an interactive model. External searches and videos need an internet connection.')
+        : (lang==='ar'?LESSONS.length+' درساً بالشرح ومشهد تعليمي وكويز بالعربية والإنجليزية ونموذج تفاعلي. روابط البحث والفيديوهات الخارجية تحتاج اتصالاً بالإنترنت.':LESSONS.length+' lessons with explanations, stories, quizzes and models in Arabic and English. External searches and videos need an internet connection.'))}</p>
     <div class="mode-row" id="catRow">
       <button class="active" data-cat="">${lang==='ar'?'الكل':'All'}</button>
-      ${cats.map(c=>`<button data-cat="${c}">${c}</button>`).join('')}
+      ${cats.map(c=>`<button data-cat="${c}">${catLabel(c, lang==='ar')}</button>`).join('')}
     </div>
     <div class="${age==='child'?'kid-grid':'card-grid'}" id="libGrid">${LESSONS.map(lessonCard).join('')}</div>
   </section>`;
@@ -341,6 +440,17 @@ function viewLesson(id, startTab){
   document.getElementById('lessonTabs').innerHTML = tabOrder.map((t,i)=>`<button${i===0?' class="active"':''} data-tab="${t}">${TAB_LABEL[t][lang==='ar'?0:1]}</button>`).join('');
   const tabs = {
     explain: ()=>{
+      if(age==='university'){
+        const u = uniNote(id), ar = lang==='ar';
+        if(u){
+          let html=`<div class="uni-head"><span class="uni-badge">${ar?'ملخص أكاديمي · مستوى جامعي':'Academic brief · university level'}</span></div>`;
+          html+=`<div class="uni-text${ar?'':' uni-text-en'}">${esc(ar?u.ar:u.en)}</div>`;
+          if(u.terms && u.terms.length){
+            html+=`<div class="uni-terms"><b>${ar?'مصطلحات أساسية':'Key terms'}</b><div class="term-row">${u.terms.map(t=>`<span class="term">${esc(t)}</span>`).join('')}</div></div>`;
+          }
+          return html+uniRefsBox(L);
+        }
+      }
       let html='';
       if(age==='child' && typeof KID_NOTES!=='undefined' && KID_NOTES[id]){
         const kn=KID_NOTES[id];
