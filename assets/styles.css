@@ -229,8 +229,8 @@ body[data-age=child] .kidgame{display:flex}
 @keyframes kgPop{from{transform:scale(.6);opacity:1}to{transform:scale(1.7);opacity:0}}
 .kg-star{position:absolute;font-size:30px;background:none;border:none;cursor:pointer;padding:0;transition:left .18s ease,top .18s ease}
 .kg-star:active{transform:scale(1.25)}
-@media(max-width:1180px){
-  .kidgame{top:auto;bottom:14px;width:auto;padding:8px 10px;border-radius:999px}
+@media(max-width:1460px){
+  .kidgame{top:auto;bottom:10px;width:auto;padding:6px 9px;border-radius:999px;opacity:.92}
   .kidgame.kg-start{inset-inline-start:10px}
   .kidgame.kg-end{inset-inline-end:10px}
   .kidgame .kg-launch{display:block}
