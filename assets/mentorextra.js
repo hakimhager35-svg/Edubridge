@@ -37,7 +37,19 @@
       keys:['من أين أبدأ','أبدأ منين','ابدأ منين','where do i start','where to start','how do i start learning'],
       ar:'ابدأ من سؤال واحد يشدّك فعلاً، لا من ترتيب المنهج.\n\nافتح المكتبة واختر موضوعاً تتساءل عنه أصلاً، ثم اقرأ الشرح، جرّب الكويز، والعب بالمجسم. الفهم الأول يكون تقريبياً وهذا طبيعي.\n\nبعدها اذهب إلى الملخص الأكاديمي للموضوع نفسه في المرحلة الجامعية، وستلاحظ الفرق: نفس الفكرة بمصطلحات أدق وحدود أوضح.\n\nThen connect it to a topic from another field, because most real understanding happens at the joins.\n\nقاعدة صغيرة: عشرون دقيقة اليوم أفضل من خطة كاملة تبدأ الأسبوع القادم.',
       en:'Start from one question that genuinely pulls you, not from the order of a syllabus.\n\nOpen the library and pick a topic you already wonder about, read the explanation, try the quiz and play with the model. The first understanding is rough, and that is normal.\n\nThen open the same topic in the university stage and notice the difference: the same idea with sharper terminology and clearer limits.\n\nThen connect it to a topic from another field, because most real understanding happens at the joins.\n\nA small rule: twenty minutes today beats a perfect plan that starts next week.'
-    }
+    },
+    {
+      keys:['السما لونها','السماء زرقاء','ليه السما','لون السماء','why is the sky blue','sky blue','blue sky'],
+      src:'https://en.wikipedia.org/wiki/Rayleigh_scattering',
+      ar:'ضوء الشمس أبيض، لكنه خليط من كل الألوان. عندما يدخل الغلاف الجوي يصطدم بجزيئات الهواء الصغيرة، فتبعثرها في كل الاتجاهات.\n\nاللون الأزرق له طول موجي قصير، فيتشتت أقوى بكثير من الأحمر. لذلك يصل إلى عينك من كل أجزاء السماء، لا من مكان الشمس فقط، فترى السماء كلها زرقاء.\n\nوعند الغروب تصبح الشمس منخفضة، فيمر ضوؤها في هواء أكثر، ويتشتت الأزرق في الطريق قبل أن يصل إليك، فيبقى الأحمر والبرتقالي.\n\nهذا التشتت يسمى تشتت رايلي، ويفسّر أيضاً لماذا تبدو السماء باهتة في المدن التي يكثر فيها الغبار.',
+      en:'Sunlight looks white but is a mix of all colours. Entering the atmosphere it hits tiny air molecules, which scatter it in every direction.\n\nBlue has a short wavelength, so it scatters far more than red. That is why blue reaches your eye from every part of the sky, not only from where the Sun is, and the whole sky looks blue.\n\nAt sunset the Sun is low, its light travels through more air, and blue is scattered away before it reaches you, leaving red and orange.\n\nThis is Rayleigh scattering, and it also explains why the sky looks pale over dusty cities.'
+    },
+    {
+      keys:['النحلة','النحل','عسل','bees','bee','honey'],
+      src:'https://en.wikipedia.org/wiki/Honey',
+      ar:'النحلة تجمع رحيق الأزهار، وهو سائل سكري تنتجه الزهرة لجذب الملقحات، وتخزنه في حوصلة خاصة ثم تعود به إلى الخلية.\n\nفي الخلية تمرره إلى نحلة أخرى، فتضيف إليه إنزيمات تكسر السكريات المعقدة إلى أبسط. ثم يُوضع في أقراص العسل، وتضرب النحلات بأجنحتها لتبخير الماء منه.\n\nعندما يقل الماء ويصبح السكر مركّزاً جداً، لا تستطيع البكتيريا والخمائر النمو فيه، فيُحفظ العسل سنوات طويلة دون أن يفسد.\n\nوأثناء جمعها للرحيق تنقل النحلة حبوب اللقاح بين الأزهار، فتساعد النباتات على إنتاج الثمار والبذور. لذلك حماية النحل حماية للغذاء.',
+      en:'A bee collects nectar, the sugary liquid a flower makes to attract pollinators, stores it in a special crop and carries it home.\n\nIn the hive she passes it to another bee, which adds enzymes that break complex sugars into simpler ones. It is then placed in wax cells, and the bees fan their wings to evaporate the water.\n\nWhen the water content is low and the sugar is very concentrated, bacteria and yeasts cannot grow, so honey keeps for years without spoiling.\n\nWhile collecting nectar the bee also carries pollen between flowers, helping plants make fruit and seeds. Protecting bees protects our food.'
+    },
   ];
   for(var i=0;i<EXTRA.length;i++) MENTOR_ANSWERS.push(EXTRA[i]);
 })();
