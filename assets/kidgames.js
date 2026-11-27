@@ -1,77 +1,181 @@
-/* EduBridge kid side-games (child stage only): balloon pop + catch the star.
-   Panels are fixed at the page sides on wide screens; on small screens they
-   become floating launcher buttons that expand when tapped. */
+/* EduBridge kid games (child stage only, v13): three calm games.
+   No timer, no score pressure, no sound, no network. Big taps, soft feedback,
+   so the child stage stays quiet and simple. */
 (function(){
 'use strict';
 
-function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
-function store(k, v){ try{ if(v===undefined) return JSON.parse(localStorage.getItem('eb_'+k)||'0'); localStorage.setItem('eb_'+k, JSON.stringify(v)); }catch(e){ return 0; } }
+var T = {
+  pairs:{ar:{t:'طابق الصور',h:'اضغط على كرتين متشابهين.',win:'برافو! خلصت كل الأزواج 🎉',again:'العب تاني'},
+         en:{t:'Match the pictures',h:'Tap two cards that look the same.',win:'Bravo! You matched them all 🎉',again:'Play again'}},
+  count:{ar:{t:'عدّ معايا',h:'عدّ الصور واضغط الرقم الصح.',win:'خلصت! عدّك ممتاز 👏',again:'العب تاني',yes:'صح! ✅',no:'جرّب تاني 🙂',round:'جولة',of:'من'},
+         en:{t:'Count with me',h:'Count the pictures and tap the right number.',win:'Done! Great counting 👏',again:'Play again',yes:'Yes! ✅',no:'Try again 🙂',round:'Round',of:'of'}},
+  odd:{ar:{t:'إيه المختلف؟',h:'اضغط على الصورة اللي مش زي الباقي.',win:'شاطر! لقيت المختلف 👏',again:'العب تاني',yes:'صح! ✅',no:'جرّب تاني 🙂',round:'جولة',of:'من'},
+       en:{t:'Which one is different?',h:'Tap the picture that is not like the others.',win:'Well done! You found it 👏',again:'Play again',yes:'Yes! ✅',no:'Try again 🙂',round:'Round',of:'of'}}
+};
+function t3(key, lang){ return T[key][lang==='en'?'en':'ar']; }
 
-function makePanel(id, side, launchEmoji, title){
-  const p = el('div','kidgame '+side); p.id=id;
-  const launch = el('button','kg-launch',launchEmoji);
-  launch.type='button'; launch.setAttribute('aria-label',title);
-  launch.onclick=function(){ p.classList.add('open'); };
-  const body = el('div','kg-body');
-  const h = el('h5',null,title);
-  const score = el('div','kg-score','⭐ <span>0</span>');
-  const area = el('div','kg-area');
-  const close = el('button','kg-score','✕');
-  close.type='button'; close.setAttribute('aria-label','close');
-  close.onclick=function(){ p.classList.remove('open'); };
-  body.appendChild(h); body.appendChild(score); body.appendChild(area); body.appendChild(close);
-  p.appendChild(launch); p.appendChild(body);
-  document.body.appendChild(p);
-  return {panel:p, body:body, score:score.firstElementChild, area:area};
+function el(tag, cls, html){
+  var e = document.createElement(tag);
+  if(cls) e.className = cls;
+  if(html != null) e.innerHTML = html;
+  return e;
+}
+function shuffle(a){
+  for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var x=a[i]; a[i]=a[j]; a[j]=x; }
+  return a;
+}
+function head(box, c){
+  box.innerHTML = '';
+  box.appendChild(el('div','kg-title', c.t));
+  box.appendChild(el('div','kg-hint', c.h));
+}
+function againBtn(box, label, onAgain){
+  var b = el('button','kg-again', label);
+  b.type = 'button';
+  b.onclick = onAgain;
+  box.appendChild(b);
+  return b;
 }
 
-function visible(area){ return !!(area.offsetWidth || area.offsetHeight); }
-
-/* Balloon pop */
-(function(){
-  const g = makePanel('kgBalloon','kg-start','🎈','🎈 بالونات · Balloons');
-  let score = store('kg_balloon')||0; g.score.textContent = score;
-  const HUES=[0,40,120,200,280,320];
-  function spawn(){
-    if(!visible(g.area)) return;
-    if(g.area.querySelectorAll('.kg-balloon').length>=4) return;
-    const b = el('button','kg-balloon','🎈'); b.type='button';
-    b.style.left = (Math.random()*72)+'px';
-    b.style.filter = 'hue-rotate('+HUES[Math.floor(Math.random()*HUES.length)]+'deg)';
-    b.style.animationDuration = (3.6+Math.random()*2.2)+'s';
-    b.onclick = function(){
-      score++; store('kg_balloon',score); g.score.textContent=score;
-      const pop = el('span','kg-pop','💥');
-      pop.style.left=b.style.left; pop.style.top=b.getBoundingClientRect().top-g.area.getBoundingClientRect().top+'px';
-      g.area.appendChild(pop); setTimeout(function(){pop.remove();},380);
-      b.remove();
-    };
-    b.addEventListener('animationend',function(){ b.remove(); });
-    g.area.appendChild(b);
+/* ---- 1. Match the pictures (three visible pairs) ---- */
+function mountPairs(box, lang){
+  var c = t3('pairs', lang);
+  var pool = ['🐣','🌟','🐟','🌻','🚗','🐢','🎈','🍎','🦋','🐘','🌙','🚂'];
+  function render(){
+    head(box, c);
+    var stage = el('div','kg-stage');
+    var msg = el('div','kg-msg');
+    box.appendChild(stage); box.appendChild(msg);
+    var picks = shuffle(pool.slice()).slice(0,3);
+    var deck = shuffle(picks.concat(picks));
+    var sel = null, done = 0;
+    deck.forEach(function(face){
+      var b = el('button','kg-tile', face);
+      b.type = 'button';
+      b.onclick = function(){
+        if(b.classList.contains('done')) return;
+        if(sel === b){ b.classList.remove('sel'); sel = null; return; }
+        if(!sel){ sel = b; b.classList.add('sel'); return; }
+        if(sel.textContent === b.textContent){
+          sel.classList.remove('sel'); sel.classList.add('done');
+          b.classList.add('done');
+          sel = null; done++;
+          if(done === picks.length){
+            msg.textContent = c.win;
+            againBtn(box, c.again, render);
+          }
+        } else {
+          var first = sel; sel = null;
+          first.classList.add('nudge'); b.classList.add('nudge');
+          setTimeout(function(){
+            first.classList.remove('sel','nudge');
+            b.classList.remove('sel','nudge');
+          }, 650);
+        }
+      };
+      stage.appendChild(b);
+    });
   }
-  setInterval(spawn, 1600);
-})();
+  render();
+}
 
-/* Catch the star */
-(function(){
-  const g = makePanel('kgStar','kg-end','⭐','⭐ اصطد النجمة · Catch the star');
-  let score = store('kg_star')||0; g.score.textContent = score;
-  const star = el('button','kg-star','⭐'); star.type='button';
-  g.area.appendChild(star);
-  function move(){
-    if(!visible(g.area)) return;
-    star.style.left = (Math.random()*74)+'px';
-    star.style.top  = (Math.random()*150)+'px';
+/* ---- 2. Count with me (five gentle rounds) ---- */
+function mountCount(box, lang){
+  var c = t3('count', lang);
+  var TOTAL = 5, round = 0;
+  var faces = ['🍎','⭐','🐟','🎈','🌸','🦋'];
+  function render(){
+    round++;
+    head(box, c);
+    box.appendChild(el('div','kg-round', c.round + ' ' + round + ' ' + c.of + ' ' + TOTAL));
+    var n = 2 + Math.floor(Math.random()*5);          // 2..6
+    var face = faces[Math.floor(Math.random()*faces.length)];
+    var row = el('div','kg-count-row');
+    for(var i=0;i<n;i++) row.appendChild(el('span', null, face));
+    var nums = el('div','kg-nums');
+    var msg = el('div','kg-msg');
+    box.appendChild(row); box.appendChild(nums); box.appendChild(msg);
+    var cand = shuffle([n-1, n+1]);
+    shuffle([n].concat(cand)).forEach(function(v){
+      var b = el('button','kg-num', String(v));
+      b.type = 'button';
+      b.onclick = function(){
+        if(b.classList.contains('ok')) return;
+        if(v === n){
+          b.classList.add('ok');
+          msg.className = 'kg-msg';
+          msg.textContent = c.yes;
+          nums.querySelectorAll('.kg-num').forEach(function(x){ x.disabled = true; });
+          setTimeout(function(){
+            if(round >= TOTAL){
+              head(box, c);
+              box.appendChild(el('div','kg-msg', c.win));
+              againBtn(box, c.again, function(){ round = 0; render(); });
+            } else render();
+          }, 750);
+        } else {
+          msg.className = 'kg-msg soft';
+          msg.textContent = c.no;
+        }
+      };
+      nums.appendChild(b);
+    });
   }
-  star.onclick = function(){
-    score++; store('kg_star',score); g.score.textContent=score;
-    const pop = el('span','kg-pop','✨');
-    pop.style.left=star.style.left; pop.style.top=star.style.top;
-    g.area.appendChild(pop); setTimeout(function(){pop.remove();},380);
-    move();
-  };
-  move();
-  setInterval(move, 1500);
-})();
+  render();
+}
 
+/* ---- 3. Which one is different? (five gentle rounds) ---- */
+function mountOdd(box, lang){
+  var c = t3('odd', lang);
+  var TOTAL = 5, round = 0;
+  var pairs = [['🐶','🐱'],['🌞','🌜'],['🍎','🍏'],['🐟','🐠'],['🚗','🚙'],['🌸','🌼'],['🐸','🐷'],['🐘','🦒']];
+  function render(){
+    round++;
+    head(box, c);
+    box.appendChild(el('div','kg-round', c.round + ' ' + round + ' ' + c.of + ' ' + TOTAL));
+    var stage = el('div','kg-stage kg-stage-4');
+    var msg = el('div','kg-msg');
+    box.appendChild(stage); box.appendChild(msg);
+    var p = pairs[Math.floor(Math.random()*pairs.length)];
+    var same = p[0], diff = p[1];
+    if(Math.random() < .5){ same = p[1]; diff = p[0]; }
+    var tiles = shuffle([same, same, same, diff]);
+    tiles.forEach(function(face){
+      var b = el('button','kg-tile', face);
+      b.type = 'button';
+      b.onclick = function(){
+        if(b.classList.contains('done')) return;
+        if(face === diff){
+          b.classList.add('done');
+          msg.className = 'kg-msg';
+          msg.textContent = c.yes;
+          stage.querySelectorAll('.kg-tile').forEach(function(x){ x.classList.add('done'); });
+          setTimeout(function(){
+            if(round >= TOTAL){
+              head(box, c);
+              box.appendChild(el('div','kg-msg', c.win));
+              againBtn(box, c.again, function(){ round = 0; render(); });
+            } else render();
+          }, 750);
+        } else {
+          msg.className = 'kg-msg soft';
+          msg.textContent = c.no;
+          b.classList.add('nudge');
+          setTimeout(function(){ b.classList.remove('nudge'); }, 600);
+        }
+      };
+      stage.appendChild(b);
+    });
+  }
+  render();
+}
+
+window.KID_GAMES = {
+  mount: function(box, kind, lang){
+    if(!box) return;
+    if(kind === 'pairs') mountPairs(box, lang);
+    else if(kind === 'count') mountCount(box, lang);
+    else if(kind === 'odd') mountOdd(box, lang);
+  }
+};
 })();
