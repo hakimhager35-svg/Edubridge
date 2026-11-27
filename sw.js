@@ -1,5 +1,5 @@
 // EduBridge offline cache - whole site is local content, so after the first visit lessons work with no connection.
-const CACHE = 'edubridge-v15';
+const CACHE = 'edubridge-v16';
 const ASSETS = ['./','index.html','assets/styles.css','assets/app.js','assets/data.js','assets/kidnotes.js','assets/kidgames.js','assets/uninotes1.js','assets/uninotes2.js','assets/mentorextra.js','assets/models.js','assets/vendor/three.min.js'];
 self.addEventListener('install', e=>{
   e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));
