@@ -270,7 +270,7 @@ function viewLesson(id, startTab){
   const tabs = {
     explain: ()=>{
       let html='';
-      if(age==='child' && window.KID_NOTES && KID_NOTES[id]){
+      if(age==='child' && typeof KID_NOTES!=='undefined' && KID_NOTES[id]){
         const kn=KID_NOTES[id];
         html+=`<div class="kid-box"><b>${lang==='ar'?'💡 الفكرة ببساطة':'💡 The simple idea'}</b><p>${esc(lang==='ar'?kn.ar:kn.en)}</p></div>`;
       }
