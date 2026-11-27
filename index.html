@@ -9,7 +9,7 @@
 <meta property="og:description" content="تعلم خطوة بخطوة من المواضيع المتاحة. Learn step by step with covered topics.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌉</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&family=Outfit:wght@400;600;800&family=Baloo+Bhaijaan+2:wght@400;600;700&family=Fredoka:wght@400;600;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -61,6 +61,7 @@
       <p data-en="Children · 6-11">الأطفال · ٦-١١</p>
       <p data-en="Teenagers · 12-17">المراهقون · ١٢-١٧</p>
       <p data-en="University · 18+">الجامعيون · ١٨+</p>
+      <p data-en="Each stage gets its own look, voice and teaching style.">لكل مرحلة شكلها وصوتها وأسلوب شرحها.</p>
     </div>
   </div>
   <p class="copy">© 2026 EduBridge. <span data-en="Built for curious minds ,  in Arabic and English.">صُنعت للعقول الفضولية ,  بالعربية والإنجليزية.</span>
@@ -73,11 +74,11 @@
 <div id="ageModal" class="modal-backdrop hidden">
   <div class="modal" role="dialog" aria-modal="true">
     <h3 data-en="Your age stage">مرحلتك العمرية</h3>
-    <p data-en="Your selection is saved on this device. Current content is shared across stages.">اختيارك محفوظ على هذا الجهاز. المحتوى الحالي مشترك بين المراحل.</p>
+    <p data-en="Your choice is saved on this device. The look, voice and teaching style adapt to your stage.">اختيارك محفوظ على هذا الجهاز. الشكل والصوت وأسلوب الشرح يتكيّفون مع مرحلتك.</p>
     <div class="choice-row" id="ageChoices">
-      <button data-age="child" data-en="Child 6-11">طفل ٦-١١</button>
-      <button data-age="teen" data-en="Teen 12-17">مراهق ١٢-١٧</button>
-      <button data-age="university" data-en="University 18+">جامعي ١٨+</button>
+      <button data-age="child" data-en="🧒 Child 6-11">🧒 طفل ٦-١١</button>
+      <button data-age="teen" data-en="🎧 Teen 12-17">🎧 مراهق ١٢-١٧</button>
+      <button data-age="university" data-en="🎓 University 18+">🎓 جامعي ١٨+</button>
     </div>
   </div>
 </div>
@@ -85,6 +86,7 @@
 <script src="assets/vendor/three.min.js"></script>
 <script src="assets/models.js"></script>
 <script src="assets/data.js"></script>
+<script src="assets/kidnotes.js"></script>
 <script src="assets/app.js"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol==='https:'){
