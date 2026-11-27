@@ -23,7 +23,7 @@ const AGE_META = {
     heroEyebrow:['منصة دراسة أكاديمية · ٢٠٢٦','An academic study platform · 2026'],
     heroSub:['لكل موضوع ملخص أكاديمي مكتوب بمستوى جامعي: إطار نظري دقيق، وآلية، وأدلة، وحدود للمعرفة، مع مصطلحات أساسية ومراجع للتعمق.','Every topic has an academic brief written at university level: precise framing, mechanism, evidence and the limits of current knowledge, with key terms and references for depth.'],
     greet:['أهلاً بك. أنا مرشد إديوبرج الموجه؛ أجيب من محتوى موثق بالمصادر عن موضوعات المكتبة.','Welcome. I am the EduBridge guided mentor; I answer from source-cited content on the library topics.'],
-    sugg:[['اشرح لي الذكاء الاصطناعي بأسلوب بسيط','ساعدني في بحث عن الطاقة المتجددة','ما هي مراحل الانقسام الاختزالي؟','لخص لي نظرية المعرفة'],['Explain artificial intelligence simply','Help me outline research on renewable energy','What are the stages of meiosis?','Summarize epistemology']],
+    sugg:[['اشرح لي الذكاء الاصطناعي بمستوى جامعي','كيف أذاكر بفاعلية؟','ما مراحل الانقسام الاختزالي؟','لخّص لي نظرية المعرفة'],['Explain artificial intelligence at university level','How do I study effectively?','What are the stages of meiosis?','Summarize epistemology']],
     closers:[['بالتوفيق في دراستك.','إجابة موثقة يمكنك الاعتماد عليها في مذاكرتك.','راجع المصدر المرفق لمزيد من التفصيل.'],['Good luck with your studies.','A sourced answer you can rely on.','Check the attached source for more detail.']]}
 };
 function ageMeta(){ return AGE_META[age||'teen'] || AGE_META.teen; }
@@ -142,6 +142,21 @@ function mentorAnswer(q){
     const names=[L.title,L.titleEn,L.id].concat(L.kw||[]).map(x=>x.toLowerCase());
     const hit = names.filter(n=>n.length>2 && matches(n)).sort((a,b)=>b.length-a.length)[0];
     if(hit && hit.length>bestLen){ best=L; bestLen=hit.length; }
+  }
+  if(!best){
+    // 2b) tolerant pass: compare consonant skeletons so Arabic plurals and weak letters still match
+    // (البركان vs البراكين, النحلة vs النحل). Exact title matches above always win.
+    const skel = t => normalized(t).replace(/[اوىيء]/g,'').replace(/ة/g,'ه').replace(/\s+/g,'');
+    const qs = skel(q);
+    let bestLen2 = 0;
+    for(const L of LESSONS){
+      const names=[L.title,L.titleEn];
+      for(const n of names){
+        if(!n || n.length<4) continue;
+        const k=skel(n);
+        if(k.length>=4 && qs.includes(k) && k.length>bestLen2){ best=L; bestLen2=k.length; }
+      }
+    }
   }
   if(best){
     // Answer at the stage the reader is actually in: kid note, teen text, or the academic brief.
@@ -573,8 +588,8 @@ function renderQuiz(L, body){
 function viewMentor(presetQ){
   const m=ageMeta(), li=lang==='ar'?0:1;
   const sugg = m.sugg ? m.sugg[li] : (lang==='ar'
-    ? ['اشرح لي الذكاء الاصطناعي بأسلوب بسيط','ساعدني في بحث عن الطاقة المتجددة','ناقشني: هل التعلّم الإلكتروني أفضل من التقليدي؟','أشعر بالإحباط وفقدان الشغف، كيف أستعيده؟']
-    : ['Explain artificial intelligence simply','Help me outline research on renewable energy','Debate me: is online learning better than classrooms?','I feel unmotivated, how can I get my passion back?']);
+    ? ['اشرح لي الذكاء الاصطناعي بأسلوب بسيط','إزاي أذاكر بفاعلية؟','ساعدني في بحث عن الطاقة المتجددة','ناقشني: هل التعلّم الإلكتروني أفضل من التقليدي؟','أشعر بالإحباط وفقدان الشغف، كيف أستعيده؟']
+    : ['Explain artificial intelligence simply','How do I study effectively?','Help me outline research on renewable energy','Debate me: is online learning better than classrooms?','I feel unmotivated, how can I get my passion back?']);
   app.innerHTML = `
   <div class="chat-wrap">
     <div class="chat-head">
