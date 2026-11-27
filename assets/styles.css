@@ -83,7 +83,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .mode-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
 .mode-row button{border:1px solid var(--border);border-radius:999px;padding:7px 16px;font-weight:800;font-size:13px;background:#fff}
 .mode-row button.active{background:var(--ink);color:#fff}
-.chat-box{background:#fff;border:1px solid var(--border);border-radius:24px;padding:20px;min-height:340px;max-height:60vh;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+.chat-box{background:#fff;border:1px solid var(--border);border-radius:24px;padding:20px;min-height:200px;max-height:60vh;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
 .msg{max-width:85%;padding:12px 16px;border-radius:18px;line-height:1.9;white-space:pre-wrap;font-size:15px}
 .msg.bot{background:#f3f2fc;align-self:flex-start;border-start-start-radius:4px}
 .msg.user{background:var(--ink);color:#fff;align-self:flex-end;border-start-end-radius:4px}
