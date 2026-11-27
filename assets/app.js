@@ -161,6 +161,7 @@ const app = document.getElementById('app');
 const esc = s=>s.replace(/</g,'&lt;');
 
 function viewHome(){
+  if(age==='child'){ viewKidHome(); return; }
   const m=ageMeta(), li=lang==='ar'?0:1;
   const chips = LESSONS.slice(0,6).map(L=>`<button data-topic="${L.id}">${L.emoji} ${lang==='ar'?L.title:L.titleEn}</button>`).join('');
   app.innerHTML = `
@@ -208,6 +209,74 @@ function viewHome(){
   app.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>location.hash='#/lesson/'+b.dataset.topic);
   bindLessonCards();
 }
+// ---------- Child stage: calm and simple (v13) ----------
+function kidStartLessons(){
+  const ids=['cell','heart','solar','volcanoes','fossils','shapes2d'];
+  return ids.map(id=>LESSONS.find(L=>L.id===id)).filter(Boolean);
+}
+function kidTile(L){
+  return `<a class="card kid-card" href="#/lesson/${L.id}">
+      <span class="kid-card-emoji">${L.emoji}</span>
+      <span class="kid-card-title">${lang==='ar'?L.title:L.titleEn}</span>
+      <span class="kid-card-go">${lang==='ar'?'يلا نبدأ':'Start'}</span>
+    </a>`;
+}
+function viewKidHome(){
+  const ar = lang==='ar';
+  app.innerHTML = `
+  <section class="kid-hero">
+    <div class="kid-hello">
+      <span class="kid-face">🐣</span>
+      <h1>${ar?'أهلاً يا بطل':'Hello, hero'}</h1>
+      <p>${ar?'اختار درس تحبه، أو العب لعبة صغيرة. كل حاجة سهلة وبسيطة.':'Pick a lesson you like, or play a little game. Everything here is easy and simple.'}</p>
+      <div class="kid-actions">
+        <a class="kid-btn kid-btn-main" href="#/library">${ar?'📚 الدروس':'📚 Lessons'}</a>
+        <a class="kid-btn" href="#/games">${ar?'🎲 الألعاب':'🎲 Games'}</a>
+        <a class="kid-btn" href="#/mentor">${ar?'💬 اسألني':'💬 Ask me'}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section kid-section">
+    <h2>${ar?'دروس سهلة':'Easy lessons'}</h2>
+    <p class="kid-lead">${ar?'ستة دروس صغيرة تبدأ بيها.':'Six small lessons to start with.'}</p>
+    <div class="kid-grid kid-grid-3">${kidStartLessons().map(kidTile).join('')}</div>
+    <p class="kid-more"><a href="#/library">${ar?'شوف كل الدروس ←':'See all lessons →'}</a></p>
+  </section>
+
+  <section class="section kid-section">
+    <h2>${ar?'ألعاب صغيرة':'Little games'}</h2>
+    <p class="kid-lead">${ar?'تلات ألعاب بسيطة، من غير وقت ومن غير خسارة.':'Three simple games, no timer and no losing.'}</p>
+    <div class="kid-grid kid-grid-3 kid-grid-games">
+      <a class="card kid-card" href="#/games"><span class="kid-card-emoji">🃏</span><span class="kid-card-title">${ar?'طابق الصور':'Match'}</span></a>
+      <a class="card kid-card" href="#/games"><span class="kid-card-emoji">🔢</span><span class="kid-card-title">${ar?'عدّ معايا':'Count'}</span></a>
+      <a class="card kid-card" href="#/games"><span class="kid-card-emoji">🔍</span><span class="kid-card-title">${ar?'إيه المختلف؟':'Odd one out'}</span></a>
+    </div>
+  </section>`;
+}
+function viewGames(){
+  const ar = lang==='ar';
+  app.innerHTML = `
+  <section class="section kid-games">
+    <p class="kicker">${ar?'ألعاب صغيرة':'Little games'}</p>
+    <h2>${ar?'العب براحتك':'Play at your own pace'}</h2>
+    <p class="kid-lead">${ar?'من غير وقت ومن غير خسارة. خد وقتك.':'No timer, no losing. Take your time.'}</p>
+    <div class="kid-game-list">
+      <div class="card kid-game" id="gPairs"></div>
+      <div class="card kid-game" id="gCount"></div>
+      <div class="card kid-game" id="gOdd"></div>
+    </div>
+  </section>`;
+  const mountGames = ()=>{
+    if(!window.KID_GAMES) return false;
+    KID_GAMES.mount(document.getElementById('gPairs'),'pairs',lang);
+    KID_GAMES.mount(document.getElementById('gCount'),'count',lang);
+    KID_GAMES.mount(document.getElementById('gOdd'),'odd',lang);
+    return true;
+  };
+  if(!mountGames()) setTimeout(mountGames,120);
+}
+
 function heroAsk(){
   const q = document.getElementById('heroQ').value.trim();
   const hit = LESSONS.find(L=>q && (q.includes(L.title)||q.toLowerCase().includes(L.titleEn.toLowerCase())));
@@ -215,6 +284,7 @@ function heroAsk(){
 }
 
 function lessonCard(L){
+  if(age==='child') return kidTile(L);
   return `<div class="card">
     <span class="emoji">${L.emoji}</span>
     <span class="tag">${lang==='ar'?L.cat:L.catEn}</span>
@@ -230,13 +300,15 @@ function viewLibrary(){
   app.innerHTML = `
   <section class="section">
     <p class="kicker">${lang==='ar'?'المكتبة':'Library'}</p>
-    <h2>${lang==='ar'?'كل المواضيع الجاهزة':'All ready topics'}</h2>
-    <p class="lead">${lang==='ar'?LESSONS.length+' درساً بالشرح ومشهد تعليمي وكويز بالعربية والإنجليزية ونموذج تفاعلي. روابط البحث والفيديوهات الخارجية تحتاج اتصالاً بالإنترنت.':LESSONS.length+' lessons with explanations, stories, quizzes and models in Arabic and English. External searches and videos need an internet connection.'}</p>
+    <h2>${lang==='ar'?(age==='child'?'اختار درس':'كل المواضيع الجاهزة'):(age==='child'?'Pick a lesson':'All ready topics')}</h2>
+    <p class="${age==='child'?'kid-lead':'lead'}">${age==='child'
+      ? (lang==='ar'?'اختار درس تحبه واضغط عليه. كل درس فيه حكاية ولعبة ومجسم.':'Pick a lesson you like and tap it. Every lesson has a story, a game and a model.')
+      : (lang==='ar'?LESSONS.length+' درساً بالشرح ومشهد تعليمي وكويز بالعربية والإنجليزية ونموذج تفاعلي. روابط البحث والفيديوهات الخارجية تحتاج اتصالاً بالإنترنت.':LESSONS.length+' lessons with explanations, stories, quizzes and models in Arabic and English. External searches and videos need an internet connection.')}</p>
     <div class="mode-row" id="catRow">
       <button class="active" data-cat="">${lang==='ar'?'الكل':'All'}</button>
       ${cats.map(c=>`<button data-cat="${c}">${c}</button>`).join('')}
     </div>
-    <div class="card-grid" id="libGrid">${LESSONS.map(lessonCard).join('')}</div>
+    <div class="${age==='child'?'kid-grid':'card-grid'}" id="libGrid">${LESSONS.map(lessonCard).join('')}</div>
   </section>`;
   document.getElementById('catRow').querySelectorAll('button').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('#catRow button').forEach(x=>x.classList.remove('active'));
@@ -499,6 +571,7 @@ function route(){
   else if(path==='library'){ viewLibrary(); document.querySelector('[data-nav=library]').classList.add('active'); }
   else if(path.startsWith('lesson/')){ const seg=path.split('/'); viewLesson(seg[1], seg[2]); document.querySelector('[data-nav=library]').classList.add('active'); }
   else if(path==='mentor'){ viewMentor(params.get('q')); document.querySelector('[data-nav=mentor]').classList.add('active'); }
+  else if(path==='games'){ viewGames(); document.querySelector('[data-nav=games]').classList.add('active'); }
   else if(path==='progress'){ viewProgress(); document.querySelector('[data-nav=progress]').classList.add('active'); }
   window.scrollTo(0,0);
 }
