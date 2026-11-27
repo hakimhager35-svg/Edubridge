@@ -177,68 +177,92 @@ button,.lang-switch button,.lesson-tabs button,.chip,.sugg button,.mode-row butt
 @media(max-width:760px){.nav{flex-wrap:wrap}.nav-links{display:flex;order:3;flex-basis:100%;justify-content:space-between;gap:4px;font-size:12px}.nav-links a{white-space:nowrap;padding:6px 3px}}
 
 /* ===== Age-stage themes (v11) ===== */
-/* Child 6-11: chic pastel candy look (pink/lilac/sky/mint, no orange) */
-body[data-age=child]{font-family:'Baloo Bhaijaan 2','Cairo',sans-serif;font-size:17.5px;
-  --bg:#fdf6ff; --card:#ffffff; --ink:#4c1d95; --muted:#8b6bb0;
-  --primary:#c026d3; --primary2:#0284c7; --teal:#10b981;
-  --border:#f3e0ff; --hero1:#a855f7; --hero2:#ec4899;
-  background:radial-gradient(circle at 10% 18%,#fce7f3 0,transparent 30%),radial-gradient(circle at 90% 78%,#e0f2fe 0,transparent 30%),radial-gradient(circle at 82% 10%,#d1fae5 0,transparent 24%),radial-gradient(circle at 16% 88%,#fef3c7 0,transparent 22%),var(--bg);}
+/* ===== Child 6-11 (v13): calm and simple =====
+   Soft cream/mint, one calm accent, big shapes, lots of space, no busy gradients. */
+body[data-age=child]{font-family:'Baloo Bhaijaan 2','Cairo',sans-serif;font-size:18px;
+  --bg:#f7faf7; --card:#ffffff; --ink:#2f3b45; --muted:#6f8089;
+  --primary:#3f9d8f; --primary2:#5b8fc9; --teal:#3f9d8f;
+  --border:#e5eee9; --hero1:#eaf6f1; --hero2:#eaf1fa;
+  background:var(--bg);}
 html[lang=en] body[data-age=child]{font-family:'Fredoka','Baloo Bhaijaan 2',sans-serif}
-body[data-age=child] .site-header{background:rgba(253,246,255,.95)}
-body[data-age=child] .card{border:2.5px solid var(--border);border-radius:26px;box-shadow:0 8px 0 rgba(192,38,211,.10)}
-body[data-age=child] .card:hover{transform:translateY(-3px) rotate(-.3deg)}
-body[data-age=child] .hero{border-radius:36px;background:radial-gradient(900px 480px at 85% 15%,#f9a8d4 0%,transparent 55%),radial-gradient(700px 380px at 12% 88%,#7dd3fc 0%,transparent 52%),linear-gradient(135deg,var(--hero1),var(--hero2))}
-body[data-age=child] .hero h1 .grad{background:linear-gradient(90deg,#fef08a,#fbcfe8);-webkit-background-clip:text;background-clip:text;color:transparent}
-body[data-age=child] .lesson-body{font-size:18px;line-height:2.1}
-body[data-age=child] .lesson-tabs button{border:2px solid var(--border);background:#fdf6ff}
-body[data-age=child] .lesson-tabs button.active{background:var(--primary);border-color:var(--primary);color:#fff}
-body[data-age=child] .quiz-opt{font-size:17px;padding:16px 18px;border-radius:18px;border-width:3px;background:#fdf0ff}
-body[data-age=child] .quiz-opt:hover{background:#f9e2ff}
-body[data-age=child] .tag{background:#fae8ff;color:#a21caf}
-body[data-age=child] .btn-grad{background:linear-gradient(135deg,#34d399,#10b981)}
-body[data-age=child] .chip{background:#fdf4ff}
+body[data-age=child] .site-header{background:rgba(255,255,255,.96);border-bottom-color:var(--border)}
+body[data-age=child] .brand-text strong{color:var(--primary)}
+body[data-age=child] .nav-links a{font-weight:600;font-size:15px}
+body[data-age=child] .nav-links a.active,body[data-age=child] .nav-links a:hover{color:var(--primary);border-color:var(--primary)}
+body[data-age=child] .card{border:1px solid var(--border);border-radius:22px;box-shadow:0 4px 14px rgba(47,59,69,.05)}
+body[data-age=child] .card:hover{transform:none;box-shadow:0 6px 18px rgba(47,59,69,.08)}
+body[data-age=child] .chip{background:#fff;border-color:var(--border);font-weight:600}
 body[data-age=child] .lang-switch button.active{background:var(--primary)}
-body[data-age=child] .brand-text strong{color:#c026d3}
-body[data-age=child] .msg.bot{background:#fdf0ff}
-body[data-age=child] .msg.user{background:#d946ef}
+body[data-age=child] .lesson-body{font-size:18.5px;line-height:2.15;border-radius:20px}
+body[data-age=child] .lesson-tabs button{border:1px solid var(--border);background:#fff;font-weight:600}
+body[data-age=child] .lesson-tabs button.active{background:var(--primary);border-color:var(--primary);color:#fff}
+body[data-age=child] .quiz-opt{font-size:17.5px;padding:16px 18px;border-radius:16px;border-width:2px;background:#fff;border-color:var(--border)}
+body[data-age=child] .quiz-opt:hover{background:#f2f8f5}
+body[data-age=child] .tag{background:#eef5f1;color:#3c7f74}
+body[data-age=child] .btn-grad{background:var(--primary)}
+body[data-age=child] .msg.bot{background:#f4f8f6}
+body[data-age=child] .msg.user{background:var(--primary)}
 body[data-age=child] .mode-row button.active{background:var(--primary);border-color:var(--primary)}
-body[data-age=child] .chat-input button{background:linear-gradient(135deg,#34d399,#10b981)}
-body[data-age=child] .pbar i{background:linear-gradient(90deg,#d946ef,#38bdf8)}
-body[data-age=child] .stat-cards b{color:#c026d3}
-body[data-age=child] .tts-dual{border:2px solid var(--border);background:#fdf4ff}
-body[data-age=child] .kid-box{background:#ecfdf5;border:2.5px dashed #34d399}
-body[data-age=child] .kid-box b{color:#047857}
-body[data-age=child] .kid-box p{color:#065f46}
+body[data-age=child] .chat-input button{background:var(--primary)}
+body[data-age=child] .pbar i{background:var(--primary)}
+body[data-age=child] .stat-cards b{color:var(--primary)}
+body[data-age=child] .tts-dual{border:1px solid var(--border);background:#fff}
+body[data-age=child] .kid-box{background:#f1f8f3;border:2px dashed #a9d6c3}
+body[data-age=child] .kid-box b{color:#2f7a63}
+body[data-age=child] .kid-box p{color:#33584c}
+body[data-age=child] .hero{border-radius:28px;background:linear-gradient(135deg,var(--hero1),var(--hero2));color:var(--ink)}
+body[data-age=child] .hero p.sub{color:#4b5b64}
+body[data-age=child] .hero h1 .grad{background:none;color:var(--primary)}
 
-/* Side mini-games (child stage only) */
-.kidgame{display:none}
-body[data-age=child] .kidgame{display:flex}
-.kidgame{position:fixed;top:132px;z-index:30;flex-direction:column;align-items:center;gap:8px;
-  width:132px;background:rgba(255,255,255,.92);border:2.5px solid var(--border,#f3e0ff);border-radius:22px;
-  padding:10px 8px;box-shadow:0 10px 26px rgba(192,38,211,.16);backdrop-filter:blur(6px)}
-.kidgame.kg-start{inset-inline-start:10px}
-.kidgame.kg-end{inset-inline-end:10px}
-.kidgame .kg-launch{display:none;font-size:26px;line-height:1}
-.kidgame .kg-body{display:flex;flex-direction:column;align-items:center;gap:8px}
-.kidgame h5{font-size:13px;font-weight:800;text-align:center;margin:0}
-.kidgame .kg-score{font-size:12px;font-weight:800;color:#a21caf;background:#fae8ff;border-radius:999px;padding:2px 10px}
-.kidgame .kg-area{position:relative;width:110px;height:190px;overflow:hidden;border-radius:16px;background:linear-gradient(180deg,#e0f2fe,#fdf4ff)}
-.kg-balloon{position:absolute;bottom:-46px;font-size:30px;background:none;border:none;cursor:pointer;padding:0;animation:kgFloat linear forwards}
-@keyframes kgFloat{from{transform:translateY(0)}to{transform:translateY(-270px)}}
-.kg-pop{position:absolute;font-size:24px;pointer-events:none;animation:kgPop .35s ease forwards}
-@keyframes kgPop{from{transform:scale(.6);opacity:1}to{transform:scale(1.7);opacity:0}}
-.kg-star{position:absolute;font-size:30px;background:none;border:none;cursor:pointer;padding:0;transition:left .18s ease,top .18s ease}
-.kg-star:active{transform:scale(1.25)}
-@media(max-width:1460px){
-  .kidgame{top:auto;bottom:10px;width:auto;padding:6px 9px;border-radius:999px;opacity:.92}
-  .kidgame.kg-start{inset-inline-start:10px}
-  .kidgame.kg-end{inset-inline-end:10px}
-  .kidgame .kg-launch{display:block}
-  .kidgame .kg-body{display:none}
-  .kidgame.open{border-radius:22px}
-  .kidgame.open .kg-launch{display:none}
-  .kidgame.open .kg-body{display:flex}
-}
+/* Kid home (v13) */
+.kid-hero{max-width:920px;margin:24px auto 0;padding:0 16px}
+.kid-hello{background:#fff;border:1px solid var(--border);border-radius:28px;padding:36px 24px 30px;text-align:center;box-shadow:0 6px 20px rgba(47,59,69,.05)}
+.kid-face{display:block;font-size:56px;line-height:1}
+.kid-hello h1{font-size:clamp(26px,5vw,34px);font-weight:700;margin:12px 0 8px;color:var(--ink)}
+.kid-hello p{color:var(--muted);font-size:17.5px;line-height:1.9;max-width:520px;margin:0 auto}
+.kid-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.kid-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 24px;border-radius:18px;background:#fff;border:1px solid var(--border);color:var(--ink);font-weight:700;font-size:17px;box-shadow:0 3px 10px rgba(47,59,69,.05)}
+.kid-btn:hover{border-color:#cfe3da}
+.kid-btn-main{background:var(--primary);border-color:var(--primary);color:#fff}
+.kid-section{margin-top:34px}
+.kid-section h2{font-size:clamp(22px,4vw,28px);font-weight:700;color:var(--ink)}
+.kid-lead{color:var(--muted);margin:6px 0 18px;font-size:16.5px;line-height:1.8}
+.kid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.kid-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:24px 12px;min-height:150px}
+.kid-card-emoji{font-size:38px;line-height:1}
+.kid-card-title{font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.5}
+.kid-card-go{font-size:13.5px;font-weight:700;color:var(--primary)}
+.kid-more{margin-top:16px}
+.kid-more a{color:var(--primary);font-weight:700}
+.kid-grid-games{grid-template-columns:repeat(3,1fr)}
+.kid-grid-3{grid-template-columns:repeat(2,1fr)}
+@media(min-width:700px){.kid-grid-3{grid-template-columns:repeat(3,1fr)}}
+
+/* Kid games (v13) */
+.kid-games>.kicker,.kid-games>h2,.kid-games>.kid-lead{text-align:center}
+.kid-game-list{display:grid;grid-template-columns:1fr;gap:16px;max-width:620px;margin:0 auto}
+.kid-game{padding:20px}
+.kg-title{font-weight:700;font-size:19px;color:var(--ink);margin-bottom:4px;text-align:center}
+.kg-hint{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:14px;text-align:center}
+.kg-stage{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.kg-stage-4{display:grid;grid-template-columns:repeat(2,72px);justify-content:center;gap:12px}
+.kg-tile{width:72px;height:72px;border-radius:16px;border:1px solid var(--border);background:#fbfdfb;font-size:32px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .15s ease,border-color .15s ease}
+.kg-tile:hover{background:#f2f8f5}
+.kg-tile.sel{border-color:var(--primary);background:#eaf6f1}
+.kg-tile.done{border-color:#bfe0cf;background:#eaf6ee;opacity:.7}
+.kg-tile.nudge{background:#fdf6ea;border-color:#f0d9b5}
+.kg-count-row{display:flex;flex-wrap:wrap;gap:8px;font-size:30px;margin-bottom:14px;min-height:42px;justify-content:center}
+.kg-nums{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.kg-num{min-width:66px;min-height:56px;border-radius:16px;border:1px solid var(--border);background:#fff;font-size:22px;font-weight:700;color:var(--ink)}
+.kg-num:hover{background:#f2f8f5}
+.kg-num.ok{border-color:#9ed0b6;background:#eaf6ee}
+.kg-num:disabled{cursor:default}
+.kg-msg{min-height:26px;font-size:15.5px;font-weight:600;color:var(--primary);margin-top:12px;text-align:center}
+.kg-msg.soft{color:#a07a3c}
+.kg-round{color:var(--muted);font-size:13.5px;margin-bottom:10px;text-align:center}
+.kg-again{display:block;margin:12px auto 0;min-height:48px;padding:0 20px;border-radius:16px;background:var(--primary);color:#fff;font-weight:700;font-size:16px}
+.kid-only{display:none!important}
+body[data-age=child] .kid-only{display:inline-block!important}
 
 /* University 18+: calm academic look */
 body[data-age=university]{
