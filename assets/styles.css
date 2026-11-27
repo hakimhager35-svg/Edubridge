@@ -175,3 +175,65 @@ button,.lang-switch button,.lesson-tabs button,.chip,.sugg button,.mode-row butt
 .d3-tip{max-width:min(290px,calc(100% - 16px));white-space:pre-line;line-height:1.65;font-weight:500;padding:10px 14px;overflow-wrap:anywhere}
 
 @media(max-width:760px){.nav{flex-wrap:wrap}.nav-links{display:flex;order:3;flex-basis:100%;justify-content:space-between;gap:4px;font-size:12px}.nav-links a{white-space:nowrap;padding:6px 3px}}
+
+/* ===== Age-stage themes (v9) ===== */
+/* Child 6-11: playful candy look */
+body[data-age=child]{font-family:'Baloo Bhaijaan 2','Cairo',sans-serif;font-size:17.5px;
+  --bg:#fff7e8; --card:#ffffff; --ink:#5a2d0c; --muted:#9a6a3f;
+  --primary:#f97316; --primary2:#0ea5e9; --teal:#10b981;
+  --border:#ffd9ab; --hero1:#f97316; --hero2:#ec4899;
+  background:radial-gradient(circle at 12% 20%,#ffe9c7 0,transparent 32%),radial-gradient(circle at 88% 75%,#d3f4ff 0,transparent 30%),radial-gradient(circle at 80% 12%,#ffd9ec 0,transparent 26%),var(--bg);}
+html[lang=en] body[data-age=child]{font-family:'Fredoka','Baloo Bhaijaan 2',sans-serif}
+body[data-age=child] .site-header{background:rgba(255,251,240,.95)}
+body[data-age=child] .card{border:2.5px solid var(--border);border-radius:26px;box-shadow:0 8px 0 rgba(249,115,22,.12)}
+body[data-age=child] .card:hover{transform:translateY(-3px) rotate(-.3deg)}
+body[data-age=child] .hero{border-radius:36px;background:radial-gradient(900px 480px at 85% 15%,#fbbf24 0%,transparent 55%),radial-gradient(700px 380px at 12% 88%,#38bdf8 0%,transparent 52%),linear-gradient(135deg,var(--hero1),var(--hero2))}
+body[data-age=child] .hero h1 .grad{background:linear-gradient(90deg,#fef08a,#bae6fd);-webkit-background-clip:text;background-clip:text;color:transparent}
+body[data-age=child] .lesson-body{font-size:18px;line-height:2.1}
+body[data-age=child] .lesson-tabs button{border:2px solid var(--border);background:#fffaf0}
+body[data-age=child] .lesson-tabs button.active{background:var(--primary);border-color:var(--primary);color:#fff}
+body[data-age=child] .quiz-opt{font-size:17px;padding:16px 18px;border-radius:18px;border-width:3px;background:#fff4e0}
+body[data-age=child] .quiz-opt:hover{background:#ffe7c2}
+body[data-age=child] .tag{background:#ffedd5;color:#c2410c}
+body[data-age=child] .btn-grad{background:linear-gradient(135deg,#34d399,#10b981)}
+body[data-age=child] .chip{background:#fff7e8}
+body[data-age=child] .lang-switch button.active{background:var(--primary)}
+body[data-age=child] .brand-text strong{color:#f97316}
+body[data-age=child] .msg.bot{background:#fff1de}
+body[data-age=child] .msg.user{background:#f97316}
+body[data-age=child] .mode-row button.active{background:var(--primary);border-color:var(--primary)}
+body[data-age=child] .chat-input button{background:linear-gradient(135deg,#34d399,#10b981)}
+body[data-age=child] .pbar i{background:linear-gradient(90deg,#f97316,#ec4899)}
+body[data-age=child] .stat-cards b{color:#f97316}
+
+/* University 18+: calm academic look */
+body[data-age=university]{
+  --bg:#eef1f5; --card:#ffffff; --ink:#14243e; --muted:#5c6b84;
+  --primary:#1d4ed8; --primary2:#0f766e; --teal:#0f766e;
+  --border:#d5dce6; --hero1:#0f1f3d; --hero2:#1e3a5f;}
+body[data-age=university] .card{border-radius:14px;box-shadow:0 4px 16px rgba(20,36,62,.06)}
+body[data-age=university] .hero{border-radius:18px;background:radial-gradient(900px 480px at 85% 15%,#1e40af 0%,transparent 55%),radial-gradient(700px 380px at 12% 88%,#0f766e 0%,transparent 52%),linear-gradient(135deg,var(--hero1),var(--hero2))}
+body[data-age=university] .hero h1 .grad{background:linear-gradient(90deg,#bfdbfe,#99f6e4);-webkit-background-clip:text;background-clip:text;color:transparent}
+body[data-age=university] .section h2{font-family:'Amiri','Cairo',serif}
+body[data-age=university] .tag{background:#e0e9fb;color:#1d4ed8}
+body[data-age=university] .brand-text strong{color:#1d4ed8}
+body[data-age=university] .msg.bot{background:#eef3fb}
+body[data-age=university] .quiz-opt{background:#f1f5fb}
+body[data-age=university] .quiz-opt:hover{background:#e2ebf9}
+body[data-age=university] .btn-grad{background:linear-gradient(135deg,#0f766e,#115e59)}
+body[data-age=university] .chat-input button{background:linear-gradient(135deg,#0f766e,#115e59)}
+body[data-age=university] .pbar i{background:linear-gradient(90deg,#1d4ed8,#0f766e)}
+body[data-age=university] .stat-cards b{color:#1d4ed8}
+
+/* Kid note + deep-dive boxes */
+.kid-box{background:#fff3d6;border:2.5px dashed #f59e0b;border-radius:20px;padding:16px 18px;margin-bottom:16px;white-space:normal}
+.kid-box b{display:block;color:#b45309;font-size:17px;margin-bottom:4px}
+.kid-box p{margin:0;color:#5a2d0c;line-height:1.9}
+.deep-box{background:#f4f7fc;border:1px solid var(--border);border-radius:14px;padding:14px 18px;margin-top:18px;white-space:normal}
+.deep-box b{display:block;margin-bottom:6px}
+.deep-box a{display:block;color:var(--primary2);font-weight:700;padding:3px 0;font-size:14.5px}
+
+/* Dual listen buttons */
+.tts-row{display:inline-flex;gap:8px;flex-wrap:wrap}
+.tts-dual{font-size:13px;padding:8px 14px}
+body[data-age=child] .tts-dual{border:2px solid var(--border);background:#fff7e8}
