@@ -40,7 +40,7 @@ function applyLang(){
   document.getElementById('langAr').classList.toggle('active', lang==='ar');
   document.getElementById('langEn').classList.toggle('active', lang==='en');
   document.getElementById('ageChip').textContent = age ? AGE_LABEL[age][lang==='ar'?0:1] : (lang==='ar'?'المرحلة العمرية':'Age stage');
-  document.title = lang==='ar' ? 'EduBridge ,  مرشد تعلّم للمواضيع المتاحة' : 'EduBridge ,  A guided mentor for covered topics';
+  document.title = lang==='ar' ? 'EduBridge | مرشد تعلّم للمواضيع المتاحة' : 'EduBridge | A guided mentor for covered topics';
   applyAge();
 }
 function setLang(l){ lang=l; store.set('lang',l); applyLang(); route(); }
@@ -144,16 +144,37 @@ function mentorAnswer(q){
     if(hit && hit.length>bestLen){ best=L; bestLen=hit.length; }
   }
   if(best){
-    const tAr = `سؤالك عن ${best.title}. إليك شرحاً مبسطاً:`+'\n\n'+best.ar;
-    const tEn = `You asked about ${best.titleEn}. Here is a simple explanation:`+'\n\n'+best.en;
+    // Answer at the stage the reader is actually in: kid note, teen text, or the academic brief.
+    let bAr = best.ar, bEn = best.en;
+    let extraAr='', extraEn='';
+    if(age==='child' && typeof KID_NOTES!=='undefined' && KID_NOTES[best.id]){
+      bAr = KID_NOTES[best.id].ar; bEn = KID_NOTES[best.id].en;
+    } else if(age==='university' && typeof uniNote==='function'){
+      const u = uniNote(best.id);
+      if(u && u.ar){
+        bAr = u.ar; bEn = u.en;
+        if(u.terms && u.terms.length){
+          extraAr = '\n\nمصطلحات أساسية: '+u.terms.join(' · ');
+          extraEn = '\n\nKey terms: '+u.terms.join(' · ');
+        }
+      }
+    }
+    const headAr = age==='university'
+      ? `سؤالك عن ${best.title}. هذا ملخص أكاديمي بمستوى جامعي:`
+      : (age==='child' ? `سؤالك عن ${best.title}. خلينا نحكيها ببساطة:` : `سؤالك عن ${best.title}. إليك شرحاً مبسطاً:`);
+    const headEn = age==='university'
+      ? `You asked about ${best.titleEn}. This is the academic brief at university level:`
+      : (age==='child' ? `You asked about ${best.titleEn}. Let us keep it simple:` : `You asked about ${best.titleEn}. Here is a simple explanation:`);
+    const tAr = headAr+'\n\n'+bAr+extraAr;
+    const tEn = headEn+'\n\n'+bEn+extraEn;
     return {text: lang==='ar'?tAr:tEn, textAr:tAr, textEn:tEn, src: best.src||null, model: (window.EB3D && EB3D.available(best.id)) ? best.id : null};
   }
   // 3) honest fallback, suggesting the closest covered topics
   const words = s.split(/[^a-z\u0621-\u064a0-9]+/).filter(w=>w.length>3);
   const close = LESSONS.filter(L=>words.some(w=>(L.title+' '+L.titleEn+' '+L.ar+' '+L.en).toLowerCase().includes(w))).slice(0,3).map(L=>L.id);
-  const fbAr = 'لا أملك إجابة موثوقة عن هذا السؤال بعد. أنا مرشد مُوجَّه أجيب من محتوى مكتوب بعناية، ولست ذكاءً اصطناعياً حياً.\n\nجرّب أحد الأسئلة المقترحة، أو افتح أقرب موضوع لسؤالك من المكتبة:';
-  const fbEn = 'I do not have a reliable answer for that yet. I am a guided mentor answering from carefully written content, not a live AI.\n\nTry one of the suggested questions, or open the closest library topic to your question:';
-  return { text: lang==='ar'?fbAr:fbEn, textAr:fbAr, textEn:fbEn, src: null, chips: close.length ? close : ['cell','atom','gravity'] };
+  const fbAr = 'لا أملك إجابة موثوقة عن هذا السؤال بعد. أنا مرشد مُوجَّه أجيب من محتوى مكتوب بعناية، ولست ذكاءً اصطناعياً حياً.\n\nجرّب أحد الأسئلة المقترحة أسفل الصفحة، أو افتح أقرب موضوع من المكتبة.';
+  const fbEn = 'I do not have a reliable answer for that yet. I am a guided mentor answering from carefully written content, not a live AI.\n\nTry one of the suggested questions below, or open the closest topic from the library.';
+  return { text: lang==='ar'?fbAr:fbEn, textAr:fbAr, textEn:fbEn, src: null, fallback:true, chips: close.length ? close : null };
 }
 
 // ---------- Views ----------
@@ -177,7 +198,7 @@ function viewHome(){
     <div class="topic-chips">${chips}</div>
     <div class="stats">
       <div><b>${LESSONS.length}</b><span>${lang==='ar'?'موضوعاً جاهزاً':'ready topics'}</span></div>
-      <div><b>2</b><span>${lang==='ar'?'لغتان · عربي / إنجليزي':'languages · AR / EN'}</span></div>
+      <div><b>${lang==='ar'?'عربي + EN':'AR + EN'}</b><span>${lang==='ar'?'لغتان كاملتان':'two full languages'}</span></div>
       <div><b>${LESSONS.length}</b><span>${lang==='ar'?'نموذجاً تفاعلياً':'interactive models'}</span></div>
     </div>
     <div class="future">
@@ -560,19 +581,18 @@ function viewMentor(presetQ){
       <h2>${lang==='ar'?'مرشد إديوبرج':'EduBridge Mentor'}</h2>
       <span class="dot"></span>
       <span style="color:var(--muted);font-size:13px">${lang==='ar'?'مرشد مُوجَّه · يجيب بلغتك':'Guided mentor · answers in your language'}</span>
-      <span class="chip">${AGE_LABEL[age||'teen'][lang==='ar'?0:1]}</span>
     </div>
     <div class="chat-box" id="chatBox">
       <div class="msg bot">${m.greet?m.greet[li]:(lang==='ar'
-        ?'مرحباً بك! أنا مرشد إديوبرج. أجيب من محتوى تعليمي مكتوب بعناية عن مواضيع المكتبة والأسئلة الشائعة ,  اسألني عن أي موضوع من المكتبة، أو جرّب سؤالاً مقترحاً.'
-        :'Welcome! I am the EduBridge mentor. I answer from carefully written learning content about the library topics and common questions - ask me about any library topic, or try a suggested question.')}</div>
+        ?'مرحباً بك! أنا مرشد إديوبرج. أجيب من محتوى تعليمي مكتوب بعناية عن مواضيع المكتبة والأسئلة الشائعة. اسألني عن أي موضوع من المكتبة، أو جرّب سؤالاً مقترحاً.'
+        :'Welcome! I am the EduBridge mentor. I answer from carefully written learning content about the library topics and common questions. Ask me about any library topic, or try a suggested question.')}</div>
     </div>
     <div class="sugg" id="sugg">${sugg.map(s=>`<button>${esc(s)}</button>`).join('')}</div>
     <div class="chat-input">
       <input id="chatIn" placeholder="${lang==='ar'?'اكتب سؤالك':'Write your question'}">
       <button id="chatSend">➤</button>
     </div>
-    <p class="note">${lang==='ar'?'ملاحظة: المرشد مساعد مُوجَّه بمحتوى مؤلَّف، وليس نموذج ذكاء اصطناعي حياً ,  المعلومات تعليمية عامة وليست تشخيصاً أو خدمة طوارئ.':'Note: the mentor is a guided assistant with authored content, not a live AI model - Content is general education, not diagnosis or an emergency service.'}</p>
+    <p class="note">${lang==='ar'?'ملاحظة: المرشد مساعد مُوجَّه بمحتوى مؤلَّف، وليس نموذج ذكاء اصطناعي حياً؛ المعلومات تعليمية عامة وليست تشخيصاً أو خدمة طوارئ.':'Note: the mentor is a guided assistant with authored content, not a live AI model. Content is general education, not diagnosis or an emergency service.'}</p>
   </div>`;
   const box=document.getElementById('chatBox'), inp=document.getElementById('chatIn');
   function send(text){
@@ -585,9 +605,11 @@ function viewMentor(presetQ){
       document.getElementById('typing').remove();
       const ans = mentorAnswer(q);
       const closers = m.closers ? m.closers[li] : (lang==='ar'
-        ? ['بالتوفيق! خطوة صغيرة كل يوم تصنع فرقاً كبيراً 🌱','سؤال جميل ,  استمر في فضولك، فهو أقوى أدواتك 💡','أنت على الطريق الصحيح، واصل التقدم 💪']
+        ? ['بالتوفيق! خطوة صغيرة كل يوم تصنع فرقاً كبيراً 🌱','سؤال جميل، استمر في فضولك، فهو أقوى أدواتك 💡','أنت على الطريق الصحيح، واصل التقدم 💪']
         : ['You got this - small steps every day add up! 🌱','Great question - keep that curiosity going, it is your superpower 💡','You are on the right track, keep going 💪']);
-      const closer = closers[(send.n=(send.n||0)+1) % closers.length];
+      const closer = ans.fallback
+        ? (lang==='ar'?'ولا بأس أن أقول لا أعرف؛ الأمانة أهم من إجابة مصطنعة. اختر موضوعاً من المكتبة وسأشرحه لك خطوة بخطوة 🌱':'It is fine to say I do not know; honesty beats an invented answer. Pick a topic from the library and I will walk you through it step by step 🌱')
+        : closers[(send.n=(send.n||0)+1) % closers.length];
       const div=document.createElement('div');
       div.className='msg bot';
       div.textContent=ans.text+(ans.urgent?'':'\n\n'+closer);
@@ -659,16 +681,19 @@ function viewProgress(){
   <section class="section">
     <p class="kicker">${lang==='ar'?'تقدّمي':'My progress'}</p>
     <h2>${lang==='ar'?'تابع رحلتك التعليمية':'Track your learning journey'}</h2>
-    <p class="lead">${lang==='ar'?'كل كويز تكمله يُسجَّل على جهازك مباشرة ,  بلا حساب ولا بيانات شخصية.':'Every quiz you finish is recorded on your device - no account, no personal data.'}</p>
+    <p class="lead">${lang==='ar'?'كل كويز تكمله يُسجَّل على جهازك مباشرة، بلا حساب ولا بيانات شخصية.':'Every quiz you finish is recorded on your device, no account and no personal data.'}</p>
     <div class="stat-cards">
       <div class="card"><b>${nStarted}</b><span>${lang==='ar'?'موضوعاً بدأته':'topics started'}</span></div>
       <div class="card"><b>${points}</b><span>${lang==='ar'?'نقطة إجمالية':'total points'}</span></div>
       <div class="card"><b>${mastery}%</b><span>${lang==='ar'?'نسبة الإتقان':'mastery'}</span></div>
     </div>
-    <div class="progress-list">${rows || `<div class="card"><p style="color:var(--muted)">${lang==='ar'?'لم يبدأ أي موضوع بعد. اختر موضوعاً من المكتبة وابدأ الرحلة.':'No topic started yet. Pick one from the library and begin.'}</p></div>`}</div>
+    <div class="progress-list">${rows || `<div class="card"><p style="color:var(--muted)">${lang==='ar'?'لم يبدأ أي موضوع بعد. اختر موضوعاً من المكتبة وابدأ الرحلة.':'No topic started yet. Pick one from the library and begin.'}</p><p style="margin-top:12px"><a class="go" href="#/library" style="color:var(--primary);font-weight:800">${lang==='ar'?'اذهب إلى المكتبة ←':'Go to the library →'}</a></p></div>`}</div>
     <button class="btn-ghost" id="resetP">${lang==='ar'?'إعادة تعيين التقدّم':'Reset progress'}</button>
   </section>`;
-  document.getElementById('resetP').onclick=()=>{ store.set('started',{}); store.set('quiz',{}); route(); };
+  document.getElementById('resetP').onclick=()=>{
+    if(!confirm(lang==='ar'?'سيُحذف تقدّمك المحفوظ على هذا الجهاز نهائياً. هل تريد المتابعة؟':'This deletes your saved progress on this device. Continue?')) return;
+    store.set('started',{}); store.set('quiz',{}); route();
+  };
 }
 
 // ---------- Router ----------
